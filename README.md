@@ -18,3 +18,11 @@ Filters: To allow students to select their preferences for classes. We will try 
 Stretch Goals
 Incorporate data from ratemyprofessor.com and UW course evaluations: This is a stretch goal because it would mean loading in data from other resources. This is an additional feature which can be added to the project once finished. We aim to get this information added into the website as it would be beneficial to students, but again it is not an integral part of the project.
 Friending other users and sharing class schedules: This is a stretch goal because it ties into a privacy aspect. Finding out when a certain person you have friended has a class can be dangerous in some situations. We need to devise a plan to implement this correctly and doing so might take time. As the other stretch goal, this is not an integral part of the project but a bonus we can implement if we have time.
+
+Project Structure:
+The folder for the backend contains the SQL data that will be imported into the website.
+It also contains the Sheets page which will have the data layout
+
+The folder for the frontend contains the HTML and CSS components we will be using to create the webpage
+
+The UIUX folder contains the visual designs that the frontend team will use as a guide when coding
