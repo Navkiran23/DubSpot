@@ -33,3 +33,7 @@ It also contains the Sheets page which will have the data layout
 The folder for the frontend contains the HTML and CSS components we will be using to create the webpage
 
 The UIUX folder contains the visual designs that the frontend team will use as a guide when coding
+
+The weekly reports folder contains the weekly reports by our group
+
+The testing features contains any testing files
