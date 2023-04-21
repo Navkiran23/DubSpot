@@ -9,7 +9,7 @@
     <!--The Body of this page will contain what DubSpot is along with 
         Information on where to click to navigate through the website-->
     <body>
-        <!-- the top rectangle for the home page -->
+        <!-- the top rectangle for the login page -->
         <div id="rectangle"></div>
             <head> 
                 <style type="text/css"> 
@@ -23,6 +23,8 @@
                     position: absolute;
                     top: 30;
                     right: 0;
+                    text-align: right;
+                    font-size: 20px;
                 }
                 .LogInrectangle { 
                     background-color: rgb(42, 26, 73); 
@@ -33,7 +35,7 @@
                     right: 600;
                 }
                 .LogoCircle { 
-                    /* background-color: rgb(188, 240, 255); */
+                    background-color: rgb(188, 240, 255);
                     width: 5cm;
                     height: 5cm; 
                     border-radius: 50%;
@@ -41,23 +43,13 @@
                     top: 180;
                     right: 600;
                 }
-
                 </style> 
-                <ul>
-                    <li>
-                        <a href="AboutDubSpot.html">About</a>
-                        <a href="DubSpotCalendar.html">Calendar</a>
-                        <a href="DubSpotProfile.html">Profile</a>
-                        <a href="DubSpotCourseFinder.html">CourseFinder</a>
-                    </li>
-
-                </ul>
-            </head> 
-            <body> 
-                <div class="rectangle"></div>
+            </head>
+            <body>
+                <div class="rectangle"> <a href="AboutDubSpot.html" style="style=text-decoration:none"color: aliceblue;">About</a> </div>
                 <div class="LogInrectangle"></div>
                 <div class="LogoCircle"></div>
-                <img class="LogoCircle" src="/DubSpot/FrontEnd/Images/Husky.png"/>
+                <img class="LogoCircle" src=""/>
             </body>
     </body>
 </html>
