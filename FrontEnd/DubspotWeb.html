@@ -9,26 +9,47 @@
     <!--The Body of this page will contain what DubSpot is along with 
         Information on where to click to navigate through the website-->
     <body>
-        <!--Users Visiting the page are greeted with a message about
-            What exactly DubSpot is-->
-        <h1>What is DubSpot?</h1>
-        <p>DubSpot is a course builder which will
-            allow you to find courses that fit into your
-            schedule with personalized reccomendations!
-        </p>
-
-        <!--The first section of the page wil contain links-->
-        <h2>The links below will take you to your desired page!</h2>
-        <!--Within the paragraph tag add in a linke tag-->
-        <!--Creatsing an unordered list to hold these connecting links-->
+        <!-- the top rectangle for the login page -->
         <div id="rectangle"></div>
-        <ui>
-            <li>
-                <a href="DubSpotCalendar.html">Calendar</a>
-                <a href="AboutDubSpot.html">About</a>
-                <a href="DubSpotCourseFinder.html">Course Finder</a>
-                <a href="DubSpotProfile.html">DubSpotProfile</a>
-            </li>
-        </ui>
+            <head> 
+                <style type="text/css"> 
+                body { 
+                    padding: 1in;  
+                } 
+                .rectangle { 
+                    background-color: rgb(103, 64, 142); 
+                    width: 40cm;
+                    height: 2cm; 
+                    position: absolute;
+                    top: 30;
+                    right: 0;
+                    text-align: right;
+                    font-size: 20px;
+                }
+                .LogInrectangle { 
+                    background-color: rgb(42, 26, 73); 
+                    width: 5cm;
+                    height: 2cm; 
+                    position: absolute;
+                    top: 400;
+                    right: 600;
+                }
+                .LogoCircle { 
+                    background-color: rgb(188, 240, 255);
+                    width: 5cm;
+                    height: 5cm; 
+                    border-radius: 50%;
+                    position: absolute;
+                    top: 180;
+                    right: 600;
+                }
+                </style> 
+            </head>
+            <body>
+                <div class="rectangle"> <a href="AboutDubSpot.html" style="style=text-decoration:none"color: aliceblue;">About</a> </div>
+                <div class="LogInrectangle"></div>
+                <div class="LogoCircle"></div>
+                <img class="LogoCircle" src=""/>
+            </body>
     </body>
 </html>
