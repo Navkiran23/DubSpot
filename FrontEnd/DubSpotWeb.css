@@ -1,7 +1,113 @@
 /* This file will hold the stlying for the webpage holding DubSpot
-   It will contain the different elements and their attributes */
-.rectangle {
-   width:200px;
-   height:200px;
-   background:rgb(91, 39, 187);
+  It will contain the different elements and their attributes */
+body {
+  margin: 0px;
 }
+
+.rectangle {
+  width:200px;
+  height:200px;
+  background:rgb(91, 39, 187);
+}
+
+#logo {
+  max-width: 50px;
+  margin-bottom: -15px;
+  margin-left: -10px;
+}
+
+/*
+  #navbar-1 {
+  background-color: #ba8ee5;
+  margin: 0px 0px 5px 0px;
+  padding: 5px;
+}
+*/
+
+#navbar-2 {
+  background-color: #67408E;
+  padding: 15px;
+  height: 50px;
+  margin-bottom: 25px;
+}
+
+nav ul {
+  margin: 0px;
+  padding: 15px 0px 10px 20px;
+}
+
+nav li {
+  display: inline;
+  margin-right: 20px;
+  font-size: large;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+a {
+  color: white;
+}
+
+#about-me-summary {
+  background-color: #2A1A49;
+  color: white;
+  padding: 20px;
+  font-size: x-large;
+  margin: 1%;
+}
+
+#flex-container-div {
+  margin: 0 auto;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.about-me-names {
+  font-size: x-large;
+}
+
+.about-me-1 {
+  background-color: #BA8EE5;
+  margin: 5px 5px 5px 5px;
+  padding: 15px;
+  width: 25%;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  color: white;
+  font-size: large;
+}
+
+.about-me-2 {
+  background-color: #67408E;
+  margin: 5px 5px 5px 5px;
+  padding: 15px;
+  width: 25%;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  color: white;
+  font-size: large;
+}
+
+#about-me-main-header {
+  padding-left: 20px;
+}
+
+
