@@ -16,6 +16,19 @@ body {
   margin-left: -10px;
 }
 
+.logo-circle {
+  background-color: rgb(188, 240, 255);
+  width: 7cm;
+  height: 7cm;
+  border-radius: 50%;
+  position:relative; 
+  left:547px; 
+  top:150px;
+  position: absolute;
+  top: 500;
+  right: 600;
+}
+
 /*
   #navbar-1 {
   background-color: #ba8ee5;
@@ -68,6 +81,7 @@ a {
   padding: 20px;
   font-size: x-large;
   margin: 1%;
+  font-family: sans-serif;
 }
 
 #flex-container-div {
@@ -84,9 +98,73 @@ a {
 
 .about-me-names {
   font-size: x-large;
+  font-family: sans-serif;
 }
 
 .about-me-1 {
+  background-color: #BA8EE5;
+  margin: 5px 5px 5px 5px;
+  padding: 15px;
+  width: 25%;
+  border-radius: 3%;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  color: white;
+  font-size: large;
+  font-family: sans-serif;
+  animation: shake 0.5;
+}
+
+.about-me-2 {
+  background-color: #67408E;
+  margin: 5px 5px 5px 5px;
+  padding: 15px;
+  width: 25%;
+  border-radius: 3%;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  color: white;
+  font-size: large;
+  font-family: sans-serif;
+}
+
+#about-me-main-header {
+  padding-left: 20px;
+}
+
+nav1 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 8vh;
+  background-color: rgb(103, 64, 142);
+}
+.Web-link {
+  display: flex;
+  justify-content: space-around;
+  width: 30%;
+}
+.Web-link li {
+  list-style: none;
+}
+.heading {
+  color: rgb(255, 255, 255);
+  text-transform: capitalize;
+  letter-spacing: 5px;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+.Web-link a {
+  color: rgb(194, 143, 223);
+  text-align: none;
+  letter-spacing: 3px;
+  font-size: 14px;
+  padding: 14px, 16px;
+  font-family: sans-serif;
+}
+.Web-link li a:hover:not(.active) {
+  background-color: rgba(77, 0, 220, 0.134);
+}
+
+.LogInRectangle{
   background-color: #BA8EE5;
   margin: 5px 5px 5px 5px;
   padding: 15px;
@@ -95,19 +173,3 @@ a {
   color: white;
   font-size: large;
 }
-
-.about-me-2 {
-  background-color: #67408E;
-  margin: 5px 5px 5px 5px;
-  padding: 15px;
-  width: 25%;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  color: white;
-  font-size: large;
-}
-
-#about-me-main-header {
-  padding-left: 20px;
-}
-
-
