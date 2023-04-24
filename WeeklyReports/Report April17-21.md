@@ -13,28 +13,30 @@
 ### Navkiran
 - Last week's goals
 - Progress and issues
-    - collaborated on figma mockup
-    - text
+  - collaborated on figma mockup
+  - text
 - Next week's goals
-    - text
+- text
 ### Diane
-- Last week's goals
-- Progress and issues
-    - collaborated on figma mockup
-    - text
-- Next week's goals
-    - text
-### Darren
 - Last week's goals
 - Progress and issues
   - collaborated on figma mockup
   - text
 - Next week's goals
   - text
+### Darren
+- Last week's goals
+- Progress and issues
+  - collaborated on figma mockup
+  - worked on AboutDubSpot.html and header.html
+  - contributed to Design and Architecture assignment
+- Next week's goals
+  - text
 ### Denny
 - Last week's goals
 - Progress and issues
-    - collaborated on figma mockup
-    - text
+  - collaborated on figma mockup
+  - worked on AboutDubSpot.html and header.html
+  - contributed to Design and Architecture assignment
 - Next week's goals
-    - text
+  - text
