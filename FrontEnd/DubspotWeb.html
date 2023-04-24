@@ -11,47 +11,23 @@
 <!--The Body of this page will contain what DubSpot is along with
     Information on where to click to navigate through the website-->
 <body>
-<!-- the top rectangle for the login page -->
-<div id="rectangle"></div>
-<head>
-  <style type="text/css">
-    body {
-      padding: 1in;
-    }
-    .rectangle {
-      background-color: rgb(103, 64, 142);
-      width: 40cm;
-      height: 2cm;
-      position: absolute;
-      top: 30;
-      right: 0;
-      text-align: right;
-      font-size: 20px;
-    }
-    .LogInrectangle {
-      background-color: rgb(42, 26, 73);
-      width: 5cm;
-      height: 2cm;
-      position: absolute;
-      top: 400;
-      right: 600;
-    }
-    .LogoCircle {
-      background-color: rgb(188, 240, 255);
-      width: 5cm;
-      height: 5cm;
-      border-radius: 50%;
-      position: absolute;
-      top: 180;
-      right: 600;
-    }
-  </style>
-</head>
-<body>
-<div class="rectangle"> <a href="AboutDubSpot.html" style="style=text-decoration:none"color: aliceblue;">About</a> </div>
-<div class="LogInrectangle"></div>
-<div class="LogoCircle"></div>
-<img class="LogoCircle" src=""/>
-</body>
+  <nav1>
+    <div class="heading">
+      <h1> DubSpot</h1> 
+    </div>
+      <ul class="Web-link">
+        <li><a class="activeLink" href="AboutDubSpot.html">About</a></li>
+        <li><a class="activeLink" href="DubSpotHelp.html">Help</a></li>
+      </ul>
+  </nav1>
+  <section class="circle">
+    <div class="logo-circle">
+    <img src="Husky.png"/>
+    </div>
+  </section>
+
+
+   <a href="https://www.google.com">
+    <button onClick="doSomething()" style="background-color: rgb(73, 49, 124); color: rgb(255, 255, 255); border-radius: 5px; position:relative; left:575px; top:350px; height: 75px; width: 200px; font-family: sans-serif;">LogIn</button>
 </body>
 </html>
