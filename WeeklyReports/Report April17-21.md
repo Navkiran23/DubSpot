@@ -39,4 +39,5 @@
   - worked on AboutDubSpot.html and header.html
   - contributed to Design and Architecture assignment
 - Next week's goals
-  - text
+  - Work on DubSpotCalender.html
+  - Work on TCC assignment
