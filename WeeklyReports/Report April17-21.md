@@ -14,16 +14,16 @@
 - Last week's goals
 - Progress and issues
   - collaborated on figma mockup
-  - text
+  - Worked on the DubSpot webpage and got everything to match the mockup
 - Next week's goals
-- text
+  - Try and complete the Help and Profile pages
 ### Diane
 - Last week's goals
 - Progress and issues
   - collaborated on figma mockup
-  - text
+  - Worked on the DubSpot webpage and got everything to match the mockup
 - Next week's goals
-  - text
+  - Complete the profile page
 ### Darren
 - Last week's goals
 - Progress and issues
@@ -31,7 +31,7 @@
   - worked on AboutDubSpot.html and header.html
   - contributed to Design and Architecture assignment
 - Next week's goals
-  - text
+  - Complete Calendar page
 ### Denny
 - Last week's goals
 - Progress and issues
