@@ -6,7 +6,7 @@
 - Assigned and distributed work for each member of the team
 - Started coding the website
 ### Next Week's Goals
-
+- Finish most of the HTML
 
 
 # Individual Reports
