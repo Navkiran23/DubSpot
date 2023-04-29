@@ -22,14 +22,13 @@
   </ul>
   </ul>
 </nav>
-<h1>Calendar</h1>
 <div class="calendar">
 
   <header>
-    <button class="secondary" style="align-self: flex-start; flex: 0 0 1">Today</button>
+    <button class="secondary" id="today-button" style="align-self: flex-start; flex: 0 0 1">Today</button>
     <div class="calendar__title" style="display: flex; justify-content: center; align-items: center">
       <button class="icon secondary" id="scroll-left">‹</button>
-      <h1 id="date-range" style="flex: 1;"><span></span><strong>18 JAN – 24 JAN</strong> 2016</h1>
+      <h1 id="date-range" style="flex: 1;"><strong>18 JAN – 24 JAN</strong> 2016</h1>
       <button class="icon secondary" id="scroll-right">›</button>
     </div>
     <div style="align-self: flex-start; flex: 0 0 1"></div>
@@ -47,8 +46,8 @@
         <th class="today">Wed, 20</th>
         <th>Thu, 21</th>
         <th>Fri, 22</th>
-        <th class="secondary">Sat, 23</th>
-        <th class="secondary">Sun, 24</th>
+        <th>Sat, 23</th>
+        <th>Sun, 24</th>
       </tr>
       </thead>
     </table>
@@ -57,58 +56,7 @@
       <table class="offset">
 
         <tbody>
-        <tr>
-          <td class="headcol"></td>
-          <td></td>
-          <td></td>
-          <td class="past"></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="headcol">6:00</td>
-          <td></td>
-          <td></td>
-          <td class="past"></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="headcol"></td>
-          <td></td>
-          <td></td>
-          <td class="past"></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="headcol">7:00</td>
-          <td></td>
-          <td></td>
-          <td class="past"></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="headcol"></td>
-          <td></td>
-          <td></td>
-          <td class="now"></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="headcol">8:00</td>
+          <td class="headcol">8am</td>
           <td></td>
           <td></td>
           <td></td>
@@ -128,7 +76,7 @@
           <td></td>
         </tr>
         <tr>
-          <td class="headcol">9:00</td>
+          <td class="headcol">9am</td>
           <td></td>
           <td></td>
           <td></td>
@@ -148,7 +96,7 @@
           <td></td>
         </tr>
         <tr>
-          <td class="headcol">10:00</td>
+          <td class="headcol">10am</td>
           <td></td>
           <td></td>
           <td><div class="event double"><input id="check" type="checkbox" class="checkbox" /><label for="check"></label>10:00–11:00 Meeting</div></td>
@@ -168,7 +116,7 @@
           <td></td>
         </tr>
         <tr>
-          <td class="headcol">11:00</td>
+          <td class="headcol">11am</td>
           <td></td>
           <td></td>
           <td></td>
@@ -188,7 +136,7 @@
           <td></td>
         </tr>
         <tr>
-          <td class="headcol">12:00</td>
+          <td class="headcol">12pm</td>
           <td></td>
           <td></td>
           <td></td>
@@ -208,7 +156,7 @@
           <td></td>
         </tr>
         <tr>
-          <td class="headcol">13:00</td>
+          <td class="headcol">1pm</td>
           <td></td>
           <td></td>
           <td></td>
@@ -228,7 +176,7 @@
           <td></td>
         </tr>
         <tr>
-          <td class="headcol">14:00</td>
+          <td class="headcol">2pm</td>
           <td></td>
           <td></td>
           <td></td>
@@ -248,7 +196,7 @@
           <td></td>
         </tr>
         <tr>
-          <td class="headcol">15:00</td>
+          <td class="headcol">3pm</td>
           <td></td>
           <td></td>
           <td></td>
@@ -268,7 +216,7 @@
           <td></td>
         </tr>
         <tr>
-          <td class="headcol">16:00</td>
+          <td class="headcol">4pm</td>
           <td></td>
           <td></td>
           <td></td>
@@ -288,7 +236,7 @@
           <td></td>
         </tr>
         <tr>
-          <td class="headcol">17:00</td>
+          <td class="headcol">5pm</td>
           <td></td>
           <td></td>
           <td></td>
@@ -308,7 +256,7 @@
           <td></td>
         </tr>
         <tr>
-          <td class="headcol">18:00</td>
+          <td class="headcol">6pm</td>
           <td></td>
           <td></td>
           <td></td>
