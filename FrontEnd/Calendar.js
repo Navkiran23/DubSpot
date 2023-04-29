@@ -2,6 +2,7 @@ const buttonLeft = document.getElementById("scroll-left");
 const buttonRight = document.getElementById("scroll-right");
 const heading = document.getElementById("date-range");
 const dayHeadings = document.getElementById("day-headings");
+const todayButton = document.getElementById("today-button");
 
 const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
@@ -49,6 +50,12 @@ buttonLeft.addEventListener("click", function() {
 // event listener for changing calendar view +1 week
 buttonRight.addEventListener("click", function() {
     offset++;
+    let weekArray = calculateWeek();
+    updateHeading(weekArray);
+});
+
+todayButton.addEventListener("click", function() {
+    offset = 0;
     let weekArray = calculateWeek();
     updateHeading(weekArray);
 });
