@@ -32,7 +32,7 @@ a {
   color: white;
 }
 
-nav1 {
+nav {
   display: flex;
   position: fixed;
   z-index: 99;
@@ -74,11 +74,6 @@ nav1 {
 
 .Web-link li a:hover:not(.active) {
   background-color: rgba(77, 0, 220, 0.134);
-}
-
-* {
-  margin: 0;
-
 }
 
 body {

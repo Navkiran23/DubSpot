@@ -9,7 +9,7 @@
   <link rel="stylesheet" href = "DubSpotCalendar.css">
 </head>
 <body>
-<nav1>
+<nav>
   <div class="heading">
     <h1> DubSpot</h1>
   </div>
@@ -21,16 +21,16 @@
     <li><a class="activeLink" href="DubSpotProfile.html">Profile</a></li>
   </ul>
   </ul>
-</nav1>
+</nav>
 <h1>Calendar</h1>
 <div class="calendar">
 
   <header>
     <button class="secondary" style="align-self: flex-start; flex: 0 0 1">Today</button>
     <div class="calendar__title" style="display: flex; justify-content: center; align-items: center">
-      <div class="icon secondary chevron_left">‹</div>
-      <h1 class="" style="flex: 1;"><span></span><strong>18 JAN – 24 JAN</strong> 2016</h1>
-      <div class="icon secondary chevron_left">›</div>
+      <button class="icon secondary" id="scroll-left">‹</button>
+      <h1 id="date-range" style="flex: 1;"><span></span><strong>18 JAN – 24 JAN</strong> 2016</h1>
+      <button class="icon secondary" id="scroll-right">›</button>
     </div>
     <div style="align-self: flex-start; flex: 0 0 1"></div>
   </header>
@@ -38,7 +38,7 @@
   <div class="outer">
 
 
-    <table>
+    <table id="day-headings">
       <thead>
       <tr>
         <th class="headcol"></th>
@@ -332,5 +332,6 @@
     </div>
   </div>
 </div>
+<script src="Calendar.js"></script>
 </body>
 </html>
