@@ -10,6 +10,12 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  background-image: url("../FrontEnd/Images/AboutBackground.PNG");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 a:link {
@@ -64,7 +70,7 @@ nav {
 }
 
 .Web-link a {
-  color: rgb(194, 143, 223);
+  color: rgb(78, 86, 120);
   text-align: none;
   letter-spacing: 3px;
   font-size: 14px;
@@ -73,12 +79,11 @@ nav {
 }
 
 .Web-link li a:hover:not(.active) {
-  background-color: rgba(77, 0, 220, 0.134);
+  /*background-color: rgb(88, 96, 132);*/
+  text-decoration: underline;
 }
 
 body {
-  flex-direction: column;
-  display: flex;
   align-items: center;
   align-content: center;
   justify-content: center;
@@ -88,11 +93,7 @@ body {
   background: #fafafa;
   box-sizing: border-box;
   height: 100vh;
-
-}
-
-.offset {
-
+  background: #44107a;
 }
 
 .outer {
@@ -124,7 +125,9 @@ thead th {
   text-align: center;
   width: 100%;
 }
-
+.offset {
+  margin-top: -70px;
+}
 header {
   background: #fff;
   padding: 1rem;
@@ -179,7 +182,7 @@ thead th {
 
 thead {
   z-index: 2;
-  background: white;
+  background: #ffffff;
   border-bottom: 2px solid #ddd;
 }
 
@@ -196,7 +199,7 @@ tr:nth-child(odd) td:not(.headcol) {
 }
 
 tr:nth-child(even) td:not(.headcol) {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #231557;
 }
 
 tr td {
@@ -207,7 +210,6 @@ tr td {
 }
 
 tbody tr td {
-  position: relative;
   vertical-align: top;
   height: 40px;
   padding: 0.25rem 0.25rem 0 0.25rem;
@@ -250,7 +252,7 @@ tbody tr td {
   border-radius: 2px;
   text-align: left;
   font-size: 0.875rem;
-  z-index: 2;
+  z-index: 5;
   padding: 0.5rem;
   overflow-x: hidden;
   transition: all 0.2s;
@@ -265,23 +267,6 @@ tbody tr td {
 .event.double {
   height: 200%;
 }
-
-/**
-thead {
-    tr {
-      display: block;
-      position: relative;
-    }
-  }
-tbody {
-    display: block;
-    overflow: auto;
-    width: 800px;
-    height: 100%;
-  }
-*/
-
-
 
 td:hover:after {
   content: "+";
