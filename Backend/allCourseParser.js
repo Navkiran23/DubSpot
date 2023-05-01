@@ -5332,10 +5332,6 @@ let count = 0;
 let class_apis = [];
 let classArray = [];
 
-// while(obj.classes[count] !== undefined) {
-//     classID.push(obj.classes[count].id);
-//     count++;
-// }
 
 const headers = ["ID", "Course ID", "Class Code", "Class Title", "Prerequisites", "General requisites", "Credits", "Level", "Days", "Time" ];
 classArray.push(headers)
@@ -5346,55 +5342,68 @@ let class_code;
 let class_title;
 let prereq;
 let genreq;
-let time;   // need to get from specific course page
+let times;   // need to get from specific course page
 let days;    // need to get from specific course page
 let credits;
 let level;
 let api_string = 'https://course-app-api.planning.sis.uw.edu/api/courses/CSE%20121/details?courseId='
 let result;
 
-while (obj.classes[count] !== undefined) {
-    id = obj.classes[count].id;
-    course_id = obj.classes[count].courseId;
-    class_code = obj.classes[count].code;
-    class_title = obj.classes[count].title;
-    prereq = obj.classes[count].prereqs;
-    genreq = obj.classes[count].genEduReqs;
-    credits = obj.classes[count].credit;
-    level = obj.classes[count].level;
-    result = api_string.concat(course_id);
-    class_apis.push(result);
-
-
-    const newClass = [id, course_id, class_code, class_title, prereq, genreq, credits, level, time];
-    classArray.push(newClass);
-    count++;
+async function getData() {
+    while (obj.classes[count] !== undefined) {
+        id = obj.classes[count].id;
+        course_id = obj.classes[count].courseId;
+        class_code = obj.classes[count].code;
+        class_title = obj.classes[count].title;
+        prereq = obj.classes[count].prereqs;
+        genreq = obj.classes[count].genEduReqs;
+        credits = obj.classes[count].credit;
+        level = obj.classes[count].level;
+        result = api_string.concat(course_id);
+        class_apis.push(result);
+        let specData = await fetchData(result)
+        times = specData.courseOfferingInstitutionList[0].courseOfferingTermList[0].activityOfferingItemList[0].meetingDetailsList[0].time;
+        // fetch(result)
+        //     .then(data => data.json())
+        //     .then(data => {
+        //         console.log(data.courseOfferingInstitutionList[0].courseOfferingTermList[0].activityOfferingItemList[0].meetingDetailsList[0].time);
+        //     })
+        //     .catch(error => {
+        //         console.log(error);
+        //     });
+        const newClass = [id, course_id, class_code, class_title, prereq, genreq, credits, level, times];
+        classArray.push(newClass);
+        count++;
+    }
 }
 
-// fetch('https://course-app-api.planning.sis.uw.edu/api/courses/CSE%20121/details?courseId=2a94a8e8-66d8-4c03-9da1-ac1e32e5e171')
+// fetch(result)
 //     .then(data => data.json())
 //     .then(data => {
-//         console.log(data);
+//         console.log(data.courseOfferingInstitutionList[0].courseOfferingTermList[0].activityOfferingItemList[0].meetingDetailsList[0].time);
 //     })
 //     .catch(error => {
 //         console.log(error);
 // });
 
-async function fetchData() {
+async function fetchData(result) {
     try {
-        const response = await fetch('https://course-app-api.planning.sis.uw.edu/api/courses/CSE%20121/details?courseId=2a94a8e8-66d8-4c03-9da1-ac1e32e5e171');
-        const data = await response.json();
-        console.log(data);
+        const response = await fetch(result);
+        return await response.json();
+      //  console.log(data.courseOfferingInstitutionList[0].courseOfferingTermList[0].activityOfferingItemList[0].meetingDetailsList[0].time);
     } catch (error) {
         console.log(error);
     }
 }
 
-fetchData();
+getData();
 
-// for (let i = 0; i < classArray.length; i++) {
-//     console.log(classArray[i]);
-// }
+//
+// fetchData();
+
+for (let i = 0; i < classArray.length; i++) {
+    console.log(classArray[i]);
+}
 
 // converts the array to CSV format
 function arrayToCSV(data) {
@@ -5409,21 +5418,22 @@ function arrayToCSV(data) {
 
 let csv = arrayToCSV(classArray);
 
-// downloads/saves the CSV
+// saves the CSV
 const fs = require('fs');
 fs.writeFile('data.csv', csv, err => {
     if (err) {
         console.error(err);
         return;
     }
+});
 
     // Create a downloadable link
-    const file = 'data.csv';
-    const filename = 'data.csv';
-    const mimetype = 'text/csv';
-    res.setHeader('Content-Type', mimetype);
-    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
-    const filestream = fs.createReadStream(file);
-    filestream.pipe(res);
-});
+    // const file = 'data.csv';
+    // const filename = 'data.csv';
+    // const mimetype = 'text/csv';
+    // res.setHeader('Content-Type', mimetype);
+    // res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+    // const filestream = fs.createReadStream(file);
+    // filestream.pipe(res);
+// });
 
