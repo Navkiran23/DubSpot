@@ -1,10 +1,10 @@
 {
-  "name": "backend",
+  "name": "Dubspot",
   "version": "1.0.0",
   "description": "",
-  "main": "allCourseParser.js",
+  "main": "Backend/index.js",
   "scripts": {
-    "test": "mocha ../Test --recursive"
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
