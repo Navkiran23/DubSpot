@@ -2,7 +2,11 @@
 ### Last Week's Goals
 - Finish most of the HTML
 ### Progress and Issues
-- a
+- Completed all frontend webpages
+- Created functioning Calendar, Log in, and Help page
+- Added course rating feature
+- Created script to call MyPlan API and parse results for courses
+- Designed SQL table schema
 ### Next Week's Goals
 - a
 
@@ -12,7 +16,12 @@
 - Last week's goals
   - Try and complete the Help and Profile pages
 - Progress and issues
-  - a
+  - Completed Calendar page frontend
+  - Completed Profile page frontend
+  - Completed Help page frontend
+  - Added automatic email functionality to Help page
+  - Completed Log in page frontend
+  - Added course rating mechanism for Course Finder
 - Next week's goals
   - a
 ### Diane
@@ -26,7 +35,8 @@
 - Last week's goals
   - Complete Calendar page
 - Progress and issues
-  - a
+  - Completed Calendar page frontend
+  - Added Javascript for Calendar page functionality
 - Next week's goals
   - a  
 ### Denny
@@ -34,6 +44,9 @@
   - Work on DubSpotCalender.html
   - Work on TCC assignment
 - Progress and issues
-  - a
+  - Completed Calendar page frontend
+  - Designed ER Diagrams
+  - Designed SQL Table Schema
+  - Created script to automatically call MyPlan API to retrieve and parse course data
 - Next week's goals
   - a
