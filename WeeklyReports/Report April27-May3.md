@@ -8,6 +8,8 @@
 - Added course rating feature
 - Created script to call MyPlan API and parse results for courses
 - Designed SQL table schema
+- Set up test automation with Mocha
+- Set up CI with Github Actions
 ### Next Week's Goals
 - a
 
@@ -29,7 +31,9 @@
 - Last week's goals
   - Complete the profile page
 - Progress and issues
-  - a
+  - Set up npm, express, and mocha
+  - Completed Testing and CI/CD assignment writeup
+  - Set up Github Actions and connected to Mocha with custom script
 - Next week's goals
   - a
 ### Darren
@@ -38,6 +42,9 @@
 - Progress and issues
   - Completed Calendar page frontend
   - Added Javascript for Calendar page functionality
+  - Designed ER Diagrams
+  - Designed SQL Table Schema
+  - Set up npm, express, and mocha
 - Next week's goals
   - a  
 ### Denny
@@ -49,5 +56,7 @@
   - Designed ER Diagrams
   - Designed SQL Table Schema
   - Created script to automatically call MyPlan API to retrieve and parse course data
+  - Set up Github Actions and connected to Mocha with custom script
+  - Set up javascript linter
 - Next week's goals
   - a
