@@ -2,6 +2,7 @@
 ### Last Week's Goals
 - Finish most of the HTML
 ### Progress and Issues
+- Log in may be too difficult so we pivoted to hard coding login until we have time
 - Completed all frontend webpages
 - Created functioning Calendar, Log in, and Help page
 - Added course rating feature
