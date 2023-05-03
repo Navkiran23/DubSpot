@@ -11,7 +11,7 @@ let offset = 0;
 
 // returns an array of 7 consecutive-day Date() objects, ranging from Sun-Sat, and int offset weeks
 // from the current week, or int offset + 1 weeks from the current week if it is currently Sat.
-function calculateWeek() {
+function calculateWeek(offset) {
   let today = new Date();
   const dayOfWeek = today.getDay();
   const sunday = new Date(today.setDate(today.getDate() - dayOfWeek + (dayOfWeek === 6 ? 7 : 0) + (offset * 7)));
@@ -43,23 +43,23 @@ function updateHeading(weekArray) {
 // event listener for changing calendar view -1 week
 buttonLeft.addEventListener("click", function() {
   offset--;
-  let weekArray = calculateWeek();
+  let weekArray = calculateWeek(offset);
   updateHeading(weekArray);
 });
 
 // event listener for changing calendar view +1 week
 buttonRight.addEventListener("click", function() {
   offset++;
-  let weekArray = calculateWeek();
+  let weekArray = calculateWeek(offset);
   updateHeading(weekArray);
 });
 
 todayButton.addEventListener("click", function() {
   offset = 0;
-  let weekArray = calculateWeek();
+  let weekArray = calculateWeek(offset);
   updateHeading(weekArray);
 });
 
 // Runs this immediately, sets date automatically
-let weekArray = calculateWeek();
+let weekArray = calculateWeek(offset);
 updateHeading(weekArray);

@@ -39,7 +39,7 @@
     grid-template-columns: repeat(2, 2fr);
     align-items: center;
     grid-gap: 6rem;
-    background-image: url('../FrontEnd/Images/Background.PNG');
+    background-image: url('Images/Background.PNG');
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;

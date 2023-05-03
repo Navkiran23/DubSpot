@@ -1,10 +1,10 @@
-const weekArray = require('../FrontEnd/Calendar.js')
-var assert = require('assert');
+const Calendar = require('../FrontEnd/Calendar.js')
+const assert = require('assert')
 describe('WeekArrayContentTest', function() {
   describe('WeekArrayContent', function() {
     it('should equal to 7 days of the week', function() {
-      var result = weekArray.length();
-      assert.equal(weekArray.length(), 7);
-    });
-  });
-});
+      const result = calculateWeek(0)
+      assert.equal(result.length, 7)
+    })
+  })
+})
