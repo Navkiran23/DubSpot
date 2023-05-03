@@ -27,7 +27,10 @@
   - Completed Log in page frontend
   - Added course rating mechanism for Course Finder
 - Next week's goals
-  - a
+  - Need to create a filtering mechanism for the course finder
+  - Need to make sure the raking system is hidden
+  - Need to make ranking system icons visible on any device
+  
 ### Diane
 - Last week's goals
   - Complete the profile page
@@ -36,7 +39,9 @@
   - Completed Testing and CI/CD assignment writeup
   - Set up GitHub Actions and connected to Mocha with custom script
 - Next week's goals
-  - a
+  - Need to create template for the coursefinder
+  - Need to work on importing in the database into the filtering tool
+  - Get functionality working for the update button on the profile page
 ### Darren
 - Last week's goals
   - Complete Calendar page
@@ -47,7 +52,8 @@
   - Designed SQL Table Schema
   - Set up npm, express, and mocha
 - Next week's goals
-  - a  
+  - Need to get the database done and ready to be imported into the project
+  - Need to finalize structure for the SQL tables
 ### Denny
 - Last week's goals
   - Work on DubSpotCalender.html
@@ -60,4 +66,5 @@
   - Set up GitHub Actions and connected to Mocha with custom script
   - Set up linter
 - Next week's goals
-  - a
+  - Create the sidebar in the coursefinder page
+  - Create a way to display all course information once a course is clicked
