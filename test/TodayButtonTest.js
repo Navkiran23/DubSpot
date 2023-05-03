@@ -1,9 +1,10 @@
+const weekArray = require('../FrontEnd/Calendar.js')
 var assert = require('assert');
-describe('TodayTest', function() {
-  describe('Today', function() {
-    it('should equal todays date when loading', function() {
-      var result = today.getDate();
-      assert.equal(today.getDate(), May 2nd);
+describe('WeekArrayContentTest', function() {
+  describe('WeekArrayContent', function() {
+    it('should equal to 7 days of the week', function() {
+      var result = weekArray.length();
+      assert.equal(weekArray.length(), 7);
     });
   });
 });
