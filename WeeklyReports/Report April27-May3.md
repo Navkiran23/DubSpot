@@ -12,7 +12,9 @@
 - Set up test automation with Mocha
 - Set up CI with GitHub Actions
 ### Next Week's Goals
-- a
+- Finish the Coursefinder
+- Get all backend databases to work
+- Create more tests for other functionality
 
 
 ## Individual Reports
