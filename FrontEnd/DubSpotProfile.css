@@ -10,7 +10,7 @@ body {
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
-    background-image: url('../FrontEnd/Images/Background.PNG');
+    background-image: url('Images/Background.PNG');
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
