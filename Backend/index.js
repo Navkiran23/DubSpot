@@ -1,6 +1,8 @@
 const express = require('express')
 const path = require('path');
+const {calculateWeek} = require("./Calendar");
 const app = express()
+
 app.use(express.static('FrontEnd'));
 const root = path.join(__dirname, '..');
 
@@ -9,7 +11,11 @@ app.get('/', (req, res) => {
 })
 
 app.get('/Calendar', (req, res) => {
-  res.sendFile(path.join(root, 'FrontEnd', 'DubSpotCalendar.html'))
+  res.sendFile(path.join(root, 'FrontEnd', 'DubSpotCalendar.html'), {
+    headers: {
+      'Content-Type': 'text/html; charset=UTF-8'
+    }
+  })
 })
 
 app.get('/CourseFinder', (req, res) => {
@@ -26,6 +32,12 @@ app.get('/About', (req, res) => {
 
 app.get('/Profile', (req, res) => {
   res.sendFile(path.join(root, 'FrontEnd', 'DubSpotProfile.html'))
+})
+
+app.get('/api/calendar/:offset', (req, res) => {
+  const offset = req.params.offset;
+  const weekArray = calculateWeek(offset)
+  res.send(weekArray)
 })
 
 app.listen(3000, () => {
