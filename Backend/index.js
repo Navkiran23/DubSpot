@@ -28,6 +28,10 @@ app.get('/Profile', (req, res) => {
   res.sendFile(path.join(root, 'FrontEnd', 'DubSpotProfile.html'))
 })
 
+app.get('/allCourses.json', (req, res) => {
+  res.sendFile(path.join(root, 'BackEnd', 'allCourses.json'))
+})
+
 app.listen(3000, () => {
   console.log('Server started on port 3000')
 })

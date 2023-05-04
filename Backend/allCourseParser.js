@@ -5228,7 +5228,6 @@ async function getData() {
             class_apis.push(result);
             let specData = await fetchData(result)
             let quarter = id.substring(0, 5);
-            console.log(quarter);
             let num = 1;
             let count2 = 0;
 
@@ -5261,7 +5260,6 @@ async function getData() {
             count++;
         }
         saveCSV();
-        printData();
     } catch (error) {
         console.log(obj.classes[count].id);
         console.log(error);
@@ -5300,13 +5298,12 @@ function arrayToCSV(data) {
 
 // saves the CSV
 function saveCSV() {
-     let csv = arrayToCSV(classArray);
-     const fs = require('fs');
-     fs.writeFile('data.csv', csv, err => {
-         if (err) {
-             console.error(err);
-         }
-     });
+    let csv = arrayToCSV(classArray);
+    const fs = require('fs');
+    fs.writeFile('data.csv', csv, err => {
+        if (err) {
+            console.error(err);
+        }
+    });
 }
-
 
