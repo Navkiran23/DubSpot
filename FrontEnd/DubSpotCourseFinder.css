@@ -8,13 +8,14 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-image: url('../FrontEnd/Images/AboutBackground.PNG');
+    background-image: url('Images/AboutBackground.PNG');
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
+
 /*Review code*/
 .SecondBody {
     background: transparent;
