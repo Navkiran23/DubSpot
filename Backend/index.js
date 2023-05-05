@@ -35,9 +35,14 @@ app.get('/Profile', (req, res) => {
 })
 
 app.get('/api/calendar/:offset', (req, res) => {
-  const offset = req.params.offset;
+  const offset = req.params.offset
   const weekArray = calculateWeek(offset)
   res.send(weekArray)
+})
+
+app.get('/api/courses/:courseID', (req, res) => {
+  const courseID = req.params.courseID
+  res.send("wip")
 })
 
 app.listen(3000, () => {
