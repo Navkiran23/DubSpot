@@ -35,6 +35,8 @@
   - Need to get the database done and ready to be imported into the project
   - Need to finalize structure for the SQL tables
 - Progress and issues
+  - set up SQL tables
+  - fixed frontend Calendar test
   - 
 - Next week's goals
   - 
