@@ -15,9 +15,57 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
+/*Comment sections css */
+.SecondBody {
+    display: grid;
+    height: 100%;
+    place-items: center;
+    text-align: center;
+}
+Comment_Containter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width:100%;
+}
+.Commentbox{
+    width:500px;
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 15px;
+    cursor: pointer;
+}
+.profile{
+    display: flex;
+    align-items: center;
+}
+Username{
+    display: flex;
+    flex-direction: column;
+}
+.Username h1{
+    color: #3d3d3d;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+.StarRanking {
+    color: #f9d71c;
+}
+.BoxHeadings{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.client-comment p{
+    font-size: 0.9rem;
+    color: #4b4b4b;
+}
 
 /*Review code*/
-.SecondBody {
+.ThirdBody {
     background: transparent;
     display: grid;
     height: 100%;
