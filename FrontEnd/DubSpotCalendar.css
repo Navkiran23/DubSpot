@@ -4,10 +4,12 @@
   border: 0;
   font-family: sans-serif;
 }
-
+html {
+    text-align: center;
+}
 body {
   margin: 0px;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   background-image: url("Images/AboutBackground.PNG");
@@ -82,29 +84,15 @@ nav {
   /*background-color: rgb(88, 96, 132);*/
   text-decoration: underline;
 }
-
-body {
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  font-family: "DINPro", "Helvetica Neue", sans-serif;
-  padding: 3rem;
-  margin: 0;
-  background: #fafafa;
-  box-sizing: border-box;
-  height: 100vh;
-  background: #44107a;
-}
-
 .outer {
   position:relative;
 }
 
 .calendar {
-  margin: 0 auto;
+  margin-left: 80px;
+  margin-top: 100px;
   max-width: 1280px;
   min-width: 500px;
-
   box-shadow: 0px 30px 50px rgba(0, 0, 0, 0.2) ,0px 3px 7px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
@@ -149,7 +137,7 @@ header h1 {
 
 tbody {
   position: relative;
-  top: 100px;
+  top: 0px;
 }
 
 table {
@@ -211,7 +199,7 @@ tr td {
 
 tbody tr td {
   vertical-align: top;
-  height: 40px;
+  height: 50px;
   padding: 0.25rem 0.25rem 0 0.25rem;
   width: auto;
 }

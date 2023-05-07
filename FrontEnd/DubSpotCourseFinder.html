@@ -24,11 +24,40 @@
 <!--The Body of this page will contain what DubSpot is along with
     Information on where to click to navigate through the website-->
 <body>
+<!-- Displaying reviews-->
 <div class="SecondBody">
+  <div class="Comment_Containter">
+    <div class="Commentbox">
+      <div class="BoxHeadings">
+        <!--profile----->
+        <div class="profile">
+          <!--name-and-username-->
+          <div class="username">
+            <h1>Adam Sandler</h1>
+          </div>
+        </div>
+        <!--reviews------>
+        <div class="StarRanking">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i><!--Empty star-->
+        </div>
+      </div>
+      <!--Comments---------------------------------------->
+      <div class="client-comment">
+        <p>Personally didn't go to UW, but I don't like the number 3 so cse 333 must be bad</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Reviews code-->
+<div class="ThirdBody">
   <div class="container">
     <div class="post">
       <div class="text">Thanks for the rating!</div>
-      <div class="exit">Edit</div>
     </div>
     <div class="star-widget">
       <input type="radio" name="rate" id="rate-5">
@@ -63,11 +92,10 @@
       post.style.display ="block";
       return false;
     }
-    editBtn.onclick = ()=>{
-      widget.style.display ="block";
-      post.style.display ="none";
-      }
-      return false;
+    post.onclick = ()=> {
+      var review = document.getElementByID('textarea');
+      //How to display this in a comment
+      //How to get number of stars clicked!
     }
   </script>
 </div>
