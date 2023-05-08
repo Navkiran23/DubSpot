@@ -33,7 +33,7 @@
         <div class="profile">
           <!--name-and-username-->
           <div class="username">
-            <h1>Adam Sandler</h1>
+            <h1>John Johnson</h1>
           </div>
         </div>
         <!--reviews------>
@@ -53,6 +53,8 @@
   </div>
 </div>
 
+<!-- popup button for the leave review -->
+<button class="ReviewLeaveButton">Leave a Review</button>
 <!-- Reviews code-->
 <div class="ThirdBody">
   <div class="container">
@@ -70,10 +72,10 @@
       <label for="rate-2" class="fa-solid fa-star"></label>
       <input type="radio" name="rate" id="rate-1">
       <label for="rate-1" class="fa-solid fa-star"></label>
-      <form action="#">
+      <form action="#" id="submit-rating">
         <header></header>
         <div class="textarea">
-          <textarea cols="30" placeholder="Have you taken this class? What is your opinion on it?"></textarea>
+          <textarea cols="30" id="Review" name ="Review" placeholder="Have you taken this class? What is your opinion on it?"></textarea>
         </div>
         <div class="btn">
           <button type="submit">Post</button>
@@ -81,23 +83,33 @@
       </form>
     </div>
   </div>
-  <script>
-    const btn = document.querySelector("button");
-    const post = document.querySelector(".post");
-    const widget = document.querySelector(".star-widget");
-    const editBtn = document.querySelector(".edit");
 
-    btn.onclick = ()=>{
-      widget.style.display ="none";
-      post.style.display ="block";
-      return false;
-    }
-    post.onclick = ()=> {
-      var review = document.getElementByID('textarea');
-      //How to display this in a comment
-      //How to get number of stars clicked!
-    }
-  </script>
+  <!--Filtered table code-->
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Enter the class name/number here!">
+
+  <table id="myTable">
+    <tr class="header">
+      <th style="width:40%;">Course Number</th>
+      <th style="width:60%;">Course Title</th>
+    </tr>
+    <tr>
+      <td>CSE 484</td>
+      <td>Computer Security</td>
+    </tr>
+    <tr>
+      <td>CSE 440</td>
+      <td>Intro to HCI</td>
+    </tr>
+    <tr>
+      <td>CSE 403</td>
+      <td>Software engineering</td>
+    </tr>
+    <tr>
+      <td>CSE 446</td>
+      <td>Machine Learning</td>
+    </tr>
+  </table>
+  <script src="CourseFinder.js"></script>
 </div>
 </body>
 </html>

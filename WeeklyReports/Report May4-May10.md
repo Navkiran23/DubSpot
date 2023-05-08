@@ -1,4 +1,4 @@
-# April 27 - May 3
+# May 4 - May 10
 ## Team Report
 ### Last Week's Goals
 - Finish the Coursefinder
