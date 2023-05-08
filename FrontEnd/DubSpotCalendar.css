@@ -72,7 +72,7 @@ nav {
 }
 
 .Web-link a {
-  color: rgb(78, 86, 120);
+  color: rgb(194, 143, 223);
   text-align: none;
   letter-spacing: 3px;
   font-size: 14px;
@@ -87,6 +87,10 @@ nav {
 .outer {
   position:relative;
 }
+
+
+
+
 
 .calendar {
   margin-left: 80px;
