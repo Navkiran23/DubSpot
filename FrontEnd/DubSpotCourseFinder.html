@@ -26,6 +26,18 @@
 <body>
 <!-- Displaying reviews-->
 <div class="SecondBody">
+  <!--Filtered table code-->
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Enter the class name/number here!">
+  <div class="InformationDisplay">
+    <h2>CSE 403: Software Engineering</h2>
+    <h6>Description</h6>
+    <h3>Fundamentals of software engineering using a group project as the basic vehicle.
+      Topics covered include the software crisis, managing complexity, requirements
+      specification, architectural and detailed design, testing and analysis,
+      software process, and tools and environments.</h3>
+    <h4>Prerequisites: CSE 331; CSE 332</h4>
+    <h5>Credits: 4.0</h5>
+    <h6>Reviews Below</h6>
   <div class="Comment_Containter">
     <div class="Commentbox">
       <div class="BoxHeadings">
@@ -51,6 +63,7 @@
       </div>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- popup button for the leave review -->
@@ -62,20 +75,15 @@
       <div class="text">Thanks for the rating!</div>
     </div>
     <div class="star-widget">
-      <input type="radio" name="rate" id="rate-5">
-      <label for="rate-5" class="fa-solid fa-star"></label>
-      <input type="radio" name="rate" id="rate-4">
-      <label for="rate-4" class="fa-solid fa-star"></label>
-      <input type="radio" name="rate" id="rate-3">
-      <label for="rate-3" class="fa-solid fa-star"></label>
-      <input type="radio" name="rate" id="rate-2">
-      <label for="rate-2" class="fa-solid fa-star"></label>
       <input type="radio" name="rate" id="rate-1">
-      <label for="rate-1" class="fa-solid fa-star"></label>
+      <label for="rate-1" class="fa-solid fa-chevron-down"></label>
       <form action="#" id="submit-rating">
         <header></header>
         <div class="textarea">
-          <textarea cols="30" id="Review" name ="Review" placeholder="Have you taken this class? What is your opinion on it?"></textarea>
+          <textarea cols="30" id="review" name ="review" placeholder="How would you rank this class on a scale of 1.0-4.0?"></textarea>
+        </div>
+        <div class="textarea2">
+          <textarea cols="30" id="rating" name ="rating" placeholder="Have you taken this class? What is your opinion on it?"></textarea>
         </div>
         <div class="btn">
           <button type="submit">Post</button>
@@ -84,9 +92,7 @@
     </div>
   </div>
 
-  <!--Filtered table code-->
-  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Enter the class name/number here!">
-
+  <!-- Table for searching-->
   <table id="myTable">
     <tr class="header">
       <th style="width:40%;">Course Number</th>

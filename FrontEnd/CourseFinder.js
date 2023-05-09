@@ -40,4 +40,8 @@ function myFunction() {
 //Popup for the reviews
 const ReviewLeaver = document.querySelector("ReviewLeaveButton");
 ReviewLeaver.onclick() = ()=> {
+//Lead to the div class "container" and open it as a popup
+//then take user input and put it into the comment template
+//Comment_Containter/Comment-box
+
 }
