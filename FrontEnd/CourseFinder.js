@@ -17,53 +17,66 @@ const editBtn = document.querySelector(".edit");
 //Filter table Javascript
 function myFunction() {
   // Declare variables
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
+  let input, filter, table, tr, td, i, txtValue
+  input = document.getElementById("myInput")
   filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
+  table = document.getElementById("myTable")
+  tr = table.getElementsByTagName("tr")
 
   // Loop through all table rows, and hide those who don't match the search query
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
+    td = tr[i].getElementsByTagName("td")[0]
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
+        tr[i].style.display = ""
       } else {
-        tr[i].style.display = "none";
+        tr[i].style.display = "none"
       }
     }
   }
-}
+
 
 //Popup for the reviews
-const ReviewLeaver = document.querySelector("ReviewLeaveButton");
-ReviewLeaver.onclick() = ()=> {
+//const ReviewLeaver = document.querySelector("ReviewLeaveButton");
+//ReviewLeaver.onclick() = ()=> {
 //Lead to the div class "container" and open it as a popup
 //then take user input and put it into the comment template
 //Comment_Containter/Comment-box
 }
 
 //fetch the data and put it into the table
+   //     data.forEach(CourseID => {
+   //         temp += "<tr>";
+   //         temp += "<td>" + CourseID.CourseName + "</td>";
+    //        temp += "<td>" + CourseID.CourseTitle + "</td>";
+     //       temp += "</tr>"
+     //       document.getElementById("data").innerHTML += temp;
+     //   })
+    //  })
+let temp = "";
 function PutDataIntoTable() {
-//fetch all of the courses
-  fetch(`/api/courses/all`)
+//fetch all the courses
+  fetch("/api/courses/all")
       .then(response => response.json())
-      .then(data => {
-        data.forEach(CourseID => {
+     .then(data => {
+         //console.log(data);
+        for (let i = 0; i < data.length; i++) {
             temp += "<tr>";
-            temp += "<td>" + CourseID.CourseName + "</td>";
-            temp += "<td>" + CourseID.CourseTitle + "</td>";
+            temp += "<td>" + data[i].course_number + "</td>";
+            temp += "<td>" + data[i].class_title + "</td>";
+            temp += "<td>" + data[i].quarter + "</td>";
             temp += "</tr>"
-            document.getElementById("data").innerHTML += temp;
-        })
-      })
+            console.log(temp);
+        }
+         document.getElementById("data").innerHTML = temp;
+     })
       .catch(error => {
         console.log(error)
       })
 }
 
+PutDataIntoTable();
 
 //Data for sidebar
 
