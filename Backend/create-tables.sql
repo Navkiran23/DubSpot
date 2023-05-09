@@ -1,18 +1,20 @@
 CREATE TABLE Courses (
     course_id varchar(100) PRIMARY KEY,
+    id varchar(20),
     instructor varchar(100),
-    title varchar(100),
+    class_title varchar(100),
     course_number int,
-    capacity int,
+    --capacity int,
     prerequisite varchar(300),
     credits int,
-    building varchar(3),
-    room varchar(10),
+    level int,
+    --building varchar(3),
+    --room varchar(10),
     meeting_days varchar(10),
-    meeting_start int,
-    meeting_end int,
-    est_enroll_status varchar(100),
-    available int,
+    meeting_times int,
+    --meeting_end int,
+    --est_enroll_status varchar(100),
+    --available int,
     gen_ed_req varchar (100)
 );
 

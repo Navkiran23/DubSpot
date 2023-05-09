@@ -8,10 +8,11 @@ let meeting_time
 let meeting_days;
 let building;
 let room;
+let quarter;
 
 // add any course id to get use api
 let api_string = 'https://course-app-api.planning.sis.uw.edu/api/courses/CSE%20121/details?courseId='
-const headers = ["Activity ID", "Meeting Time", "Meeting Days", "Building", "Room"];
+const headers = ["Activity ID", "meeting_times", "meeting_days", "building", "room", "quarter"];
 section_array.push(headers);
 
 
@@ -28,16 +29,31 @@ async function getData() {
     try {
         for (let i = 0; i < class_apis.length; i++) {
             let count = 0;
+            let count2 = 1;
             let specData = await fetchData(class_apis[i]);
-            while (specData.courseOfferingInstitutionList[0].courseOfferingTermList[0].activityOfferingItemList[count] !== undefined) {
-                activity_id = specData.courseOfferingInstitutionList[0].courseOfferingTermList[0].activityOfferingItemList[count].activityId;
-                meeting_days = specData.courseOfferingInstitutionList[0].courseOfferingTermList[0].activityOfferingItemList[count].meetingDetailsList[0].days;
-                meeting_time = specData.courseOfferingInstitutionList[0].courseOfferingTermList[0].activityOfferingItemList[count].meetingDetailsList[0].time;
-                building = specData.courseOfferingInstitutionList[0].courseOfferingTermList[0].activityOfferingItemList[count].meetingDetailsList[0].building;
-                room = specData.courseOfferingInstitutionList[0].courseOfferingTermList[0].activityOfferingItemList[count].meetingDetailsList[0].room;
-                const newRow = [activity_id, meeting_time, meeting_days, building, room];
-                section_array.push(newRow);
-                count++;
+            while (specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2] !== undefined) {
+                console.log(specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].term);
+                while (specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count] !== undefined) {
+                    quarter = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].term;
+                    if (quarter === 'Autumn 2023') {
+                        quarter = "AU 23";
+                    } else if (quarter === 'Summer 2023') {
+                        quarter = "SU 23";
+                    }
+                    activity_id = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].activityId;
+                    activity_id = activity_id.substring(7);
+                    activity_id = activity_id.replace(':', ' ');
+                    activity_id = activity_id.replace(':', ' ');
+                    activity_id = activity_id.replace(' ', '');
+                    meeting_days = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].days;
+                    meeting_time = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].time;
+                    building = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].building;
+                    room = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].room;
+                    const newRow = [activity_id, meeting_time, meeting_days, building, room, quarter];
+                    section_array.push(newRow);
+                    count++;
+                }
+                count2--;
             }
         }
         saveCSV();
