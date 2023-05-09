@@ -1,30 +1,34 @@
 CREATE TABLE Courses (
-    course_id varchar(100) PRIMARY KEY,
+    course_id varchar(100),
+    PRIMARY KEY(course_id, quarter),
+    id varchar(20),
     instructor varchar(100),
-    title varchar(100),
+    class_title varchar(100),
     course_number int,
-    capacity int,
+    --capacity int,
     prerequisite varchar(300),
     credits int,
-    building varchar(3),
-    room varchar(10),
+    level int,
+    --building varchar(3),
+    --room varchar(10),
     meeting_days varchar(10),
-    meeting_start int,
-    meeting_end int,
-    est_enroll_status varchar(100),
-    available int,
-    gen_ed_req varchar (100)
+    meeting_times varchar(40),
+    --meeting_end int,
+    --est_enroll_status varchar(100),
+    --available int,
+    gen_ed_req varchar (100),
+    quarter varchar (6)
 );
 
 CREATE TABLE Sections (
-    section_code varchar(5),
-    course_id varchar(100) REFERENCES Courses,
-    PRIMARY KEY(section_code, course_id),
+    activity_id varchar(10),  -- CSE121 AA, CSE121 AC, etc.
+    course_id varchar(100) REFERENCES Courses(course_id),
+    PRIMARY KEY(activity_id, course_id),
     building varchar(3),
     room varchar(10),
     meeting_days varchar(10),
-    meeting_start int,
-    meeting_end int
+    meeting_times varchar(20),
+    quarter varchar(6) REFERENCES Courses(quarter)
 );
 
 CREATE TABLE Users (
