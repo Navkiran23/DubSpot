@@ -63,7 +63,7 @@ app.get('/api/courses/all', (req, res) => {
 app.get('/api/courses/:courseID/:quarter', (req, res) => {
   const courseID = req.params.courseID
   const quarter = req.params.quarter.toString().replace("-", " ")
-  getCourseStatement.execute({courseID: courseID, quarter: quarter}, (err, result) => {
+  getCourseStatement.execute({getCourseCourseID: courseID, getCourseQuarter: quarter}, (err, result) => {
     if (err) {
       console.log(err)
       return
@@ -73,11 +73,10 @@ app.get('/api/courses/:courseID/:quarter', (req, res) => {
   })
 })
 
-// returns json of all reviews for a specific courseID and quarter offered
-app.get('/api/reviews/:courseID/:quarter', (req, res) => {
+// returns json of all reviews for a specific courseID
+app.get('/api/reviews/:courseID', (req, res) => {
   const courseID = req.params.courseID
-  const quarter = req.params.quarter.toString().replace("-", " ")
-  getReviewsStatement.execute({courseID: courseID, quarter: quarter}, (err, result) => {
+  getReviewsStatement.execute({getReviewsCourseID: courseID}, (err, result) => {
     if (err) {
       console.log(err)
       return
@@ -94,7 +93,7 @@ app.post('/submit-rating', (req, res) => {
   const username = req.body.username
   const rating = req.body.rating
   const review = req.body.review
-  addReviewStatement.execute({courseID: courseID, username: username, rating: rating, review: review}, (err, result) => {
+  addReviewStatement.execute({addReviewCourseID: courseID, addReviewUsername: username, rating: rating, review: review}, (err, result) => {
     if (err) {
       res.send("Error encountered. Please try again.")
       return
