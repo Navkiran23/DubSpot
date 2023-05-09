@@ -49,7 +49,7 @@ app.get('/api/calendar/:offset', (req, res) => {
 
 // returns json about all courses
 app.get('/api/courses/all', (req, res) => {
-  pool.query('SELECT course_id, quarter, course_number, class_title FROM Courses', (err, result) => {
+  pool.query('SELECT course_id, quarter, course_number, class_title FROM Courses ORDER BY course_number ASC', (err, result) => {
     if (err) {
       console.log(err);
       return;
@@ -62,7 +62,7 @@ app.get('/api/courses/all', (req, res) => {
 // returns json with information about a given courseID for the specified quarter
 app.get('/api/courses/:courseID/:quarter', (req, res) => {
   const courseID = req.params.courseID
-  const quarter = req.params.quarter
+  const quarter = req.params.quarter.toString().replace("-", " ")
   getCourseStatement.execute({courseID: courseID, quarter: quarter}, (err, result) => {
     if (err) {
       console.log(err)
@@ -76,7 +76,7 @@ app.get('/api/courses/:courseID/:quarter', (req, res) => {
 // returns json of all reviews for a specific courseID and quarter offered
 app.get('/api/reviews/:courseID/:quarter', (req, res) => {
   const courseID = req.params.courseID
-  const quarter = req.params.quarter
+  const quarter = req.params.quarter.toString().replace("-", " ")
   getReviewsStatement.execute({courseID: courseID, quarter: quarter}, (err, result) => {
     if (err) {
       console.log(err)
@@ -101,7 +101,6 @@ app.post('/submit-rating', (req, res) => {
     }
     res.send("Thanks! Rating received.")
   })
-
 })
 
 app.listen(port, () => {
