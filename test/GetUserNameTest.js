@@ -4,7 +4,7 @@ const assert = require('assert')
 describe('UsernameTest', function () {
   describe('Username', function () {
     it('should return the hardcoded username', function () {
-      assert.equal(document.getElementById("email").value, admin@gmail.com)
+      assert.equal(document.getElementById("email").value, "admin@gmail.com")
     })
   })
 })
