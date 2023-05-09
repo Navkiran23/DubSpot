@@ -13,12 +13,8 @@ CREATE TABLE Courses (
     --room varchar(10),
     meeting_days varchar(10),
     meeting_times varchar(40),
-    --meeting_end int,
-    --est_enroll_status varchar(100),
-    --available int,
     gen_ed_req varchar (100),
     PRIMARY KEY (course_id, quarter)
-    -- ,CONSTRAINT unique_course_id UNIQUE (course_id)
 );
 
 CREATE TABLE Sections (
@@ -44,20 +40,19 @@ CREATE TABLE Users (
 CREATE TABLE HaveTaken (
     email varchar(100) REFERENCES Users,
     course_id varchar(100),
-    PRIMARY KEY (email, course_id),
-    FOREIGN KEY (course_id) REFERENCES Courses(course_id, quarter)
+    PRIMARY KEY (email, course_id)
 );
 
 CREATE TABLE PlanningToTake (
     email varchar(100) REFERENCES Users(email),
     course_id varchar(100),
     quarter varchar(6),
-    section_code varchar(5) REFERENCES Sections(activity_id),
+    activity_id varchar(10),
     FOREIGN KEY (course_id, quarter) REFERENCES Courses(course_id, quarter)
 );
 
 CREATE TABLE Reviews (
-    course_id varchar(100), --REFERENCES Courses(course_id),
+    course_id varchar(100),
     username varchar(100),
     rating int,
     review varchar(1000)
