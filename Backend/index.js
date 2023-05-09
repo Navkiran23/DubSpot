@@ -49,7 +49,7 @@ app.get('/api/calendar/:offset', (req, res) => {
 
 // returns json about all courses
 app.get('/api/courses/all', (req, res) => {
-  pool.query('SELECT * FROM Courses', (err, result) => {
+  pool.query('SELECT course_id, quarter, course_number, class_title FROM Courses', (err, result) => {
     if (err) {
       console.log(err);
       return;
