@@ -57,3 +57,8 @@ CREATE TABLE Reviews (
     rating int,
     review varchar(1000)
 );
+
+CREATE TABLE Instructors (
+    instructor varchar(100),
+    rate_my_professor_id int
+)
