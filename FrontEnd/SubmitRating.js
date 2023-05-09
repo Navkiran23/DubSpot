@@ -7,7 +7,10 @@ form.addEventListener('submit', function (event) {
   const formData = new FormData(event.target);
   fetch('/submit-rating', {
     method: 'POST',
-    body: formData
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: new URLSearchParams(formData).toString()
   })
       .then(function (response) {
         if (response.ok) {

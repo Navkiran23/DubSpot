@@ -7,7 +7,7 @@ let count = 0;
 let class_apis = [];
 let classArray = [];
 
-const headers = ["ID", "Course ID", "Class Code", "Class Title", "Prerequisites", "General requisites", "Credits", "Level", "Days", "Time" ];
+const headers = ["id", "course_id", "course_number", "class_title", "prerequisite", "gen_ed_req", "credits", "level", "meeting_days", "meeting_times", "Quarter"];
 classArray.push(headers)
 
 let id;
@@ -23,6 +23,7 @@ let level;
 // add any course id to get use api
 let api_string = 'https://course-app-api.planning.sis.uw.edu/api/courses/CSE%20121/details?courseId='
 let result;
+let quarter;
 
 // gets the data for the columns that we need
 async function getData() {
@@ -39,12 +40,13 @@ async function getData() {
             result = api_string.concat(course_id);
             class_apis.push(result);
             let specData = await fetchData(result)
-            let quarter = id.substring(0, 5);
+            let quarterNum = id.substring(0, 5);
             let num = 1;
             let count2 = 0;
 
             // makes sure the correct time is picked for each quarter
-            if (quarter === '20234') {
+            if (quarterNum === '20234') {
+                quarter = 'AU 23'
                 while (specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].term !== undefined) {
                     if (specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].term === 'Autumn 2023') {
                         num = count2;
@@ -52,7 +54,8 @@ async function getData() {
                     }
                     count2++;
                 }
-            } else if (quarter === '20233') {
+            } else if (quarterNum === '20233') {
+                quarter = 'SU 23'
                 count2 = 0;
                 while (specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].term !== undefined) {
                     if (specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].term === 'Summer 2023') {
@@ -67,7 +70,7 @@ async function getData() {
             times = specData.courseOfferingInstitutionList[0].courseOfferingTermList[num].activityOfferingItemList[0].meetingDetailsList[0].time;
 
             // puts the information of each class into an array
-            const newClass = [id, course_id, class_code, class_title, prereq, genreq, credits, level, days, times];
+            const newClass = [id, course_id, class_code, class_title, prereq, genreq, credits, level, days, times, quarter];
             classArray.push(newClass);
             count++;
         }
