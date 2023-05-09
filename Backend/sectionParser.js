@@ -9,10 +9,11 @@ let meeting_days;
 let building;
 let room;
 let quarter;
+let course_id;
 
 // add any course id to get use api
 let api_string = 'https://course-app-api.planning.sis.uw.edu/api/courses/CSE%20121/details?courseId='
-const headers = ["Activity ID", "meeting_times", "meeting_days", "building", "room", "quarter"];
+const headers = ["activity_id", "course_id", "meeting_times", "meeting_days", "building", "room", "quarter"];
 section_array.push(headers);
 
 
@@ -32,7 +33,6 @@ async function getData() {
             let count2 = 1;
             let specData = await fetchData(class_apis[i]);
             while (specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2] !== undefined) {
-                console.log(specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].term);
                 while (specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count] !== undefined) {
                     quarter = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].term;
                     if (quarter === 'Autumn 2023') {
@@ -49,7 +49,8 @@ async function getData() {
                     meeting_time = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].time;
                     building = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].building;
                     room = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].room;
-                    const newRow = [activity_id, meeting_time, meeting_days, building, room, quarter];
+                    course_id = class_apis[i];
+                    const newRow = [activity_id, course_id, meeting_time, meeting_days, building, room, quarter];
                     section_array.push(newRow);
                     count++;
                 }
