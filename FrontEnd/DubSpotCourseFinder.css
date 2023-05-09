@@ -81,8 +81,7 @@ Username{
     height: 100%;
     place-items: center;
     text-align: center;
-        overflow-x: hidden;
-        overflow-y: scroll;
+    overflow: hidden;
 }
 .container {
     width: 400px;
@@ -267,6 +266,9 @@ nav1 {
     text-decoration: underline;
   }
   /*Filter table code */
+  .TableWrapper {
+  overflow x : hidden;
+  }
   #myInput {
     background-position: 10px 12px; /* Position the search icon */
     background-repeat: no-repeat; /* Do not repeat the icon image */
@@ -277,9 +279,12 @@ nav1 {
   }
 
   #myTable {
+   overflow-y:scroll;
+   height:70%;
+   display:block;
     background: #ffff;
     border-collapse: collapse; /* Collapse borders */
-    width: 50%; /* Full-width */
+    width: 60%; /* Full-width */
     border: 1px solid rgb(78, 86, 120);
     font-size: 18px; /* Increase font-size */
     position: absolute;
@@ -291,18 +296,24 @@ nav1 {
     border-radius: 4px;
     position: absolute;
     top: 100px;
-    left: 10px;
+    left: 30px;
   }
 
   #myTable th, #myTable td, #myTable thead, #myTable tbody  {
     text-align: left; /* Left-align text */
     padding: 12px; /* Add padding */
-  }
 
-  #myTable thead.header, #myTable tr:hover,  #myTable tbody {
-    /* Add a grey background color to the table header and on hover */
-    background-color:  rgb(78, 86, 120);
   }
+  #myTable thead.header {
+    background: white;
+  }
+#myTable tbody {
+       /* Add a grey background color to the table header and on hover */
+       background:  aqua;
+}
+.wrap {
+  overflow: hidden;
+}
 
   /*Leave review button stylization*/
   .ReviewLeaveButton {
