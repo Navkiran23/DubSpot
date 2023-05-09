@@ -4,7 +4,7 @@ const {calculateWeek} = require("./Calendar");
 const app = express()
 const port = 3000;
 
-app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('FrontEnd'));
 const root = path.join(__dirname, '..');
 
@@ -12,10 +12,10 @@ const root = path.join(__dirname, '..');
 const sql = require('mssql');
 
 const config = {
-  user: 'your-username',
-  password: 'your-password',
-  server: 'your-server-name.database.windows.net',
-  database: 'your-database-name',
+  user: 'dubspot',
+  password: '1zjknqajkzSx',
+  server: 'dubspot.database.windows.net',
+  database: 'dubspot',
   encrypt: true
 };
 
@@ -86,7 +86,7 @@ app.get('/api/reviews/:courseID', (req, res) => {
 
 // receives post requests for rating submission and sends it to the database
 app.post('/submit-rating', (req, res) => {
-  console.log(req.body.review)
+  console.log(req.body)
   console.log(req.body.rating)
   res.send("Thanks! Rating received.");
 })
