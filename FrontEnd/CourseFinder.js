@@ -46,19 +46,29 @@ ReviewLeaver.onclick() = ()=> {
 }
 
 //fetch the data and put it into the table
+   //     data.forEach(CourseID => {
+   //         temp += "<tr>";
+   //         temp += "<td>" + CourseID.CourseName + "</td>";
+    //        temp += "<td>" + CourseID.CourseTitle + "</td>";
+     //       temp += "</tr>"
+     //       document.getElementById("data").innerHTML += temp;
+     //   })
+    //  })
+let api_count = 0;
 function PutDataIntoTable() {
 //fetch all of the courses
-  fetch(`/api/courses/all`)
+  fetch("/api/courses/all")
       .then(response => response.json())
-      .then(data => {
-        data.forEach(CourseID => {
+     .then(data => {
+        while (data.classes[api_count] !== undefined) {
             temp += "<tr>";
-            temp += "<td>" + CourseID.CourseName + "</td>";
-            temp += "<td>" + CourseID.CourseTitle + "</td>";
+            temp += "<td>" + courses.[api_count].course_number + "</td>";
+            temp += "<td>" + courses.[api_count].class_title + "</td>";
             temp += "</tr>"
             document.getElementById("data").innerHTML += temp;
-        })
-      })
+            api_count++;
+        }
+     })
       .catch(error => {
         console.log(error)
       })
