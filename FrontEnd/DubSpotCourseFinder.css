@@ -298,10 +298,13 @@ nav1 {
     top: 100px;
     left: 30px;
   }
-
+#myTable tr {
+    width: 60%;
+}
   #myTable th, #myTable td, #myTable thead, #myTable tbody  {
     text-align: left; /* Left-align text */
     padding: 12px; /* Add padding */
+        width: 60%;
 
   }
   #myTable thead.header {
