@@ -43,5 +43,30 @@ ReviewLeaver.onclick() = ()=> {
 //Lead to the div class "container" and open it as a popup
 //then take user input and put it into the comment template
 //Comment_Containter/Comment-box
-
 }
+
+//fetch the data and put it into the table
+function PutDataIntoTable() {
+//fetch all of the courses
+  fetch(`/api/courses/all`)
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(CourseID => {
+            temp += "<tr>";
+            temp += "<td>" + CourseID.CourseName + "</td>";
+            temp += "<td>" + CourseID.CourseTitle + "</td>";
+            temp += "</tr>"
+            document.getElementById("data").innerHTML += temp;
+        })
+      })
+      .catch(error => {
+        console.log(error)
+      })
+}
+
+
+//Data for sidebar
+
+
+
+

@@ -1,0 +1,20 @@
+[
+  {
+    "CourseID": "gewgt23t-23t24w-t23t",
+    "quarterOffered": "20234",
+    "CourseName": "CSE351",
+    "CourseTitle": "this is title"
+  },
+  {
+    "CourseID": "gewgt23t-23t24w-t23t",
+    "quarterOffered": "20234",
+    "CourseName": "CSE331",
+    "CourseTitle": "this is title2"
+  },
+  {
+    "CourseID": "gewgt23t-23t24w-t23t",
+    "quarterOffered": "20234",
+    "CourseName": "CSE332",
+    "CourseTitle": "this is title3"
+  }
+]
