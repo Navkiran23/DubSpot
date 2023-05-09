@@ -1,36 +1,14 @@
 const express = require('express')
 const path = require('path');
+const sql = require('mssql');
 const {calculateWeek} = require("./Calendar");
-const app = express()
-const port = 3000;
+const {pool, getCourseStatement, getReviewsStatement, addReviewStatement} = require("./sql");
 
+const app = express()
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('FrontEnd'));
 const root = path.join(__dirname, '..');
-
-// set up connection to MS Azure database
-const sql = require('mssql');
-
-const config = {
-  user: 'dubspot',
-  password: '1zjknqajkzSx',
-  server: 'dubspot.database.windows.net',
-  database: 'dubspot',
-  encrypt: true
-};
-
-const pool = new sql.ConnectionPool(config);
-
-pool.connect(err => {
-  if (err) {
-    console.log(err);
-    return;
-  }
-
-  console.log('Connected to Azure SQL Database');
-
-  // Your SQL queries go here
-});
+const port = 3000;
 
 // returns the Login page
 app.get('/', (req, res) => {
@@ -62,33 +40,68 @@ app.get('/Profile', (req, res) => {
   res.sendFile(path.join(root, 'FrontEnd', 'DubSpotProfile.html'))
 })
 
-// returns an array of date objects representing the 7 day week
+// returns an array of date objects representing the 7-day week
 app.get('/api/calendar/:offset', (req, res) => {
   const offset = req.params.offset
   const weekArray = calculateWeek(offset)
   res.send(weekArray)
 })
 
-// returns json about given courseID, or a list of all courses if courseID == "all"
-app.get('/api/courses/:courseID', (req, res) => {
-  const courseID = req.params.courseID
-  if (courseID === "all") {
-    res.send("returns all courses")
-  } else {
-    res.send("wip")
-  }
+// returns json about all courses
+app.get('/api/courses/all', (req, res) => {
+  pool.query('SELECT * FROM Courses', (err, result) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    // handle query results
+    res.send(result.recordset)
+  })
 })
 
-app.get('/api/reviews/:courseID', (req, res) => {
+// returns json with information about a given courseID for the specified quarter
+app.get('/api/courses/:courseID/:quarter', (req, res) => {
   const courseID = req.params.courseID
-  res.send('test')
+  const quarter = req.params.quarter
+  getCourseStatement.execute({courseID: courseID, quarter: quarter}, (err, result) => {
+    if (err) {
+      console.log(err)
+      return
+    }
+    // handle query results
+    res.send(result.recordset)
+  })
 })
 
+// returns json of all reviews for a specific courseID and quarter offered
+app.get('/api/reviews/:courseID/:quarter', (req, res) => {
+  const courseID = req.params.courseID
+  const quarter = req.params.quarter
+  getReviewsStatement.execute({courseID: courseID, quarter: quarter}, (err, result) => {
+    if (err) {
+      console.log(err)
+      return
+    }
+    // handle query results
+    res.send(result.recordset)
+  })
+})
+
+// @requires form body contains courseID, username, rating, and review
 // receives post requests for rating submission and sends it to the database
 app.post('/submit-rating', (req, res) => {
-  console.log(req.body)
-  console.log(req.body.rating)
-  res.send("Thanks! Rating received.");
+  const courseID = req.body.courseID
+  const username = req.body.username
+  const rating = req.body.rating
+  const review = req.body.review
+  addReviewStatement.execute({courseID: courseID, username: username, rating: rating, review: review}, (err, result) => {
+    if (err) {
+      res.send("Error encountered. Please try again.")
+      return
+    }
+    res.send("Thanks! Rating received.")
+  })
+
 })
 
 app.listen(port, () => {
