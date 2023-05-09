@@ -50,7 +50,11 @@
         </div>
         <!--reviews------>
         <div class="StarRanking">
-            <p>4.0</p>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i><!--Empty star-->
         </div>
       </div>
       <!--Comments---------------------------------------->
@@ -70,13 +74,16 @@
     <div class="post">
       <div class="text">Thanks for the rating!</div>
     </div>
+    <div class="star-widget">
+      <input type="radio" name="rate" id="rate-1">
+      <label for="rate-1" class="fa-solid fa-chevron-down"></label>
       <form action="#" id="submit-rating">
         <header></header>
         <div class="textarea">
-          <div class="textarea">
-            <textarea cols="30" id="rating" name ="rating" placeholder="Have you taken this class? What is your opinion on it?"></textarea>
-          </div>
-          <textarea cols="30" id="review" name ="review" placeholder="Have you taken this class? What is your opinion on it?"></textarea>
+          <textarea cols="30" id="review" name ="review" placeholder="How would you rank this class on a scale of 1.0-4.0?"></textarea>
+        </div>
+        <div class="textarea2">
+          <textarea cols="30" id="rating" name ="rating" placeholder="Have you taken this class? What is your opinion on it?"></textarea>
         </div>
         <div class="btn">
           <button type="submit">Post</button>
