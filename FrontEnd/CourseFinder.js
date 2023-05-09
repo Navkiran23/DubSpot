@@ -65,6 +65,7 @@ function PutDataIntoTable() {
             temp += "<tr>";
             temp += "<td>" + data[i].course_number + "</td>";
             temp += "<td>" + data[i].class_title + "</td>";
+            temp += "<td>" + data[i].quarter + "</td>";
             temp += "</tr>"
             console.log(temp);
         }

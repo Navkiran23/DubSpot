@@ -47,7 +47,7 @@ async function getData() {
 
             // makes sure the correct time is picked for each quarter
             if (quarterNum === '20234') {
-                quarter = 'AU 23'
+                quarter = "AU 23"
                 while (specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].term !== undefined) {
                     if (specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].term === 'Autumn 2023') {
                         num = count2
@@ -56,7 +56,7 @@ async function getData() {
                     count2++
                 }
             } else if (quarterNum === '20233') {
-                quarter = 'SU 23'
+                quarter = "SU 23"
                 count2 = 0
                 while (specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].term !== undefined) {
                     if (specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].term === 'Summer 2023') {
@@ -71,7 +71,7 @@ async function getData() {
             times = specData.courseOfferingInstitutionList[0].courseOfferingTermList[num].activityOfferingItemList[0].meetingDetailsList[0].time
             instructor = specData.courseOfferingInstitutionList[0].courseOfferingTermList[num].activityOfferingItemList[0].instructor
             // puts the information of each class into an array
-            const newClass = [course_id, quarter, id, instructor, class_title, class_code, prereq, credits, level, days, times, genreq]
+            const newClass = [course_id.toString(), quarter.toString(), id, instructor, class_title, class_code, prereq, credits, level, days, times, genreq]
             classArray.push(newClass)
             count++
         }
@@ -116,7 +116,7 @@ function arrayToCSV(data) {
 function saveCSV() {
      let csv = arrayToCSV(classArray)
      const fs = require('fs')
-     fs.writeFile('courses.csv', csv, err => {
+     fs.writeFile('./data/courses.csv', csv, err => {
          if (err) {
              console.error(err)
          }
