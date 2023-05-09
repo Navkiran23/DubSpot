@@ -80,6 +80,24 @@ PutDataIntoTable();
 
 //Data for sidebar
 
-
-
+// fetch the data and display on the sidebar
+function displayDataOnSidebar() {
+  fetch('/api/courses/:courseID/:quarter')
+    .then(response => response.json())
+    .then(data => {
+      for (let i = 0; i < data.length; i++) {
+        temp += "<div class=\"InformationDisplay\">";
+        temp += "<h2>" + data[i].class_title + "</h2>";
+        // temp += "<h3>" + data[i].class_title + "</h3>";
+        temp += "<h4>" + data[i].prerequisite + "</h4>";
+        temp += "<h5>" + data[i].credits + "</h5>";
+        temp += "</div>"
+        console.log(temp);
+    }
+     document.getElementById("data").innerHTML = temp;
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
 
