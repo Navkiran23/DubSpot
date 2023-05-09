@@ -7,7 +7,7 @@ let count = 0;
 let class_apis = [];
 let classArray = [];
 
-const headers = ["id", "course_id", "course_number", "class_title", "prerequisite", "gen_ed_req", "credits", "level", "meeting_days", "meeting_times", "Quarter"];
+const headers = ["course id", "quarter", "id", "instructor", "class_title", "course_number", "prerequisite", "credits", "level", "meeting_days", "meeting_times", "gen_ed_req"];
 classArray.push(headers)
 
 let id;
@@ -24,6 +24,7 @@ let level;
 let api_string = 'https://course-app-api.planning.sis.uw.edu/api/courses/CSE%20121/details?courseId='
 let result;
 let quarter;
+let instructor;
 
 // gets the data for the columns that we need
 async function getData() {
@@ -68,9 +69,9 @@ async function getData() {
 
             days = specData.courseOfferingInstitutionList[0].courseOfferingTermList[num].activityOfferingItemList[0].meetingDetailsList[0].days;
             times = specData.courseOfferingInstitutionList[0].courseOfferingTermList[num].activityOfferingItemList[0].meetingDetailsList[0].time;
-
+            instructor = specData.courseOfferingInstitutionList[0].courseOfferingTermList[num].activityOfferingItemList[0].instructor;
             // puts the information of each class into an array
-            const newClass = [id, course_id, class_code, class_title, prereq, genreq, credits, level, days, times, quarter];
+            const newClass = [course_id, quarter, id, instructor, class_title, class_code, prereq, credits, level, days, times, genreq];
             classArray.push(newClass);
             count++;
         }
