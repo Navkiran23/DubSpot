@@ -1,0 +1,106 @@
+course id,quarter,id,instructor,class_title,course_number,prerequisite,credits,level,meeting_days,meeting_times,gen_ed_req
+2a94a8e8-66d8-4c03-9da1-ac1e32e5e171,SU 23,"20233:CSE:121:A,AD",Kai Daniels,Introduction to Computer Programming I,CSE 121,,4,100,WF,12:00 PM - 1:00 PM,"RSN,NSc"
+2a94a8e8-66d8-4c03-9da1-ac1e32e5e171,AU 23,"20234:CSE:121:B,BD",null,Introduction to Computer Programming I,CSE 121,,4,100,WF,11:30 AM - 12:20 PM,"RSN,NSc"
+e38904c7-407c-44c0-aae8-4e402b77af1d,SU 23,"20233:CSE:122:A,AA",Melissa Lin,Introduction to Computer Programming II,CSE 122,,4,100,WF,10:50 AM - 11:50 AM,"RSN,NSc"
+e38904c7-407c-44c0-aae8-4e402b77af1d,AU 23,"20234:CSE:122:A,AL",null,Introduction to Computer Programming II,CSE 122,,4,100,WF,11:30 AM - 12:20 PM,"RSN,NSc"
+3f2804ee-24e3-48bb-aa87-6b12cc919a87,SU 23,"20233:CSE:123:A,AC",Hitesh K Boinpally,Introduction to Computer Programming III,CSE 123,,4,100,WF,10:50 AM - 11:50 AM,"RSN,NSc"
+3f2804ee-24e3-48bb-aa87-6b12cc919a87,AU 23,"20234:CSE:123:A,AI",null,Introduction to Computer Programming III,CSE 123,,4,100,WF,12:30 PM - 1:20 PM,"RSN,NSc"
+29c0b2f0-7cad-4784-af82-146fbd550b7e,AU 23,"20234:CSE:143:D,DB",null,Computer Programming II,CSE 143,CSE 142.,5,100,MWF,3:30 PM - 4:20 PM,"RSN,NSc"
+c6a0c79a-9fff-447c-88a9-ad71d877771f,SU 23,"20233:CSE:154:A,AA",Tal Wolman,Web Programming,CSE 154,"a minimum grade of 2.0 in either CSE 122, CSE 123, CSE 142, CSE 143, CSE 160, or CSE 163.",5,100,MWF,8:30 AM - 9:20 AM,RSN
+c6a0c79a-9fff-447c-88a9-ad71d877771f,AU 23,"20234:CSE:154:A,AD",Tal Wolman,Web Programming,CSE 154,"a minimum grade of 2.0 in either CSE 122, CSE 123, CSE 142, CSE 143, CSE 160, or CSE 163.",5,100,MWF,8:30 AM - 9:20 AM,RSN
+d4fb41e9-b53f-4093-92a6-2790786144e6,SU 23,"20233:CSE:160:A,AA",AMANDA C. ONG,Data Programming,CSE 160,,4,100,MWF,9:40 AM - 10:40 AM,"RSN,NSc"
+d4fb41e9-b53f-4093-92a6-2790786144e6,AU 23,"20234:CSE:160:A,AE",null,Data Programming,CSE 160,,4,100,MWF,3:30 PM - 4:20 PM,"RSN,NSc"
+da10d70f-17a9-4975-ab11-6fd654ffc0c4,SU 23,"20233:CSE:163:A,AB",Suh Young Choi,Intermediate Data Programming,CSE 163,"either CSE 122, CSE 123, CSE 142, CSE 143, or CSE 160.",4,100,MWF,1:10 PM - 2:10 PM,RSN
+da10d70f-17a9-4975-ab11-6fd654ffc0c4,AU 23,20234:CSE:163:A,null,Intermediate Data Programming,CSE 163,"either CSE 122, CSE 123, CSE 142, CSE 143, or CSE 160.",4,100,MWF,10:30 AM - 11:20 AM,RSN
+38b71a40-9ba4-40a9-b0a0-9715ce3f7446,AU 23,20234:CSE:190:Z,Dan Grossman,Current Topics in Computer Science and Engineering,CSE 190,,1-5,100,M,3:30 PM - 4:50 PM,
+9c4652a2-5702-4f74-8183-b146bbca2041,SU 23,"20233:CSE:311:A,AA",ANJALI AGARWAL,Foundations of Computing I,CSE 311,a minimum grade of 2.0 in either CSE 123 or CSE 143; and MATH 126 or MATH 136.,4,300,MWF,12:00 PM - 1:00 PM,RSN
+9c4652a2-5702-4f74-8183-b146bbca2041,AU 23,"20234:CSE:311:A,AB",null,Foundations of Computing I,CSE 311,a minimum grade of 2.0 in either CSE 123 or CSE 143; and MATH 126 or MATH 136.,4,300,MWF,10:30 AM - 11:20 AM,RSN
+eabcdd6e-3e41-4282-827c-1bea26086781,SU 23,"20233:CSE:312:A,AA",SHREYA JAYARAMAN,Foundations of Computing II,CSE 312,CSE 311.,4,300,MWF,12:00 PM - 1:00 PM,RSN
+eabcdd6e-3e41-4282-827c-1bea26086781,AU 23,"20234:CSE:312:A,AD",null,Foundations of Computing II,CSE 312,CSE 311.,4,300,MWF,1:30 PM - 2:20 PM,RSN
+7cc9b193-b8ca-4c16-8be6-9f260e6c1d58,SU 23,"20233:CSE:331:A,AA",Soham Pardeshi,Software Design and Implementation,CSE 331,a minimum grade of 2.0 in either CSE 123 or CSE 143.,4,300,MWF,10:50 AM - 11:50 AM,
+7cc9b193-b8ca-4c16-8be6-9f260e6c1d58,AU 23,"20234:CSE:331:B,BD",null,Software Design and Implementation,CSE 331,a minimum grade of 2.0 in either CSE 123 or CSE 143.,4,300,MWF,2:30 PM - 3:20 PM,
+9f0283ac-b8f0-46cc-834e-2d6cb06573cb,SU 23,"20233:CSE:332:A,AC",WINSTON JODJANA,Data Structures and Parallelism,CSE 332,CSE 311.,4,300,MWF,9:40 AM - 10:40 AM,
+9f0283ac-b8f0-46cc-834e-2d6cb06573cb,AU 23,"20234:CSE:332:A,AD",null,Data Structures and Parallelism,CSE 332,CSE 311.,4,300,MWF,12:30 PM - 1:20 PM,
+8c8b7cad-07a8-413b-8623-e407510f5b8c,SU 23,"20233:CSE:333:A,AA",Timmy Yang,Systems Programming,CSE 333,CSE 351.,4,300,MWF,1:10 PM - 2:10 PM,
+8c8b7cad-07a8-413b-8623-e407510f5b8c,AU 23,"20234:CSE:333:A,AE",null,Systems Programming,CSE 333,CSE 351.,4,300,MWF,11:30 AM - 12:20 PM,
+391fd4a6-f035-4395-81f5-449e121d5a4b,AU 23,"20234:CSE:340:A,AA",null,Interaction Programming,CSE 340,CSE 123 or CSE 143.,4,300,MWF,12:30 PM - 1:20 PM,
+bd4e5d1f-9292-4c07-aad5-ff6efbee8b0e,AU 23,"20234:CSE:341:A,AD",null,Programming Languages,CSE 341,CSE 123 or CSE 143.,4,300,MWF,1:30 PM - 2:20 PM,
+02a5a416-3b3d-4ae6-92c9-4ef0b9075c0d,SU 23,"20233:CSE:344:A,AA",Ryan Maas,Introduction to Data Management,CSE 344,CSE 311.,4,300,MWF,2:20 PM - 3:20 PM,
+02a5a416-3b3d-4ae6-92c9-4ef0b9075c0d,AU 23,"20234:CSE:344:A,AB",null,Introduction to Data Management,CSE 344,CSE 311.,4,300,MWF,10:30 AM - 11:20 AM,
+04c9372d-6922-4bd9-9be7-90a6a8c81ffb,SU 23,"20233:CSE:351:A,AA",Aman Mohammed,The Hardware/Software Interface,CSE 351,CSE 123 or CSE 143.,4,300,MWF,1:10 PM - 2:10 PM,
+04c9372d-6922-4bd9-9be7-90a6a8c81ffb,AU 23,"20234:CSE:351:C,CA",null,The Hardware/Software Interface,CSE 351,CSE 123 or CSE 143.,4,300,MWF,11:30 AM - 12:20 PM,
+738ba1a5-8b77-4ba1-b122-91d6d1c3b364,SU 23,20233:CSE:371:A,Mahmood Hameed,Design of Digital Circuits and Systems,CSE 371,either E E 205 or E E 215; either E E 271 or CSE 369.,5,300,TTh,10:50 AM - 1:00 PM,
+738ba1a5-8b77-4ba1-b122-91d6d1c3b364,AU 23,20234:CSE:371:A,Mahmood Hameed,Design of Digital Circuits and Systems,CSE 371,either E E 205 or E E 215; either E E 271 or CSE 369.,5,300,MW,11:30 AM - 1:20 PM,
+7208dc05-e2a7-4064-b3fc-3e5e182472cb,SU 23,"20233:CSE:373:A,AC",Sonia Fereidooni,Data Structures and Algorithms,CSE 373,CSE 123 or CSE 143.,4,300,MWF,1:10 PM - 2:10 PM,
+7208dc05-e2a7-4064-b3fc-3e5e182472cb,AU 23,"20234:CSE:373:A,AB",null,Data Structures and Algorithms,CSE 373,CSE 123 or CSE 143.,4,300,MWF,2:30 PM - 3:20 PM,
+a0a9aae3-5fe3-421c-81e1-fa572fdd0103,SU 23,20233:CSE:374:A,Diana Dai,Intermediate Programming Concepts and Tools,CSE 374,CSE 123 or CSE 143.,3,300,MWF,10:50 AM - 11:50 AM,
+a0a9aae3-5fe3-421c-81e1-fa572fdd0103,AU 23,20234:CSE:374:A,null,Intermediate Programming Concepts and Tools,CSE 374,CSE 123 or CSE 143.,3,300,MWF,9:30 AM - 10:20 AM,
+3bc98c04-419f-40a7-814b-63a11619e8ab,AU 23,20234:CSE:390:T,null,Special Topics in Computer Science and Engineering,CSE 390,,1-5,300,TTh,2:30 PM - 3:50 PM,
+6b05d45b-358d-46c3-898e-7096e8fa9a7e,SU 23,20233:CSE:391:A,Ryan Maas,System and Software Tools,CSE 391,"either CSE 122, CSE 123, or CSE 143.",1,300,T,10:50 AM - 11:50 AM,
+6b05d45b-358d-46c3-898e-7096e8fa9a7e,AU 23,20234:CSE:391:B,null,System and Software Tools,CSE 391,"either CSE 122, CSE 123, or CSE 143.",1,300,T,1:30 PM - 2:20 PM,
+b0336864-ac88-40b9-942e-0cd1857151ee,AU 23,"20234:CSE:401:A,AB",null,Introduction to Compiler Construction,CSE 401,CSE 332; CSE 351.,4,400,MWF,2:30 PM - 3:20 PM,
+849c6043-5d3a-4429-b7f2-19765c0305df,AU 23,"20234:CSE:403:A,AA",null,Software Engineering,CSE 403,CSE 331; CSE 332.,4,400,MWF,12:30 PM - 1:20 PM,
+a91ffdd6-4ce4-4790-8fb2-d1f45a55d260,AU 23,"20234:CSE:414:B,BC",Ryan Maas,Introduction to Database Systems,CSE 414,"a minimum grade of 2.5 in either CSE 123, CSE 143, or CSE 163.",4,400,MWF,12:30 PM - 1:20 PM,
+a47aa63d-af9a-48ea-aa0c-b5de2bfc8a89,AU 23,20234:CSE:415:A,null,Introduction to Artificial Intelligence,CSE 415,CSE 373.,3,400,MWF,1:30 PM - 2:20 PM,NSc
+192e1424-5117-4c02-a3b2-3aaf4c3c3bb6,SU 23,"20233:CSE:416:A,AA",null,Introduction to Machine Learning,CSE 416,"either CSE 123, CSE 143, CSE 160, or CSE 163; and either STAT 311, STAT 390, STAT 391, IND E 315, MATH 394/STAT 394, STAT 395/MATH 395, or Q SCI 381.",4,400,MW,3:10 PM - 4:50 PM,NSc
+192e1424-5117-4c02-a3b2-3aaf4c3c3bb6,AU 23,"20234:CSE:416:A,AG",null,Introduction to Machine Learning,CSE 416,"either CSE 123, CSE 143, CSE 160, or CSE 163; and either STAT 311, STAT 390, STAT 391, IND E 315, MATH 394/STAT 394, STAT 395/MATH 395, or Q SCI 381.",4,400,MW,3:30 PM - 4:50 PM,NSc
+70e6db4e-4ebe-41d2-8137-ef2c2b72a3d1,AU 23,20234:CSE:417:A,null,Algorithms and Computational Complexity,CSE 417,CSE 373.,3,400,MWF,10:30 AM - 11:20 AM,
+8765b136-872c-441e-8597-f04550611cdc,AU 23,"20234:CSE:421:A,AE",null,Introduction to Algorithms,CSE 421,CSE 312; CSE 332.,3,400,MWF,1:30 PM - 2:20 PM,
+bb562110-5d1c-4980-a223-93cac40832b8,AU 23,"20234:CSE:426:A,AA",null,Cryptography,CSE 426,CSE 312.,4,400,MWF,11:30 AM - 12:20 PM,
+400f6504-a9bf-465c-b2ab-3dc2de525626,AU 23,20234:CSE:427:A,null,Computational Biology,CSE 427,CSE 312; CSE 332.,3,400,TTh,10:00 AM - 11:20 AM,
+2ce068b7-2e5d-4850-9e9b-59a037740cea,AU 23,"20234:CSE:440:A,AB",null,"Introduction to HCI: User Interface Design, Prototyping, and Evaluation",CSE 440,CSE 332.,5,400,TTh,11:30 AM - 12:50 PM,
+25a4c5b7-de9b-481e-9765-526b416dbb21,AU 23,20234:CSE:442:A,null,Data Visualization,CSE 442,CSE 332.,4,400,TTh,11:30 AM - 12:50 PM,
+6a239f8c-982e-4081-9db7-66f9083d58ed,AU 23,"20234:CSE:446:A,AD",null,Machine Learning,CSE 446,"CSE 332; MATH 208 or MATH 136; and either STAT 390, STAT 391, or CSE 312.",4,400,MW,9:00 AM - 10:20 AM,
+a4c8e945-ae96-4909-b3d6-322d9fd2785d,AU 23,"20234:CSE:451:A,AC",null,Introduction to Operating Systems,CSE 451,CSE 351; CSE 332; CSE 333.,4,400,MWF,11:30 AM - 12:20 PM,
+d809a7b5-0711-4c5d-8b59-4a41545a4e6c,AU 23,"20234:CSE:452:A,AE",null,Introduction to Distributed Systems,CSE 452,CSE 332 and CSE 333.,4,400,MWF,3:30 PM - 4:20 PM,
+507a1bbf-f86c-42bb-b8f8-8612b56b72e4,AU 23,"20234:CSE:453:A,AC",null,Datacenter Systems,CSE 453,CSE 332 and CSE 333.,4,400,MWF,11:30 AM - 12:20 PM,
+4d8d35f0-aae8-4cca-b7d8-1c172dd97e9a,SU 23,20233A:CSE:456:A,Barbara Mones,Story Design for Computer Animation,CSE 456,,4,400,MW,10:20 AM - 1:00 PM,
+f262c98e-dda7-4dd7-b2dc-f721cbddfebc,AU 23,20234:CSE:457:A,null,Computer Graphics,CSE 457,CSE 333; CSE 332.,4,400,TTh,8:30 AM - 9:50 AM,
+2b6c9789-46d1-4f5b-8a26-40ed13953a18,AU 23,20234:CSE:458:A,Barbara Mones,Computer Animation,CSE 458,CSE 457.,5,400,TTh,11:30 AM - 12:50 PM,
+aa2ffb7f-b47f-400b-a91d-e428fc0b3636,AU 23,"20234:CSE:461:A,AB",null,Introduction to Computer-Communication Networks,CSE 461,either CSE 326 or CSE 332; either CSE 303 or CSE 333.,4,400,MWF,12:30 PM - 1:20 PM,
+6eb0e278-48dd-43de-bb12-e6df9f92774a,SU 23,20233B:CSE:464:A,Barbara Mones,Advanced Topics in Digital Animation,CSE 464,,1-5,400,MW,10:30 AM - 1:50 PM,
+1987efba-0171-498d-b013-c80d1946d356,AU 23,20234:CSE:469:A,Scott Hauck,Computer Architecture I,CSE 469,either E E 271 or CSE 369;  and either CSE 123 or CSE 143.,5,400,MTWF,10:30 AM - 11:20 AM,
+692fc2f1-7fcf-4b86-a3e5-75696cd51b12,AU 23,20234:CSE:473:A,null,Introduction to Artificial Intelligence,CSE 473,CSE 312 and CSE 332.,3,400,MWF,2:30 PM - 3:20 PM,
+f083f25a-7a01-47da-87d2-38967b7a26b8,SU 23,20233:CSE:474:A,Sep Makhsous,Introduction to Embedded Systems,CSE 474,CSE 123 or CSE 143,4,400,TTh,10:50 AM - 1:00 PM,
+f083f25a-7a01-47da-87d2-38967b7a26b8,AU 23,20234:CSE:474:A,null,Introduction to Embedded Systems,CSE 474,CSE 123 or CSE 143,4,400,MW,2:30 PM - 4:20 PM,
+1c6d3630-2cd0-46d7-880e-6003d33cb34d,AU 23,20234:CSE:475:A,null,Embedded Systems Capstone,CSE 475,"either E E 271 or CSE 369; either CSE 466, E E 472, or CSE 474/E E 474.",5,400,TTh,4:30 PM - 6:20 PM,
+d7315e5a-f3c8-4f45-84c4-205517491875,AU 23,20234:CSE:480:A,null,Computer Ethics Seminar,CSE 480,,1-3,400,WF,3:30 PM - 4:20 PM,DIV
+14213037-90e3-4030-8823-d155b0b948a1,AU 23,20234:CSE:481:S,null,Capstone Software Design,CSE 481,"CSE 312; CSE 332; CSE 351; and either CSE 331, CSE 333, or CSE 369.",5,400,T,1:30 PM - 3:50 PM,
+bc5855d6-796f-4fe0-87cc-3c2e94802ceb,AU 23,"20234:CSE:484:A,AC",null,Computer Security,CSE 484,CSE 332; CSE 351.,4,400,MWF,10:30 AM - 11:20 AM,
+0b988f4d-29ef-48f9-b28d-e70b36e611a4,AU 23,20234:CSE:486:A,James M. Carothers,Introduction to Synthetic Biology,CSE 486,"either MATH 136, MATH 207, MATH 307, AMATH 351, or CSE 311; and either MATH 208, MATH 308, or AMATH 352.",3,400,MWF,11:30 AM - 12:20 PM,
+fe57f558-40a4-472e-ad18-5d954661a2e0,SU 23,20233B:CSE:490:B,Barbara Mones,Special Topics in Computer Science and Engineering,CSE 490,,1-5,400,TTh,10:30 AM - 12:30 PM,
+fe57f558-40a4-472e-ad18-5d954661a2e0,SU 23,20233A:CSE:490:A,Barbara Mones,Special Topics in Computer Science and Engineering,CSE 490,,1-5,400,TTh,10:30 AM - 12:30 PM,
+fe57f558-40a4-472e-ad18-5d954661a2e0,AU 23,20234:CSE:490:A,null,Special Topics in Computer Science and Engineering,CSE 490,,1-5,400,TTh,1:30 PM - 3:20 PM,
+2a831596-aa97-49c3-ad0a-f91df4b69ef4,AU 23,20234:CSE:492:M,null,Undergraduate Seminar,CSE 492,,1-2,400,null,null,
+ea33fa49-3125-42b3-a8c4-7dc2df523942,AU 23,20234:CSE:493:Z,null,Advanced Special Topics in Computer Science and Engineering,CSE 493,,1-5,400,MWF,3:30 PM - 4:20 PM,
+60036b6a-f441-4642-a7f9-e66e0e7ccd76,AU 23,20234:CSE:495:A,Anat Caspi,Project Practicum,CSE 495,,1-5,400,null,null,
+422e4afa-74b9-4e25-b320-c484d16f0c23,SU 23,20233:CSE:496:A,null,Honors Undergraduate Research,CSE 496,,1-9,400,null,null,
+422e4afa-74b9-4e25-b320-c484d16f0c23,AU 23,20234:CSE:496:A,null,Honors Undergraduate Research,CSE 496,,1-9,400,null,null,
+bdffea95-f8fb-48da-ade5-3dc19357d010,SU 23,20233:CSE:498:A,null,Undergraduate Research,CSE 498,,1-9,400,null,null,
+bdffea95-f8fb-48da-ade5-3dc19357d010,AU 23,20234:CSE:498:A,null,Undergraduate Research,CSE 498,,1-9,400,null,null,
+e0ba37e9-1ddf-4fae-873b-0c5c590b14c8,SU 23,20233:CSE:499:A,null,Reading and Research,CSE 499,,1-24,400,null,null,
+e0ba37e9-1ddf-4fae-873b-0c5c590b14c8,AU 23,20234:CSE:499:A,null,Reading and Research,CSE 499,,1-24,400,null,null,
+ea7ae7d4-b53c-4cb7-8cef-36225d23f28e,AU 23,20234:CSE:503:A,null,Software Engineering,CSE 503,,4,500,null,null,
+6e6fcbc3-9490-43cf-8e44-949169d7aeea,AU 23,20234:CSE:507:A,null,Computer-Aided Reasoning for Software,CSE 507,,4,500,null,null,
+2537e037-ffbc-4ce5-89f7-1b95fe0f5dda,AU 23,20234:CSE:510:A,null,Advanced Topics in Human-Computer Interaction,CSE 510,,4,500,TTh,10:00 AM - 11:20 AM,
+da8ee50a-2cdf-4a0e-9719-e20509180a56,AU 23,20234:CSE:519:D,null,Current Research in Computer Science,CSE 519,,1,500,T,3:30 PM - 5:20 PM,
+de49985b-ad75-4d3b-b8e9-350c3f1f2900,AU 23,20234:CSE:520:A,null,Computer Science Colloquium,CSE 520,,1,500,Th,3:30 PM - 5:20 PM,
+58728a3f-7eaa-41e6-988d-1eafe06a4053,AU 23,20234:CSE:521:A,null,Design and Analysis of Algorithms I,CSE 521,either CSE 332 or equivalent.,4,500,TTh,10:00 AM - 11:20 AM,
+58db31cb-1c29-4460-bf7f-1319e41de350,AU 23,20234:CSE:527:A,null,Computational Biology,CSE 527,,4,500,TTh,11:30 AM - 12:50 PM,
+406eaee4-3838-4b20-b05c-98827360d4c9,AU 23,20234:CSE:535:A,null,Theory of Optimization and Continuous Algorithms,CSE 535,,4,500,MW,1:30 PM - 2:50 PM,
+a49a77a1-fd48-4af6-8d61-61e8a17296b0,AU 23,20234:CSE:546:A,null,Machine Learning,CSE 546,"either CSE 312, STAT 341, STAT 391 or equivalent.",4,500,MW,9:00 AM - 10:20 AM,
+c7bfa627-af0b-4f07-b0f4-d1bc4097b2a9,AU 23,20234:CSE:548:A,null,Computer Systems Architecture,CSE 548,CSE 451.,4,500,null,null,
+d474ff22-d25d-4bcd-80e6-b36fa51d2583,AU 23,20234:CSE:550:A,null,Computer Systems,CSE 550,CSE 451.,4,500,MW,11:30 AM - 12:50 PM,
+b5de6454-17f4-453a-aa30-f125eb0735e7,AU 23,20234:CSE:583:A,null,Software Development for Data Scientists,CSE 583,,4,500,TTh,11:30 AM - 12:50 PM,
+c0ff70ce-cea3-47c8-8b5a-87d03ef33eaa,AU 23,20234:CSE:586:A,James M. Carothers,Introduction to Synthetic Biology,CSE 586,"either MATH 136, MATH 207, MATH 307, AMATH 351, or CSE 311; and either MATH 208, MATH 308, or AMATH 352.",3,500,MWF,11:30 AM - 12:20 PM,
+95de2977-35da-441d-9754-47762beafc84,AU 23,20234:CSE:590:M1,null,Research Seminar,CSE 590,,1-25,500,null,null,
+3f6b5278-e993-4eac-a408-0ae0cf46c0d9,AU 23,20234:CSE:591:V,null,Group Projects in Computer Science,CSE 591,,1-3,500,null,null,
+d2227975-4bf6-4123-8548-71ca0cab366f,AU 23,20234:CSE:599:F,null,Special Topics in Computer Science,CSE 599,,1-5,500,null,null,
+1bbc1079-041d-4eaa-8462-af7b7053f3b5,SU 23,20233:CSE:600:A,null,Independent Study or Research,CSE 600,,1-25,600,null,null,
+1bbc1079-041d-4eaa-8462-af7b7053f3b5,AU 23,20234:CSE:600:A,null,Independent Study or Research,CSE 600,,1-25,600,null,null,
+e1f305c6-095e-4dcf-939d-79cf6e06eb7e,SU 23,20233:CSE:601:A,null,Internship,CSE 601,,1-2,600,null,null,
+e1f305c6-095e-4dcf-939d-79cf6e06eb7e,AU 23,20234:CSE:601:A,null,Internship,CSE 601,,1-2,600,null,null,
+88c5952e-40a6-402f-a9a3-0200e5538998,SU 23,20233:CSE:700:A,null,Master's Thesis,CSE 700,,1-25,700,null,null,
+88c5952e-40a6-402f-a9a3-0200e5538998,AU 23,20234:CSE:700:A,null,Master's Thesis,CSE 700,,1-25,700,null,null,
+62b11fec-fd97-40d2-bde2-5fbc25400537,SU 23,20233:CSE:800:A,null,Doctoral Dissertation,CSE 800,,1-25,800,null,null,
+62b11fec-fd97-40d2-bde2-5fbc25400537,AU 23,20234:CSE:800:A,null,Doctoral Dissertation,CSE 800,,1-25,800,null,null,

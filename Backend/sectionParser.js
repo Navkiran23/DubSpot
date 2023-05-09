@@ -49,7 +49,7 @@ async function getData() {
                     meeting_time = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].time;
                     building = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].building;
                     room = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].room;
-                    course_id = class_apis[i];
+                    course_id = obj.classes[i].courseId;
                     const newRow = [activity_id, course_id, meeting_time, meeting_days, building, room, quarter];
                     section_array.push(newRow);
                     count++;
