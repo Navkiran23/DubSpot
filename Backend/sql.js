@@ -34,7 +34,7 @@ pool.connect(err => {
   addReviewStatement.input('addReviewUsername', sql.VarChar(100))
   addReviewStatement.input('rating', sql.Int)
   addReviewStatement.input('review', sql.VarChar(1000))
-  addReviewStatement.prepare('INSERT INTO Reviews VALUES(@addReviewCourseID, @addReviewUsername, @rating, @review)')
+  addReviewStatement.prepare('INSERT INTO Reviews (course_id, username, rating, review) VALUES(@addReviewCourseID, @addReviewUsername, @rating, @review)')
 })
 
 module.exports = {
