@@ -58,22 +58,22 @@ let temp = "";
 function PutDataIntoTable() {
   //fetch all the courses
   fetch("/api/courses/all")
-    .then(response => response.json())
-    .then(data => {
-        //console.log(data);
-      for (let i = 0; i < data.length; i++) {
-          temp += "<tr onclick=myFunction(this)>";
-          temp += "<td>" + data[i].course_number + "</td>";
-          temp += "<td>" + data[i].class_title + "</td>";
-          temp += "<td>" + data[i].quarter + "</td>";
-          temp += "</tr>"
-          console.log(temp);
-      }
-        document.getElementById("data").innerHTML = temp;
-    })
-    .catch(error => {
-      console.log(error)
-    })
+      .then(response => response.json())
+     .then(data => {
+         //console.log(data);
+        for (let i = 0; i < data.length; i++) {
+            temp += "<tr>";
+            temp += "<td>" + data[i].course_number + "</td>";
+            temp += "<td>" + data[i].class_title + "</td>";
+            temp += "<td>" + data[i].quarter + "</td>";
+            temp += "</tr>"
+            console.log(temp);
+        }
+         document.getElementById("data").innerHTML = temp;
+     })
+      .catch(error => {
+        console.log(error)
+      })
 }
 
 PutDataIntoTable();

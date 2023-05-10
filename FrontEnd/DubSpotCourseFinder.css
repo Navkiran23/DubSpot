@@ -83,7 +83,7 @@ Username{
     text-align: center;
     overflow: hidden;
 }
-.container {
+/*.container {
     width: 400px;
     background: #ffff;
     padding: 20px 30px;
@@ -95,7 +95,7 @@ Username{
     flex-direction: column;
     margin-top: 100px;
 }
-.container .post {
+ .container .post {
     display: none;
 }
 .container .text {
@@ -205,7 +205,7 @@ form .btn button{
 }
 form .btn button:hover{
     button: #1b1b1b;
-}
+} */
 /*Header Code*/
 a:link {
     text-decoration: none;
@@ -300,11 +300,12 @@ nav1 {
   }
 #myTable tr {
     width: 60%;
+
 }
   #myTable th, #myTable td, #myTable thead, #myTable tbody  {
     text-align: left; /* Left-align text */
     padding: 12px; /* Add padding */
-        width: 60%;
+    width: 60%;
 
   }
   #myTable thead.header {
@@ -312,7 +313,7 @@ nav1 {
   }
 #myTable tbody {
        /* Add a grey background color to the table header and on hover */
-       background:  aqua;
+       background:  rgb(0,255,255, 0.5);
 }
 .wrap {
   overflow: hidden;
@@ -375,7 +376,7 @@ not go behind other components but failed
     text-align: left;
     font-size: 12px;
     font-weight: none;
-    color:rgb(78, 86, 120);
+    color: rgb(0,255,255, 0.5);;
     margin-left: 5px;
 }
 .InformationDisplay h4 {
