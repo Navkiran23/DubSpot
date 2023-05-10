@@ -37,3 +37,13 @@ The UIUX folder contains the visual designs that the frontend team will use as a
 The weekly reports folder contains the weekly reports by our group
 
 The testing features contains any testing files
+
+# How to build and test
+We have automated tests set up on github so in order to test the code, all you have to do is make a push to the repo and the tests will automatically run. Our system uses a SQL server hosted on Microsoft Azure and as of right now it will be online 24/7 so there is no need to set or start anything up for that. To launch the website, node needs to be installed. You then have to type in "node ." in the terminal. The website will then be accessible at "http://localhost:3000/" on your local machine.
+
+# Use cases
+Signup/login: The login and sign up is hardcoded and only works with specific username and password combinations. If we have time, we will implement a fully functioning login, but that is not a top priority at the moment.
+Searching for classes: Our search bar is fully functional to find a specific class and information about the class.
+Adding event to a Calendar: You can view and change the dates on the calendar but you cannot add a specific event to the calendar yet.
+Leaving a review: Not currently functional
+
