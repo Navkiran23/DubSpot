@@ -56,13 +56,13 @@ function myFunction() {
     //  })
 let temp = "";
 function PutDataIntoTable() {
-//fetch all the courses
+  //fetch all the courses
   fetch("/api/courses/all")
       .then(response => response.json())
      .then(data => {
          //console.log(data);
         for (let i = 0; i < data.length; i++) {
-            temp += "<tr onclick=myFunction(this)>";
+            temp += "<tr>";
             temp += "<td>" + data[i].course_number + "</td>";
             temp += "<td>" + data[i].class_title + "</td>";
             temp += "<td>" + data[i].quarter + "</td>";
@@ -77,8 +77,28 @@ function PutDataIntoTable() {
 }
 
 PutDataIntoTable();
+
 //Data for sidebar
+let displayString = "";
+// fetch the data and display on the sidebar
+function displayDataOnSidebar() {
+  fetch(`/api/courses/${courseID}/${quarter}`)
+    .then(response => response.json())
+    .then(data => {
+      for (let i = 0; i < data.length; i++) {
+        // displayString += "<div class=\"InformationDisplay\">";
+        displayString += "<h2>" + data[i].class_title + "</h2>";
+        // temp += "<h3>" + data[i].class_title + "</h3>";
+        displayString += "<h4>" + data[i].prerequisite + "</h4>";
+        displayString += "<h5>" + data[i].credits + "</h5>";
+        // displayString += "</div>"
+        console.log(displayString);
+      }
+     document.getElementById("courseinfo").innerHTML = displayString;
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
 
-
-
-
+displayDataOnSidebar();
