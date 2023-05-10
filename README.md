@@ -39,11 +39,26 @@ The weekly reports folder contains the weekly reports by our group
 The testing features contains any testing files
 
 # How to build and test
-We have automated tests set up on github so in order to test the code, all you have to do is make a push to the repo and the tests will automatically run. Our system uses a SQL server hosted on Microsoft Azure and as of right now it will be online 24/7 so there is no need to set or start anything up for that. To launch the website, node needs to be installed. You then have to type in "node ." in the terminal. The website will then be accessible at "http://localhost:3000/" on your local machine.
+We have automated tests set up on github so in order to test the code, all you have to do is make a push to the repo and the tests will automatically run. Our system uses a SQL server hosted on Microsoft Azure and as of right now it will be online 24/7 so there is no need to set or start anything up for that. To launch the website you can follow the steps below:
+1.node needs to be installed. Y
+2. If you get an error then you might not have node installed so then you should run npm install
+3. After that you then have to type in "node ." in the terminal. 
+4. The website will then be accessible at "http://localhost:3000/" on your local machine.
+5. after the / you can enter the exact link for the webpage you wish to access for course finder it would be: Type in localhost:3000/coursefinder
+6. We reccomend starting at the login and typing in these credentials. You can press the login with your username: admin@gmail.com and password: admin.
+7. Then you should be able to use the navbar to navigate
+
+testing the system:
+1. Run npm test in the terminal but the server has to be running in another terminal
+2. So you open up two terminals run the build steps from above
+3. then in your second terminal run npm test and test the webpage
 
 # Use cases
-Signup/login: The login and sign up is hardcoded and only works with specific username and password combinations. If we have time, we will implement a fully functioning login, but that is not a top priority at the moment.
-Searching for classes: Our search bar is fully functional to find a specific class and information about the class.
-Adding event to a Calendar: You can view and change the dates on the calendar but you cannot add a specific event to the calendar yet.
-Leaving a review: Not currently functional
+Signup/login: The login and sign up is hardcoded and only works with specific username and password combinations. If we have time, we will implement a fully functioning login, but that is not a top priority at the moment. The plan is to use the data in our user sql database which will then hold all user log in information which we access through a JSON. Then the JSON is accessed through Javascript and put into our webpage. You can press the login with your username: admin@gmail.com and password: admin.
+
+Searching for classes: Our search bar is fully functional to find a specific class and information about the class. We do plan on adding more information here to make it a more informational course description, however that has nothing to do with changing the flow of the use case. The use case remains the same its just more informative. You can type in the course name in the search bar and then from the results, click on a result to see its display of information.
+
+Adding event to a Calendar: You can view and change the dates on the calendar but you cannot add a specific event to the calendar yet. We plan on doing another table for that which will hold a bunch of scripts. The functionality will include adding and deleting events. Along with this you will be able to edit events. You can move through the arrows to change the dates. Along with this our today button takes you back to todays date.
+
+Leaving a review: Not currently functional, however we do have the funcitonality of reviews being different based on what course you select. We are currently populating the reviews with "fake" ones we created to be updated later.
 
