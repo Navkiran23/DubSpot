@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path');
 const sql = require('mssql');
 const {calculateWeek} = require("./Calendar");
+const {getGrades} = require("./gradeRetriever");
 const {pool, getCourseStatement, getReviewsStatement, addReviewStatement} = require("./sql");
 
 const app = express()
@@ -101,6 +102,15 @@ app.post('/submit-rating', (req, res) => {
     res.send("Thanks! Rating received.")
   })
 })
+
+/* feature delayed for now
+// returns average gpa from DawgPath for a specified course
+app.get('/api/gpa/:courseNumber', async (req, res) => {
+  const course_number = req.params.courseNumber.toString().replace("-", " ")
+  const data = await getGrades(course_number)
+  res.send(data)
+})
+ */
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}`)

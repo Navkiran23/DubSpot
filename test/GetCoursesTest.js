@@ -38,14 +38,15 @@ describe('GetCoursesTest', function() {
           .then(response => response.json())
           .then(data => {
             result = data
+            for (let course of data) {
+              let key = course.courseID.toString() + course.quarter.toString()
+              assert.ok(!courseSet.has(key))
+              courseSet.add(key)
+            }
           })
           .catch(error => {
             console.log(error)
           })
-      for (let course of result) {
-        assert.ok(!courseSet.has(course.courseID + course.quarter))
-        courseSet.add(course.courseID + course.quarter)
-      }
     })
   })
 

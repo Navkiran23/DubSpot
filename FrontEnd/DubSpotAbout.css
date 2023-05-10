@@ -1,19 +1,15 @@
-*{
+* {
   padding: 0;
   margin: 0;
   font-family: sans-serif;
 }
 
-/*New code*/
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   background-image: url('Images/AboutBackground.PNG');
   background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
 }
 
