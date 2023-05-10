@@ -103,12 +103,14 @@ app.post('/submit-rating', (req, res) => {
   })
 })
 
+/* feature delayed for now
 // returns average gpa from DawgPath for a specified course
-app.get('/api/reviews/:course_number', (req, res) => {
-  const course_number = req.params.course_number.toString().replace("-", " ")
-  const data = getGrades(course_number)
+app.get('/api/gpa/:courseNumber', async (req, res) => {
+  const course_number = req.params.courseNumber.toString().replace("-", " ")
+  const data = await getGrades(course_number)
   res.send(data)
 })
+ */
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}`)
