@@ -62,7 +62,7 @@ function PutDataIntoTable() {
      .then(data => {
          //console.log(data);
         for (let i = 0; i < data.length; i++) {
-            temp += "<tr>";
+            temp += "<tr onclick=myFunction(this)>";
             temp += "<td>" + data[i].course_number + "</td>";
             temp += "<td>" + data[i].class_title + "</td>";
             temp += "<td>" + data[i].quarter + "</td>";
@@ -77,7 +77,6 @@ function PutDataIntoTable() {
 }
 
 PutDataIntoTable();
-
 //Data for sidebar
 
 
