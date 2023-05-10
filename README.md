@@ -41,7 +41,7 @@ The testing features contains any testing files
 # How to build and test
 We have automated tests set up on github so in order to test the code, all you have to do is make a push to the repo and the tests will automatically run. Our system uses a SQL server hosted on Microsoft Azure and as of right now it will be online 24/7 so there is no need to set or start anything up for that. To launch the website you can follow the steps below:
 
-1.node needs to be installed.
+1. node needs to be installed.
 
 2. If you get an error then you might not have node installed so then you should run npm install
 
@@ -67,5 +67,5 @@ Searching for classes: Our search bar is fully functional to find a specific cla
 
 Adding event to a Calendar: You can view and change the dates on the calendar but you cannot add a specific event to the calendar yet. We plan on doing another table for that which will hold a bunch of scripts. The functionality will include adding and deleting events. Along with this you will be able to edit events. You can move through the arrows to change the dates. Along with this our today button takes you back to todays date.
 
-Leaving a review: Not currently functional, however we do have the funcitonality of reviews being different based on what course you select. We are currently populating the reviews with "fake" ones we created to be updated later.
+Leaving a review: Somewhat functional, however we do have the funcitonality of reviews being different based on what course you select. We are currently populating the reviews with "fake" ones we created to be updated later.
 
