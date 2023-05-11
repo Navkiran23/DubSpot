@@ -90,13 +90,15 @@ app.get('/api/reviews/:courseID', (req, res) => {
 // @requires form body contains courseID, username, rating, and review
 // receives post requests for rating submission and sends it to the database
 app.post('/submit-rating', (req, res) => {
-  const courseID = req.body.courseID
-  const username = req.body.username
-  const rating = req.body.rating
-  const review = req.body.review
+  const courseID = req.body.courseID.toString()
+  const username = req.body.username.toString()
+  const rating = parseInt(req.body.rating)
+  const review = req.body.review.toString()
+  console.log(courseID, username, rating, review)
   addReviewStatement.execute({addReviewCourseID: courseID, addReviewUsername: username, rating: rating, review: review}, (err, result) => {
     if (err) {
-      res.send("Error encountered. Please try again.")
+      res.send(err)
+      // res.send("Error encountered. Please try again.")
       return
     }
     res.send("Thanks! Rating received.")

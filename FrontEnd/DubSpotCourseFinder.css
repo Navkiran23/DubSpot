@@ -14,8 +14,8 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-        overflow-x: hidden;
-        overflow-y: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 /*Comment sections css */
@@ -83,17 +83,22 @@ Username{
     text-align: center;
     overflow: hidden;
 }
-/*.container {
+.container {
     width: 400px;
     background: #ffff;
-    padding: 20px 30px;
+    padding: 10px 15px;
     border: 1px solid #444;
     border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-top: 100px;
+  position: absolute;
+    margin-top: 70px;
+  margin-left: 1050px;
+  margin-bottom: 600px;
+  z-index:100;
+  overflow: scroll;
 }
  .container .post {
     display: none;
@@ -172,10 +177,10 @@ form .textarea textarea{
 form .textarea2 {
     height: 100px;
     width: 100%;
-    overflow: hidden;
+    overflow: scroll;
 }
 form .textarea2 textarea{
-    height: 100px;
+    height: 60px;
     width: 100%;
     outline: none;
     color: #eee;
@@ -184,6 +189,23 @@ form .textarea2 textarea{
     padding: 10px;
     font-size: 17px;
     resize: none;
+}
+form .textarea3 {
+  height: 100px;
+  width: 100%;
+  overflow: scroll;
+}
+form .textarea3 textarea{
+  height: 30px;
+  width: 100%;
+  outline: none;
+  color: #eee;
+  border: 1px solid #333;
+  background: #222;
+  padding: 10px;
+  font-size: 17px;
+  resize: none;
+  margin-top: 0px;
 }
 form .btn {
     height: 45px;
@@ -205,7 +227,7 @@ form .btn button{
 }
 form .btn button:hover{
     button: #1b1b1b;
-} */
+}
 /*Header Code*/
 a:link {
     text-decoration: none;
@@ -267,7 +289,7 @@ nav1 {
   }
   /*Filter table code */
   .TableWrapper {
-  overflow x : hidden;
+  overflow-x : hidden;
   }
   #myInput {
     background-position: 10px 12px; /* Position the search icon */
