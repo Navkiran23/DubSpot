@@ -38,7 +38,6 @@ for (let i = 0; i < data.length; i++) {
   class_name = data[i].Course_Number
   class_name = class_name.substring(0, 7)
   gpa = data[i].Average_GPA
-  console.log(gpa)
   if (grades.has(class_name)) {
     let num = num_grades.get(class_name)
     let current_gpa = grades.get(class_name)
@@ -52,7 +51,8 @@ for (let i = 0; i < data.length; i++) {
   }
 }
 
-grades.forEach((value, key) => {
-  console.log(`Key: ${key}, Value: ${value}`)
-})
+// Testing
+// grades.forEach((value, key) => {
+//   console.log(`Key: ${key}, Value: ${value}`)
+// })
 
