@@ -77,8 +77,8 @@ async function getData() {
         }
         saveCSV()
     } catch (error) {
-//        console.log(obj.classes[count].id)
-        console.log(error)
+//     console.log(obj.classes[count].id)
+//     console.log(error)
     }
 }
 
