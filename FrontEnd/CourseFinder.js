@@ -3,6 +3,7 @@ const post = document.querySelector(".post");
 const widget = document.querySelector(".star-widget");
 const editBtn = document.querySelector(".edit");
 
+const button = document.querySelector("ReviewLeaveButton");
 btn.onclick = ()=>{
   widget.style.display ="none";
   post.style.display ="block";
@@ -81,12 +82,9 @@ function displayDataOnSidebar(urlString) {
     .then(data => {
       let displayString = "";
       for (let i = 0; i < data.length; i++) {
-        // displayString += "<div class=\"InformationDisplay\">";
         displayString += "<h2>" + data[i].class_title + "</h2>";
-        // temp += "<h3>" + data[i].class_title + "</h3>";
-        displayString += "<h4>" + data[i].prerequisite + "</h4>";
-        displayString += "<h5>" + data[i].credits + "</h5>";
-        // displayString += "</div>"
+        displayString += "<h4>"+ "Prerequisite: " + data[i].prerequisite + "</h4>";
+        displayString += "<h5>" + "Credits: " + data[i].credits + "</h5>";
         console.log(displayString);
       }
      document.getElementById("courseinfo").innerHTML = displayString;
@@ -116,4 +114,29 @@ async function displayReviews(urlString) {
       })
 }
 
-displayDataOnSidebar();
+PutDataIntoTable().then(r => {
+  attachOnClicksToRows()
+});
+
+//Put the review into the template
+let Z = "";
+async function PutReview() {
+  //fetch all the courses
+  await fetch("/api/courses/all")
+      .then(response => response.json())
+      .then(data => {
+        for (let i = 0; i < data.length; i++) {
+          let key = `${data[i].course_id.toString()}/${data[i].quarter.toString()}`
+          key = key.replace(" ","-")
+          Z += `<div class="Commentbox" id="${key}">`
+          Z += "<h1>" + data[i].username + "</h1>"
+          Z += "<h7>" + data[i].rating + "</h7>"
+          Z += "<p>" + data[i].review + "</p>"
+          Z += "<div>"
+        }
+        document.getElementById("data").innerHTML = Z
+      })
+      .catch(error => {
+        console.log(error)
+      })
+}
