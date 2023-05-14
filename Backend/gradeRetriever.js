@@ -51,8 +51,10 @@ for (let i = 0; i < data.length; i++) {
   }
 }
 
-// Testing
 // grades.forEach((value, key) => {
 //   console.log(`Key: ${key}, Value: ${value}`)
 // })
 
+module.exports = {
+  grades: grades
+}

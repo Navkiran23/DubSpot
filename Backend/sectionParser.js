@@ -13,7 +13,7 @@ let course_id
 
 // add any course id to get use api
 let api_string = 'https://course-app-api.planning.sis.uw.edu/api/courses/CSE%20121/details?courseId='
-const headers = ["activity_id", "course_id", "meeting_times", "meeting_days", "building", "room", "quarter"]
+const headers = ["activity_id", "course_id", "quarter", "building", "room", "meeting_days", "meeting_times"]
 section_array.push(headers)
 
 
@@ -50,7 +50,7 @@ async function getData() {
                     building = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].building
                     room = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].room
                     course_id = obj.classes[i].courseId
-                    const newRow = [activity_id, course_id, meeting_time, meeting_days, building, room, quarter]
+                    const newRow = [activity_id, course_id, quarter, building, room, meeting_days, meeting_time]
                     section_array.push(newRow)
                     count++
                 }
@@ -90,7 +90,7 @@ function arrayToCSV(data) {
 function saveCSV() {
     let csv = arrayToCSV(section_array)
     const fs = require('fs')
-    fs.writeFile('sections.csv', csv, err => {
+    fs.writeFile('./data/sections.csv', csv, err => {
         if (err) {
             console.error(err)
         }
