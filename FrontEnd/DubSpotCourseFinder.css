@@ -17,7 +17,14 @@ body {
     overflow-x: hidden;
     overflow-y: scroll;
 }
-
+.FourthBody {
+    display: grid;
+    height: 100%;
+    place-items: center;
+    text-align: center;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
 /*Comment sections css */
 .SecondBody {
     display: grid;
@@ -79,155 +86,13 @@ Username{
     background: transparent;
     display: grid;
     height: 100%;
+    width: 100%;
     place-items: center;
     text-align: center;
     overflow: hidden;
-}
-.container {
-    width: 400px;
-    background: #ffff;
-    padding: 10px 15px;
-    border: 1px solid #444;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  position: absolute;
-    margin-top: 70px;
-  margin-left: 1050px;
-  margin-bottom: 600px;
-  z-index:100;
-  overflow: scroll;
-}
- .container .post {
-    display: none;
-}
-.container .text {
-    font-size: 25px;
-    color: #666;
-    font-weight: 500;
-}
-.container .edit {
-    position: absolute;
-    right: 10px;
-    top: 5px;
-    font-size: 16px;
-    color: #666;
-    font-weight: 500;
-    cursor: pointer
-}
-.container .edit:hover {
-    text-decoration: underline;
-}
-.container .star-widget input{
-    display: none;
-}
-.star-widget label {
-    font-size: 40px;
-    color: rgb(78, 86, 120);
-    padding: 10px;
-    float: center;
-    transition: all 0.2s ease;
+    margin: 0 auto;
 }
 
-input:not(:checked) ~ label:hover,
-input:not(:checked) ~ label:hover ~ label{
-    color: rgba(32, 34, 43, 1);
-}
-input:checked ~ label{
-    color: rgb(78, 86, 120);
-}
-#rate-1:checked ~ form header:before{
-}
-.container form {
-    display:none;
-}
-input:checked ~ form {
-    display: block;
-}
-form header {
-    width: 100%;
-    font-size: 25px;
-    color: rgb(78, 86, 120);
-    font-weight: 500;
-    margin: 5px 0 20px 0;
-    text-align: center;
-    transition: all 0.2s ease;
-}
-form header:before {
-}
-
-form .textarea {
-    height: 100px;
-    width: 100%;
-    overflow: hidden;
-}
-form .textarea textarea{
-    height: 40px;
-    width: 100%;
-    outline: none;
-    color: #eee;
-    border: 1px solid #333;
-    background: #222;
-    padding: 10px;
-    font-size: 17px;
-    resize: none;
-}
-form .textarea2 {
-    height: 100px;
-    width: 100%;
-    overflow: scroll;
-}
-form .textarea2 textarea{
-    height: 60px;
-    width: 100%;
-    outline: none;
-    color: #eee;
-    border: 1px solid #333;
-    background: #222;
-    padding: 10px;
-    font-size: 17px;
-    resize: none;
-}
-form .textarea3 {
-  height: 100px;
-  width: 100%;
-  overflow: scroll;
-}
-form .textarea3 textarea{
-  height: 30px;
-  width: 100%;
-  outline: none;
-  color: #eee;
-  border: 1px solid #333;
-  background: #222;
-  padding: 10px;
-  font-size: 17px;
-  resize: none;
-  margin-top: 0px;
-}
-form .btn {
-    height: 45px;
-    width: 100%;
-    margin: 15px 0;
-}
-form .btn button{
-    height: 100%;
-    width: 100%;
-    border: 1px solid #444;
-    outline: none;
-    background: #222;
-    color: #999;
-    font-size: 17;
-    font-weight: 500;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-form .btn button:hover{
-    button: #1b1b1b;
-}
 /*Header Code*/
 a:link {
     text-decoration: none;
@@ -335,34 +200,12 @@ nav1 {
   }
 #myTable tbody {
        /* Add a grey background color to the table header and on hover */
-       background:  rgb(0,255,255, 0.5);
+       background: background-color: #b3cdd1;
+                   background-image: linear-gradient(315deg, #b3cdd1 0%, #9fa4c4 74%);
+;
 }
 .wrap {
   overflow: hidden;
-}
-
-  /*Leave review button stylization*/
-  .ReviewLeaveButton {
-    background-color: rgb(78, 86, 120);
-    border: none;
-    color: white;
-    width: 100px;
-    height: 45px;
-    padding: 16px 32px;
-    text-align: center;
-    font-size: 8px;
-    margin: 4px 2px;
-    position: absolute;
-    top: 60px;
-    right: 10px;
-    opacity: 1;
-    transition: 0.3s;
-    display: inline-block;
-    text-decoration: none;
-    cursor: pointer;
-  }
-.ReviewLeaveButton:hover {
-    opacity: 0.5
 }
 
 /*Information display-Tried to get width to
@@ -375,7 +218,8 @@ not go behind other components but failed
 .InformationDisplay {
     height: 100%;
     width: 400px;
-    background-color: rgba(32, 34, 43, 1);
+background-color: #4c4177;
+background-image: linear-gradient(315deg, #4c4177 0%, #2a5470 74%);;
     border: 5px solid white;
     position: absolute;
     top: 0px;
@@ -392,7 +236,14 @@ not go behind other components but failed
     margin-left: 5px;
     font-size: 30px;
     font-weight: bold;
-    color: #ffffff;
+    /*color: #ffffff;*/
+        position: relative;
+        color: white;
+        margin-bottom:20px;
+}
+h2:hover {
+  font-variation-settings: "wght" 582;
+  letter-spacing: 1px;
 }
 .InformationDisplay h3 {
     text-align: left;
@@ -405,7 +256,7 @@ not go behind other components but failed
     text-align: left;
     font-size: 14px;
     font-weight: none;
-    color: rgb(0,255,255);
+    color: #EACAFF;
     margin-left: 5px;
 }
 .InformationDisplay h5 {
@@ -413,7 +264,7 @@ not go behind other components but failed
     margin-left: 5px;
     font-size: 14px;
     font-weight: none;
-    color: rgb(240,248,255);
+    color: #F4E3FF;
 }
 .InformationDisplay h6 {
     text-align: left;

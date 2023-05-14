@@ -4,17 +4,6 @@ const widget = document.querySelector(".star-widget");
 const editBtn = document.querySelector(".edit");
 
 const button = document.querySelector("ReviewLeaveButton");
-btn.onclick = ()=>{
-  widget.style.display ="none";
-  post.style.display ="block";
-  return false;
-}
-post.onclick = ()=> {
-  var review = document.getElementByID('textarea');
-  //How to display this in a comment
-  //How to get number of stars clicked!
-}
-
 //Filter table Javascript
 function myFunction() {
   // Declare variables

@@ -261,7 +261,7 @@ tbody tr td {
 }
 
 td:hover:after {
-  content: "+";
+ /* content: "+"; */
   vertical-align: middle;
   font-size: 1.875rem;
   font-weight: 100;
