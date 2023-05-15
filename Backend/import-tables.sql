@@ -27,3 +27,36 @@ values ('95de2977-35da-441d-9754-47762beafc84', 'robert', 4, 'this is a review b
 
 insert into Reviews (course_id, username, rating, review)
 values ('eabcdd6e-3e41-4282-827c-1bea26086781', 'bob', 3, 'i took this class with lebron');
+
+insert into Reviews (course_id, username, rating, review)
+values ('507a1bbf-f86c-42bb-b8f8-8612b56b72e4', 'james', 5, 'i took this class with lebrussel');
+
+insert into Reviews (course_id, username, rating, review)
+values ('507a1bbf-f86c-42bb-b8f8-8612b56b72e4', 'mallo', 4, 'This class was amazing');
+
+insert into Reviews (course_id, username, rating, review)
+values ('422e4afa-74b9-4e25-b320-c484d16f0c23', 'david', 5, 'I love brussels sprouts');
+
+insert into Reviews (course_id, username, rating, review)
+values ('8765b136-872c-441e-8597-f04550611cdc', 'macintosh', 5, 'this is a good class');
+
+insert into Reviews (course_id, username, rating, review)
+values ('da10d70f-17a9-4975-ab11-6fd654ffc0c4', 'jordan', 2, 'this class was super hard');
+
+insert into Reviews (course_id, username, rating, review)
+values ('d4fb41e9-b53f-4093-92a6-2790786144e6', 'jim', 4, 'i took this class with lebrussel sprouts');
+
+insert into Reviews (course_id, username, rating, review)
+values ('d4fb41e9-b53f-4093-92a6-2790786144e6', 'lebrussel', 4, 'kevin duranch was a great teacher');
+
+insert into Reviews (course_id, username, rating, review)
+values ('3f2804ee-24e3-48bb-aa87-6b12cc919a87', 'jimothy', 5, 'fun and easy class, wish it was more challening. I would highly recommend taking this class with james jimothy.');
+
+insert into Reviews (course_id, username, rating, review)
+values ('e38904c7-407c-44c0-aae8-4e402b77af1d', 'namath', 1, 'never take this class');
+
+insert into Reviews (course_id, username, rating, review)
+values ('da10d70f-17a9-4975-ab11-6fd654ffc0c4', 'carter', 3, 'okay class, kind of interesting');
+
+
+

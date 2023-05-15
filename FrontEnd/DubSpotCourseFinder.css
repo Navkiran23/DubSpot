@@ -1,7 +1,7 @@
 *{
-  padding: 0;
-  margin: 0;
-  font-family: sans-serif;
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
 }
 body {
     margin: 0px;
@@ -97,19 +97,19 @@ Username{
 a:link {
     text-decoration: none;
 }
-  
+
 a:visited {
     text-decoration: none;
 }
-  
+
 a:hover {
     text-decoration: none;
 }
-  
+
 a:active {
     text-decoration: none;
 }
-  
+
 a {
     color: white;
 }
@@ -124,51 +124,51 @@ nav1 {
     align-items: center;
     min-height: 8vh;
     background-color: rgb(255, 255, 255);
-  }
-  .Web-link {
+}
+.Web-link {
     display: flex;
     justify-content: space-around;
     width: 30%;
-  }
-  .Web-link li {
+}
+.Web-link li {
     list-style: none;
-  }
-  .heading {
+}
+.heading {
     color: rgba(32, 34, 43, 1);
     text-transform: capitalize;
     letter-spacing: 5px;
     font-size: 20px;
     font-family: sans-serif;
-  }
-  .Web-link a {
+}
+.Web-link a {
     color: rgb(78, 86, 120);
     text-align: none;
     letter-spacing: 3px;
     font-size: 14px;
     padding: 14px, 16px;
     font-family: sans-serif;
-  }
-  .Web-link li a:hover:not(.active) {
+}
+.Web-link li a:hover:not(.active) {
     /*background-color: rgb(88, 96, 132);*/
     text-decoration: underline;
-  }
-  /*Filter table code */
-  .TableWrapper {
-  overflow-x : hidden;
-  }
-  #myInput {
+}
+/*Filter table code */
+.TableWrapper {
+    overflow-x : hidden;
+}
+#myInput {
     background-position: 10px 12px; /* Position the search icon */
     background-repeat: no-repeat; /* Do not repeat the icon image */
     width: 50%; /* Full-width */
     font-size: 16px; /* Increase font-size */
     padding: 12px 20px 12px 40px; /* Add some padding */
     margin-bottom: 12px; /* Add some space below the input */
-  }
+}
 
-  #myTable {
-   overflow-y:scroll;
-   height:70%;
-   display:block;
+#myTable {
+    overflow-y:scroll;
+    height:70%;
+    display:block;
     background: #ffff;
     border-collapse: collapse; /* Collapse borders */
     width: 60%; /* Full-width */
@@ -177,35 +177,35 @@ nav1 {
     position: absolute;
     top: 175px;
     left: 30px;
-  }
+}
 
-  input[type=text] {
+input[type=text] {
     border-radius: 4px;
     position: absolute;
     top: 100px;
     left: 30px;
-  }
+}
 #myTable tr {
     width: 60%;
 
 }
-  #myTable th, #myTable td, #myTable thead, #myTable tbody  {
+#myTable th, #myTable td, #myTable thead, #myTable tbody  {
     text-align: left; /* Left-align text */
     padding: 12px; /* Add padding */
     width: 60%;
 
-  }
-  #myTable thead.header {
+}
+#myTable thead.header {
     background: white;
-  }
+}
 #myTable tbody {
-       /* Add a grey background color to the table header and on hover */
-       background: background-color: #b3cdd1;
-                   background-image: linear-gradient(315deg, #b3cdd1 0%, #9fa4c4 74%);
+    /* Add a grey background color to the table header and on hover */
+    background: background-color: #b3cdd1;
+    background-image: linear-gradient(315deg, #b3cdd1 0%, #9fa4c4 74%);
 ;
 }
 .wrap {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 /*Information display-Tried to get width to
@@ -218,8 +218,8 @@ not go behind other components but failed
 .InformationDisplay {
     height: 100%;
     width: 400px;
-background-color: #4c4177;
-background-image: linear-gradient(315deg, #4c4177 0%, #2a5470 74%);;
+    background-color: #4c4177;
+    background-image: linear-gradient(315deg, #4c4177 0%, #2a5470 74%);;
     border: 5px solid white;
     position: absolute;
     top: 0px;
@@ -227,7 +227,7 @@ background-image: linear-gradient(315deg, #4c4177 0%, #2a5470 74%);;
     z-index: -1;
     overflow-x: hidden;
     overflow-y: scroll;
-  }
+}
 
 /*Course title*/
 .InformationDisplay h2 {
@@ -237,13 +237,13 @@ background-image: linear-gradient(315deg, #4c4177 0%, #2a5470 74%);;
     font-size: 30px;
     font-weight: bold;
     /*color: #ffffff;*/
-        position: relative;
-        color: white;
-        margin-bottom:20px;
+    position: relative;
+    color: white;
+    margin-bottom:20px;
 }
 h2:hover {
-  font-variation-settings: "wght" 582;
-  letter-spacing: 1px;
+    font-variation-settings: "wght" 582;
+    letter-spacing: 1px;
 }
 .InformationDisplay h3 {
     text-align: left;
