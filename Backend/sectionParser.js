@@ -10,10 +10,12 @@ let building
 let room
 let quarter
 let course_id
+let course_desc
 
 // add any course id to get use api
 let api_string = 'https://course-app-api.planning.sis.uw.edu/api/courses/CSE%20121/details?courseId='
-const headers = ["activity_id", "course_id", "quarter", "building", "room", "meeting_days", "meeting_times"]
+// column names for our csv file
+const headers = ["activity_id", "course_id", "quarter", "building", "room", "meeting_days", "meeting_times", "course_description"]
 section_array.push(headers)
 
 
@@ -31,30 +33,40 @@ async function getData() {
         for (let i = 0; i < class_apis.length; i++) {
             let count = 0
             let count2 = 1
+            // retrieve data for each class
             let specData = await fetchData(class_apis[i])
-            while (specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2] !== undefined) {
-                while (specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count] !== undefined) {
-                    quarter = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].term
-                    if (quarter === 'Autumn 2023') {
-                        quarter = "AU 23"
-                    } else if (quarter === 'Summer 2023') {
-                        quarter = "SU 23"
+            // outer while loop is for if the class is offered for more than one quarter. will loop through all quarters
+            console.log(class_apis[i])
+            if (specData.courseOfferingInstitutionList[0] !== undefined) {
+                while (specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2] !== undefined) {
+                    // gets the class description for each class
+                    course_desc = specData.courseSummaryDetails.courseDescription
+                    // loops through all the section offerings. A, AA ,AB, etc.
+                    while (specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count] !== undefined) {
+                        quarter = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].term
+                        if (quarter === 'Autumn 2023') {
+                            quarter = "AU 23"
+                        } else if (quarter === 'Summer 2023') {
+                            quarter = "SU 23"
+                        }
+                        // formats the class title to "CSE NUM" format
+                        activity_id = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].activityId
+                        activity_id = activity_id.substring(7)
+                        activity_id = activity_id.replace(':', ' ')
+                        activity_id = activity_id.replace(':', ' ')
+                        activity_id = activity_id.replace(' ', '')
+                        meeting_days = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].days
+                        meeting_time = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].time
+                        building = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].building
+                        room = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].room
+                        course_id = obj.classes[i].courseId
+                        const newRow = [activity_id, course_id, quarter, building, room, meeting_days, meeting_time, course_desc]
+                        // adds a new row to the csv
+                        section_array.push(newRow)
+                        count++
                     }
-                    activity_id = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].activityId
-                    activity_id = activity_id.substring(7)
-                    activity_id = activity_id.replace(':', ' ')
-                    activity_id = activity_id.replace(':', ' ')
-                    activity_id = activity_id.replace(' ', '')
-                    meeting_days = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].days
-                    meeting_time = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].time
-                    building = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].building
-                    room = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].room
-                    course_id = obj.classes[i].courseId
-                    const newRow = [activity_id, course_id, quarter, building, room, meeting_days, meeting_time]
-                    section_array.push(newRow)
-                    count++
+                    count2--
                 }
-                count2--
             }
         }
         saveCSV()
