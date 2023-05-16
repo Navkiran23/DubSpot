@@ -15,6 +15,7 @@ CREATE TABLE Courses (
     meeting_times varchar(40),
     gen_ed_req varchar (100),
     average_gpa varchar (5),
+    course_description varchar(1000),
     PRIMARY KEY (course_id, quarter)
 );
 

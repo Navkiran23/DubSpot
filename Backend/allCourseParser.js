@@ -9,7 +9,8 @@ let class_apis = []
 let classArray = []
 
 const headers = ["course id", "quarter", "id", "instructor", "class_title", "course_number",
-    "prerequisite", "credits", "level", "meeting_days", "meeting_times", "gen_ed_req", "average_gpa"]
+    "prerequisite", "credits", "level", "meeting_days", "meeting_times", "gen_ed_req", "average_gpa", "course_desc"]
+
 classArray.push(headers)
 
 let id
@@ -27,6 +28,7 @@ let api_string = 'https://course-app-api.planning.sis.uw.edu/api/courses/CSE%201
 let result
 let quarter
 let instructor
+let course_desc
 
 // gets the data for the columns that we need
 async function getData() {
@@ -73,8 +75,10 @@ async function getData() {
             days = specData.courseOfferingInstitutionList[0].courseOfferingTermList[num].activityOfferingItemList[0].meetingDetailsList[0].days
             times = specData.courseOfferingInstitutionList[0].courseOfferingTermList[num].activityOfferingItemList[0].meetingDetailsList[0].time
             instructor = specData.courseOfferingInstitutionList[0].courseOfferingTermList[num].activityOfferingItemList[0].instructor
+            course_desc = specData.courseSummaryDetails.courseDescription
             // puts the information of each class into an array
-            const newClass = [course_id.toString(), quarter.toString(), id, instructor, class_title, class_code, prereq, credits, level, days, times, genreq, average_gpa]
+            const newClass = [course_id.toString(), quarter.toString(), id, instructor, class_title, class_code, prereq, credits, level, days, times, genreq, average_gpa, course_desc]
+
             classArray.push(newClass)
             count++
         }
@@ -106,13 +110,17 @@ getData()
 
 // converts the array to CSV format
 function arrayToCSV(data) {
-    return data.map(row =>
-        row
-            .map(String)
-            .map(v => v.replaceAll('"', '""'))
-            .map (v => `"${v}"`)
-            .join(',')
-    ).join('\r\n')
+    try {
+        return data.map(row =>
+            row
+                .map(String)
+                .map(v => v.replaceAll('"', '""'))
+                .map(v => `"${v}"`)
+                .join(',')
+        ).join('\r\n')
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 // saves the CSV
@@ -120,6 +128,7 @@ function saveCSV() {
      let csv = arrayToCSV(classArray)
      const fs = require('fs')
      fs.writeFile('./data/courses.csv', csv, err => {
+         console.log('SAVED')
          if (err) {
              console.error(err)
          }

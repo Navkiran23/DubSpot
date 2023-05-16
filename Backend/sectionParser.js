@@ -10,12 +10,11 @@ let building
 let room
 let quarter
 let course_id
-let course_desc
 
 // add any course id to get use api
 let api_string = 'https://course-app-api.planning.sis.uw.edu/api/courses/CSE%20121/details?courseId='
 // column names for our csv file
-const headers = ["activity_id", "course_id", "quarter", "building", "room", "meeting_days", "meeting_times", "course_description"]
+const headers = ["activity_id", "course_id", "quarter", "building", "room", "meeting_days", "meeting_times"]
 section_array.push(headers)
 
 
@@ -39,8 +38,6 @@ async function getData() {
             console.log(class_apis[i])
             if (specData.courseOfferingInstitutionList[0] !== undefined) {
                 while (specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2] !== undefined) {
-                    // gets the class description for each class
-                    course_desc = specData.courseSummaryDetails.courseDescription
                     // loops through all the section offerings. A, AA ,AB, etc.
                     while (specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count] !== undefined) {
                         quarter = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].term
@@ -60,7 +57,7 @@ async function getData() {
                         building = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].building
                         room = specData.courseOfferingInstitutionList[0].courseOfferingTermList[count2].activityOfferingItemList[count].meetingDetailsList[0].room
                         course_id = obj.classes[i].courseId
-                        const newRow = [activity_id, course_id, quarter, building, room, meeting_days, meeting_time, course_desc]
+                        const newRow = [activity_id, course_id, quarter, building, room, meeting_days, meeting_time]
                         // adds a new row to the csv
                         section_array.push(newRow)
                         count++

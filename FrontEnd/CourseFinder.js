@@ -71,14 +71,15 @@ function displayDataOnSidebar(urlString) {
     .then(data => {
       let displayString = "";
       for (let i = 0; i < data.length; i++) {
-        displayString += "<h2>" + data[i].class_title + "</h2>";
-        displayString += "<h4>"+ "Prerequisite: " + data[i].prerequisite + "</h4>";
-        displayString += "<h5>" + "Credits: " + data[i].credits + "</h5>";
+        displayString += "<h2>" + data[i].class_title + "</h2>"
+        displayString += "<h4>"+ "Prerequisite: " + data[i].prerequisite + "</h4>"
+        displayString += "<h5>" + "Credits: " + data[i].credits + "</h5>"
         let gpa = data[i].average_gpa
         if (gpa === "undef") {
           gpa = "N/A"
         }
         displayString += "<h5>" + "Average GPA: " + gpa + "</h5>";
+        displayString += "<h5>" + "Course Description: " + data[i].course_description + "</h5>"
         console.log(displayString);
       }
      document.getElementById("courseinfo").innerHTML = displayString;
