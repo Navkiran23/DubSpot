@@ -27,4 +27,5 @@ See section 'Test Addition' in the DubSpot living document: https://docs.google.
 
 ## How to build a release of the software:
 Before building a release, make sure to run all tests in the /test directory. 
-Deploy 
+Deploy the release by sending a pull request to the main repository. When code is pushed to the main 
+repository, the new release will automatically deploy to the Azure Web Services. 
