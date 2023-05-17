@@ -27,10 +27,10 @@ CREATE TABLE Sections (
     room varchar(10),
     meeting_days varchar(10),
     meeting_times varchar(20),
-    course_description varchar(1000),
     PRIMARY KEY (activity_id, course_id, quarter),
     FOREIGN KEY (course_id, quarter) REFERENCES Courses(course_id, quarter)
 );
+
 
 CREATE TABLE Users (
     email varchar(100) PRIMARY KEY,
