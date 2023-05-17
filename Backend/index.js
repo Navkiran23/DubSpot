@@ -1,19 +1,19 @@
 const express = require('express')
-const path = require('path');
-const sql = require('mssql');
-const {calculateWeek} = require("./Calendar");
-const {getGrades} = require("./gradeRetriever");
-const {pool, getCourseStatement, getReviewsStatement, addReviewStatement} = require("./sql");
+const path = require('path')
+const sql = require('mssql')
+const {calculateWeek} = require("./Calendar")
+const {getGrades} = require("./gradeRetriever")
+const {pool, getCourseStatement, getReviewsStatement, addReviewStatement} = require("./sql")
 
 const app = express()
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static('FrontEnd'));
-const root = path.join(__dirname, '..');
-const port = 3000;
+app.use(express.urlencoded({ extended: true }))
+app.use(express.static('FrontEnd'))
+const root = path.join(__dirname, '..')
+const port = process.env.PORT || 3000
 
 // returns the Login page
 app.get('/', (req, res) => {
-  res.sendFile(path.join(root, 'FrontEnd', 'DubSpotWeb.html'))
+  res.sendFile(path.join(root, 'FrontEnd', 'DubspotWeb.html'))
 })
 
 // returns the Calendar page
@@ -52,8 +52,8 @@ app.get('/api/calendar/:offset', (req, res) => {
 app.get('/api/courses/all', (req, res) => {
   pool.query('SELECT course_id, quarter, course_number, class_title FROM Courses ORDER BY course_number ASC', (err, result) => {
     if (err) {
-      console.log(err);
-      return;
+      console.log(err)
+      return
     }
     // handle query results
     res.send(result.recordset)

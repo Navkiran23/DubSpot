@@ -9,7 +9,7 @@ describe('CalendarAPITest', function() {
     it('should return 7 days of the current week', async function () {
       let result
       const weekArray = calendar.calculateWeek(0)
-      await fetch(`http://localhost:3000/api/calendar/0`)
+      await fetch(`https://dubspot.azurewebsites.net/api/calendar/0`)
           .then(response => response.json())
           .then(data => {
             result = data.map(dateString => new Date(dateString))
@@ -17,9 +17,11 @@ describe('CalendarAPITest', function() {
           .catch(error => {
             console.log(error)
           })
-      for (let i = 0; i < weekArray.length; i++) {
-        assert.ok(weekArray[i] - result[i] < bound)
-      }
+          .finally(() => {
+            for (let i = 0; i < weekArray.length; i++) {
+              assert.ok(weekArray[i].getTime() - result[i].getTime() < bound)
+            }
+          })
     })
   })
 
@@ -27,7 +29,7 @@ describe('CalendarAPITest', function() {
     it('should return 7 days of the next week', async function () {
       let result
       const weekArray = calendar.calculateWeek(1)
-      await fetch(`http://localhost:3000/api/calendar/1`)
+      await fetch(`https://dubspot.azurewebsites.net/api/calendar/1`)
           .then(response => response.json())
           .then(data => {
             result = data.map(dateString => new Date(dateString))
@@ -35,9 +37,11 @@ describe('CalendarAPITest', function() {
           .catch(error => {
             console.log(error)
           })
-      for (let i = 0; i < weekArray.length; i++) {
-        assert.ok(weekArray[i] - result[i] < bound)
-      }
+          .finally(() => {
+            for (let i = 0; i < weekArray.length; i++) {
+              assert.ok(weekArray[i] - result[i] < bound)
+            }
+          })
     })
   })
 
@@ -45,7 +49,7 @@ describe('CalendarAPITest', function() {
     it('should return 7 days of the past week', async function () {
       let result
       const weekArray = calendar.calculateWeek(-1)
-      await fetch(`http://localhost:3000/api/calendar/-1`)
+      await fetch(`https://dubspot.azurewebsites.net/api/calendar/-1`)
           .then(response => response.json())
           .then(data => {
             result = data.map(dateString => new Date(dateString))
@@ -53,9 +57,11 @@ describe('CalendarAPITest', function() {
           .catch(error => {
             console.log(error)
           })
-      for (let i = 0; i < weekArray.length; i++) {
-        assert.ok(weekArray[i] - result[i] < bound)
-      }
+          .finally(() => {
+            for (let i = 0; i < weekArray.length; i++) {
+              assert.ok(weekArray[i] - result[i] < bound)
+            }
+          })
     })
   })
 
@@ -67,7 +73,7 @@ describe('CalendarAPITest', function() {
         const random = Math.floor(Math.random() * (max - min + 1)) + min;
         let result
         const weekArray = calendar.calculateWeek(random)
-        await fetch(`http://localhost:3000/api/calendar/${random}`)
+        await fetch(`https://dubspot.azurewebsites.net/api/calendar/${random}`)
             .then(response => response.json())
             .then(data => {
               result = data.map(dateString => new Date(dateString))
@@ -75,9 +81,11 @@ describe('CalendarAPITest', function() {
             .catch(error => {
               console.log(error)
             })
-        for (let i = 0; i < weekArray.length; i++) {
-          assert.ok(weekArray[i] - result[i] < bound)
-        }
+            .finally(() => {
+              for (let i = 0; i < weekArray.length; i++) {
+                assert.ok(weekArray[i] - result[i] < bound)
+              }
+            })
       }
     })
   })

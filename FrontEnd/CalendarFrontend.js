@@ -15,9 +15,9 @@ let offset = 0;
 
 // updates the date range and the headings for the days
 function updateHeading(weekArray) {
-  heading.innerHTML = `<strong>${weekArray[0].getDate()} ${months[weekArray[0].getMonth()]} 
-            –  ${weekArray[6].getDate()} ${months[weekArray[6].getMonth()]}</strong> 
-            ${weekArray[6].getFullYear()}`
+  heading.innerHTML = `<strong>${weekArray[0].getUTCDate()} ${months[weekArray[0].getUTCMonth()]} 
+            –  ${weekArray[6].getUTCDate()} ${months[weekArray[6].getUTCMonth()]}</strong> 
+            ${weekArray[6].getUTCFullYear()}`
 }
 
 // updates the headings for each specific day of the week
@@ -25,11 +25,11 @@ function updateDayHeading(weekArray) {
   let today = new Date();
   let htmlString = "<thead><tr><th class=\"headcol\"></th>"
   for (let i = 0; i < 7; i++) {
-    if (today.getDate() === weekArray[i].getDate() && today.getMonth() === weekArray[i].getMonth() &&
-        today.getFullYear() === weekArray[i].getFullYear()) {
-      htmlString += `<th class="today">${daysOfWeek[i]}, ${weekArray[i].getDate()}</th>`
+    if (today.getUTCDate() === weekArray[i].getUTCDate() && today.getUTCMonth() === weekArray[i].getUTCMonth() &&
+        today.getUTCFullYear() === weekArray[i].getUTCFullYear()) {
+      htmlString += `<th class="today">${daysOfWeek[i]}, ${weekArray[i].getUTCDate()}</th>`
     } else {
-      htmlString += `<th>${daysOfWeek[i]}, ${weekArray[i].getDate()}</th>`
+      htmlString += `<th>${daysOfWeek[i]}, ${weekArray[i].getUTCDate()}</th>`
     }
   }
   dayHeadings.innerHTML = htmlString
