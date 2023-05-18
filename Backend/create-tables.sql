@@ -15,6 +15,7 @@ CREATE TABLE Courses (
     meeting_times varchar(40),
     gen_ed_req varchar (100),
     average_gpa varchar (5),
+    course_description varchar(1000),
     PRIMARY KEY (course_id, quarter)
 );
 
@@ -29,6 +30,7 @@ CREATE TABLE Sections (
     PRIMARY KEY (activity_id, course_id, quarter),
     FOREIGN KEY (course_id, quarter) REFERENCES Courses(course_id, quarter)
 );
+
 
 CREATE TABLE Users (
     email varchar(100) PRIMARY KEY,

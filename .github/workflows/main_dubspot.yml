@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'Dubspot'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_70565862DC164CF3AAABB1B02B7D3C8E }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_20E40591B5A244D49F9E78F16EF54C55 }}
           package: .
