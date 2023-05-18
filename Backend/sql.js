@@ -1,6 +1,9 @@
 const sql = require('mssql')
 
-// sets up MS Azure SQL server
+/**
+ * sets up MS Azure SQL server and all prepared statements for use by index.js
+  */
+
 const config = {
   user: 'dubspot',
   password: '1zjknqajkzSx',
@@ -13,6 +16,8 @@ const pool = new sql.ConnectionPool(config)
 const getCourseStatement = new sql.PreparedStatement(pool)
 const getReviewsStatement = new sql.PreparedStatement(pool)
 const addReviewStatement = new sql.PreparedStatement(pool)
+const createAccountStatement = new sql.PreparedStatement(pool)
+const loginAccountStatement = new sql.PreparedStatement(pool)
 
 pool.connect(err => {
   if (err) {
@@ -20,10 +25,13 @@ pool.connect(err => {
     return;
   }
   console.log('Connected to Azure SQL Database')
+
   // prepared statement for getting course information
   getCourseStatement.input('getCourseCourseID', sql.VarChar(100))
   getCourseStatement.input('getCourseQuarter', sql.VarChar(6))
-  getCourseStatement.prepare('SELECT * FROM Courses WHERE course_id = @getCourseCourseID AND quarter = @getCourseQuarter')
+  getCourseStatement.prepare(
+      'SELECT * FROM Courses WHERE course_id = @getCourseCourseID AND quarter = @getCourseQuarter'
+  )
 
   // prepared statement for getting reviews for a specific course
   getReviewsStatement.input('getReviewsCourseID', sql.VarChar(100))
@@ -34,12 +42,32 @@ pool.connect(err => {
   addReviewStatement.input('addReviewUsername', sql.VarChar(100))
   addReviewStatement.input('rating', sql.Int)
   addReviewStatement.input('review', sql.VarChar(1000))
-  addReviewStatement.prepare('INSERT INTO Reviews (course_id, username, rating, review) VALUES(@addReviewCourseID, @addReviewUsername, @rating, @review)')
+  addReviewStatement.prepare(
+      'INSERT INTO Reviews (course_id, username, rating, review) ' +
+      'VALUES(@addReviewCourseID, @addReviewUsername, @rating, @review)'
+  )
+
+  // prepared statement for creating a new account
+  createAccountStatement.input('createAccountEmail', sql.VarChar(100))
+  createAccountStatement.input('createAccountUsername', sql.VarChar(100))
+  createAccountStatement.input('createAccountPassword', sql.VarBinary(144))
+  createAccountStatement.prepare(
+      'INSERT INTO Users (email, username, major, standing, password) ' +
+      'VALUES(@createAccountEmail, @createAccountUsername, null, null, @createAccountPassword)'
+  )
+
+  // prepared statement for logging into an existing account
+  loginAccountStatement.input('loginEmail', sql.VarChar(100))
+  loginAccountStatement.prepare(
+      'Select password FROM Users WHERE email = @loginEmail'
+  )
 })
 
 module.exports = {
   pool,
   getCourseStatement,
   getReviewsStatement,
-  addReviewStatement
+  addReviewStatement,
+  createAccountStatement,
+  loginAccountStatement
 }
