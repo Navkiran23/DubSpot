@@ -15,3 +15,4 @@ How to report a bug:
 Our help page contains a form where you can enter your name, email address, the subject and a message about what you may be having issues with. You can fill it out and report your bug here. Just remember when describing the bug that you are specific and concise. Let the developers know what the expected and the actual result that you have received on DubSpot is and the steps that you took before the bug appeared on your screen. List the web browser that you were currently using (E.g. Safari, Firefox, Google Chrome).
 
 Known bugs:
+The calendar is still limited on adding courses and filtering them out based on the user's requirements that must be met. The login page is still a work on progress for saving the user information into the database. 
