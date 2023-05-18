@@ -22,7 +22,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: true, // Enable secure cookies (requires HTTPS)
+    secure: false, // Enable secure cookies (requires HTTPS)
     httpOnly: true, // Disallow cookie access from client-side JavaScript
     maxAge: 2 * (24 * 60 * 60 * 1000) // days cookie is valid
   }
@@ -34,7 +34,8 @@ app.get('/', (req, res) => {
 })
 
 /**
- * Handles post request for account signups, and updates SQL database
+ * Handles post request for account signups, and updates SQL database if signup was successful
+ * with their email, username, and hashed password
  * @requires form body contains email, username, and password
  * @params email must be 100 or less chars
  * @params username must be 100 or less chars
@@ -56,12 +57,12 @@ app.post('/signup', (req, res) => {
   loginAccountStatement.execute({loginAccountEmail: email}, (err, result) => {
     if (err) {
       console.log(err)
-      res.send("Error encountered while attempting to create account. Please try again.")
+      res.status(500).send("Error encountered while attempting to create account. Please try again.")
       return
     }
     // handle query results. if account found with email, stop account creation
     if (result.recordset.length !== 0) {
-      res.send('Signup failed. Account with email already exists.')
+      res.status(400).send('Signup failed. Account with email already exists.')
       return
     }
 
@@ -70,13 +71,13 @@ app.post('/signup', (req, res) => {
     bcrypt.genSalt(saltRounds, (err, salt) => {
       if (err) {
         console.error('Error generating salt:', err)
-        res.send("Error encountered while attempting to create account. Please try again.")
+        res.status(500).send("Error encountered while attempting to create account. Please try again.")
       } else {
         // Hash the plaintext password using the generated salt
         bcrypt.hash(password, salt, (err, hash) => {
           if (err) {
             console.error('Error hashing password:', err)
-            res.send("Error encountered while attempting to create account. Please try again.")
+            res.status(500).send("Error encountered while attempting to create account. Please try again.")
           } else {
             console.log('Hashed password:', hash)
             const hashBuffer = Buffer.from(hash, 'utf8')
@@ -84,7 +85,7 @@ app.post('/signup', (req, res) => {
             createAccountStatement.execute({createAccountEmail: email, createAccountUsername: username, createAccountPassword: hashBuffer}, (err, result) => {
               if (err) {
                 console.log(err)
-                res.send("Error encountered while attempting to create account. Please try again.")
+                res.status(500).send("Error encountered while attempting to create account. Please try again.")
                 return
               }
               req.session.userId = email
@@ -98,7 +99,7 @@ app.post('/signup', (req, res) => {
 })
 
 /**
- * Handles post request for account login
+ * Handles post request for account login and verifies against the database that password is correct
  * @requires form body contains email and password
  * @params email must be 100 or less chars
  * @params password must be 144 or less varbinary
@@ -107,10 +108,10 @@ app.post('/signup', (req, res) => {
 app.post('/login', (req, res) => {
   const { email, password } = req.body
   if (email === undefined || password === undefined) {
-    res.send('Login failed. One or more fields are empty.')
+    res.status(400).send('Login failed. One or more fields are empty.')
     return
   } else if (email.length > 100 || password.length > 100) {
-    res.send('Login failed. One or more fields exceeded allowed length.')
+    res.status(400).send('Login failed. One or more fields exceeded allowed length.')
     return
   }
 
@@ -118,26 +119,27 @@ app.post('/login', (req, res) => {
   loginAccountStatement.execute({loginEmail: email}, (err, result) => {
     if (err) {
       console.log(err)
-      res.send("Error encountered while attempting to log in. Please try again.")
+      res.status(500).send("Error encountered while attempting to log in. Please try again.")
       return
     }
     // handle query results. if account not found, respond with error
     console.log(result.recordset)
     if (result.recordset.length !== 1) {
-      res.send('Login failed. Account not found.')
+      res.status(403).send('Login failed. Account not found.')
       return
     }
     const hashedPassword = Buffer.from(result.recordset[0].password).toString('utf8')
     bcrypt.compare(password, hashedPassword, (err, result) => {
       if (err) {
         console.error('Error comparing passwords:', err)
+        res.status(500).send('An error occurred. Please try again.')
       } else if (result) {
         console.log('Password is correct')
         req.session.userId = email
-        res.send('Login successful.')
+        res.send('Login Successful.')
       } else {
         console.log('Password is incorrect')
-        res.status(403)
+        res.status(403).send('Login failed. Password was incorrect.')
       }
     })
   })
