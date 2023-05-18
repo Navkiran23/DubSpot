@@ -3,6 +3,7 @@
     margin: 0;
     font-family: sans-serif;
 }
+
 body {
     margin: 0px;
     height: 100vh;
@@ -17,6 +18,7 @@ body {
     overflow-x: hidden;
     overflow-y: scroll;
 }
+
 .FourthBody {
     display: grid;
     height: 100%;
@@ -25,6 +27,7 @@ body {
     overflow-x: hidden;
     overflow-y: scroll;
 }
+
 /*Comment sections css */
 .SecondBody {
     display: grid;
@@ -34,6 +37,7 @@ body {
     overflow-x: hidden;
     overflow-y: scroll;
 }
+
 Comment_Containter{
     display: flex;
     justify-content: center;
@@ -41,6 +45,7 @@ Comment_Containter{
     flex-wrap: wrap;
     width:100%;
 }
+
 .Commentbox{
     width:300px;
     padding: 20px;
@@ -56,25 +61,29 @@ Comment_Containter{
     display: flex;
     align-items: center;
 }
+
 Username{
     display: flex;
     flex-direction: column;
 }
+
 .username h1{
     color: #ffffff;
     font-size: 12px;
     letter-spacing: 0.5px;
-
 }
+
 .StarRanking {
     color: #f9d71c;
 }
+
 .BoxHeadings{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
+
 .client-comment p{
     font-size: 10px;
     color: #4b4b4b;
@@ -113,7 +122,8 @@ a:active {
 a {
     color: white;
 }
-nav1 {
+
+nav {
     display: flex;
     position: fixed;
     z-index: 99;
@@ -125,14 +135,17 @@ nav1 {
     min-height: 8vh;
     background-color: rgb(255, 255, 255);
 }
+
 .Web-link {
     display: flex;
     justify-content: space-around;
     width: 30%;
 }
+
 .Web-link li {
     list-style: none;
 }
+
 .heading {
     color: rgba(32, 34, 43, 1);
     text-transform: capitalize;
@@ -140,6 +153,7 @@ nav1 {
     font-size: 20px;
     font-family: sans-serif;
 }
+
 .Web-link a {
     color: rgb(78, 86, 120);
     text-align: none;
@@ -148,14 +162,17 @@ nav1 {
     padding: 14px, 16px;
     font-family: sans-serif;
 }
+
 .Web-link li a:hover:not(.active) {
     /*background-color: rgb(88, 96, 132);*/
     text-decoration: underline;
 }
+
 /*Filter table code */
 .TableWrapper {
     overflow-x : hidden;
 }
+
 #myInput {
     background-position: 10px 12px; /* Position the search icon */
     background-repeat: no-repeat; /* Do not repeat the icon image */
@@ -185,25 +202,28 @@ input[type=text] {
     top: 100px;
     left: 30px;
 }
+
 #myTable tr {
     width: 60%;
 
 }
+
 #myTable th, #myTable td, #myTable thead, #myTable tbody  {
     text-align: left; /* Left-align text */
     padding: 12px; /* Add padding */
     width: 60%;
-
 }
+
 #myTable thead.header {
     background: white;
 }
+
 #myTable tbody {
     /* Add a grey background color to the table header and on hover */
-    background: background-color: #b3cdd1;
+    background-color: #b3cdd1;
     background-image: linear-gradient(315deg, #b3cdd1 0%, #9fa4c4 74%);
-;
 }
+
 .wrap {
     overflow: hidden;
 }
@@ -241,31 +261,36 @@ not go behind other components but failed
     color: white;
     margin-bottom:20px;
 }
+
 h2:hover {
     font-variation-settings: "wght" 582;
     letter-spacing: 1px;
 }
+
 .InformationDisplay h3 {
     text-align: left;
     font-size: 12px;
-    font-weight: none;
+    font-weight: normal;
     color: rgb(0,255,255, 0.5);;
     margin-left: 5px;
 }
+
 .InformationDisplay h4 {
     text-align: left;
     font-size: 14px;
-    font-weight: none;
+    font-weight: normal;
     color: #EACAFF;
     margin-left: 5px;
 }
+
 .InformationDisplay h5 {
     text-align: left;
     margin-left: 5px;
     font-size: 14px;
-    font-weight: none;
+    font-weight: normal;
     color: #F4E3FF;
 }
+
 .InformationDisplay h6 {
     text-align: left;
     margin-top: 30px;

@@ -109,7 +109,7 @@ font-size: 10px;
   a {
     color: white;
   }
-  nav1 {
+  nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
