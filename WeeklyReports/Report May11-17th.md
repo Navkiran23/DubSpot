@@ -34,16 +34,17 @@
 
 ### Diane
 - Last week's goals
-  - Need to create template for the coursefinder
-  - Need to work on importing in the database into the filtering tool
-  - Get functionality working for the update button on the profile page
+  - Write more backend tests
+  - Connect user logins to backend
+  - Connect calendar events to backend
+  - Connect profile page to backend
 - Progress and issues
   - Set up Express server
   - Connected getting reviews to backend
   - Connected sending reviews to backend
   - Connected retrieving courses to frontend
   - Connected retrieving specific courses to frontend
-  - Set up slideshow and presented in alpha release video
+  - Updated User Documentation
 - Next week's goals
   - Write more backend tests
   - Connect user logins to backend
@@ -52,22 +53,20 @@
 
 ### Darren
 - Last week's goals
-  - Need to get the database done and ready to be imported into the project
-  - Need to finalize structure for the SQL tables
-- Progress and issues
-  - set up SQL tables
-  - fixed frontend Calendar test
-  - Connected getting reviews to backend
-  - Connected sending reviews to backend
-  - Connected retrieving courses to frontend
-  - Connected retrieving specific courses to frontend
-  - Loaded fake user data into database
-  - Set up slideshow and presented in alpha release video
-- Next week's goals
   - Connect user logins to backend
   - Connect calendar events to backend
   - Connect profile page to backend
   - Set up cloud hosting for express server
+- Progress and issues
+  - Set up cloud hosting for express server
+  - Set up CD
+  - Fixed CI tests not passing
+  - Added more backend API tests
+  - updated Developer Documentation
+- Next week's goals
+  - Connect user logins to backend
+  - Connect calendar events to backend
+  - Connect profile page to backend
 
 ### Denny
 - Last week's goals
