@@ -1,9 +1,15 @@
 const express = require('express')
 const path = require('path')
 const sql = require('mssql')
+const bcrypt = require('bcrypt');
+const session = require('express-session')
 const {calculateWeek} = require("./Calendar")
-const {getGrades} = require("./gradeRetriever")
-const {pool, getCourseStatement, getReviewsStatement, addReviewStatement} = require("./sql")
+const {pool, getCourseStatement, getReviewsStatement, addReviewStatement, createAccountStatement, loginAccountStatement} = require("./sql")
+
+/**
+ * Entry file for Dubspot server. Powered by Express.js and handles all routes to Dubspot's domain.
+ * @type {*|Express}
+ */
 
 const app = express()
 app.use(express.urlencoded({ extended: true }))
@@ -11,13 +17,135 @@ app.use(express.static('FrontEnd'))
 const root = path.join(__dirname, '..')
 const port = process.env.PORT || 3000
 
+app.use(session({
+  secret: 'can-i-put-anything-here?',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: true, // Enable secure cookies (requires HTTPS)
+    httpOnly: true, // Disallow cookie access from client-side JavaScript
+    maxAge: 2 * (24 * 60 * 60 * 1000) // days cookie is valid
+  }
+}))
+
 // returns the Login page
 app.get('/', (req, res) => {
   res.sendFile(path.join(root, 'FrontEnd', 'DubspotWeb.html'))
 })
 
+/**
+ * Handles post request for account signups, and updates SQL database
+ * @requires form body contains email, username, and password
+ * @params email must be 100 or less chars
+ * @params username must be 100 or less chars
+ * @params password must be 144 or less varbinary
+ * @modifies session.userId
+ * @modifies SQL database with new account info
+ */
+app.post('/signup', (req, res) => {
+  const { email, username, password } = req.body
+  if (email === undefined || username === undefined || password === undefined) {
+    res.status(400).send('Signup failed. One or more fields are empty.')
+    return
+  } else if (email.length > 100 || username.length > 100 || password.length > 100) {
+    res.status(400).send('Signup failed. One or more fields exceeded allowed length.')
+    return
+  }
+
+  // check if account with email already exists
+  loginAccountStatement.execute({loginAccountEmail: email}, (err, result) => {
+    if (err) {
+      console.log(err)
+      res.send("Error encountered while attempting to create account. Please try again.")
+      return
+    }
+    // handle query results. if account found with email, stop account creation
+    if (result.recordset.length !== 0) {
+      res.send('Signup failed. Account with email already exists.')
+      return
+    }
+
+    // hash password
+    const saltRounds = 10
+    bcrypt.genSalt(saltRounds, (err, salt) => {
+      if (err) {
+        console.error('Error generating salt:', err)
+        res.send("Error encountered while attempting to create account. Please try again.")
+      } else {
+        // Hash the plaintext password using the generated salt
+        bcrypt.hash(password, salt, (err, hash) => {
+          if (err) {
+            console.error('Error hashing password:', err)
+            res.send("Error encountered while attempting to create account. Please try again.")
+          } else {
+            console.log('Hashed password:', hash)
+            const hashBuffer = Buffer.from(hash, 'utf8')
+            // create account in the database
+            createAccountStatement.execute({createAccountEmail: email, createAccountUsername: username, createAccountPassword: hashBuffer}, (err, result) => {
+              if (err) {
+                console.log(err)
+                res.send("Error encountered while attempting to create account. Please try again.")
+                return
+              }
+              req.session.userId = email
+              res.send("Thanks! Signup received.")
+            })
+          }
+        })
+      }
+    })
+  })
+})
+
+/**
+ * Handles post request for account login
+ * @requires form body contains email and password
+ * @params email must be 100 or less chars
+ * @params password must be 144 or less varbinary
+ * @modifies session.userId
+ */
+app.post('/login', (req, res) => {
+  const { email, password } = req.body
+  if (email === undefined || password === undefined) {
+    res.send('Login failed. One or more fields are empty.')
+    return
+  } else if (email.length > 100 || password.length > 100) {
+    res.send('Login failed. One or more fields exceeded allowed length.')
+    return
+  }
+
+  // retrieve account
+  loginAccountStatement.execute({loginEmail: email}, (err, result) => {
+    if (err) {
+      console.log(err)
+      res.send("Error encountered while attempting to log in. Please try again.")
+      return
+    }
+    // handle query results. if account not found, respond with error
+    console.log(result.recordset)
+    if (result.recordset.length !== 1) {
+      res.send('Login failed. Account not found.')
+      return
+    }
+    const hashedPassword = Buffer.from(result.recordset[0].password).toString('utf8')
+    bcrypt.compare(password, hashedPassword, (err, result) => {
+      if (err) {
+        console.error('Error comparing passwords:', err)
+      } else if (result) {
+        console.log('Password is correct')
+        req.session.userId = email
+        res.send('Login successful.')
+      } else {
+        console.log('Password is incorrect')
+        res.status(403)
+      }
+    })
+  })
+})
+
 // returns the Calendar page
 app.get('/Calendar', (req, res) => {
+  console.log(req.session.userId)
   res.sendFile(path.join(root, 'FrontEnd', 'DubSpotCalendar.html'))
 })
 
@@ -97,8 +225,8 @@ app.post('/submit-rating', (req, res) => {
   console.log(courseID, username, rating, review)
   addReviewStatement.execute({addReviewCourseID: courseID, addReviewUsername: username, rating: rating, review: review}, (err, result) => {
     if (err) {
-      res.send(err)
-      // res.send("Error encountered. Please try again.")
+      console.log(err)
+      res.send("Error encountered. Please try again.")
       return
     }
     res.send("Thanks! Rating received.")
