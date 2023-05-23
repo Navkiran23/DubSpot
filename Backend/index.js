@@ -4,7 +4,7 @@ const sql = require('mssql')
 const bcrypt = require('bcrypt');
 const session = require('express-session')
 const {calculateWeek} = require("./Calendar")
-const {pool, getCourseStatement, getReviewsStatement, addReviewStatement, createAccountStatement, loginAccountStatement, findPlannedClassesStatement, updateProfilePage} = require("./sql")
+const {pool, getCourseStatement, getReviewsStatement, addReviewStatement, createAccountStatement, loginAccountStatement, findPlannedClassesStatement, updateProfilePageStatement} = require("./sql")
 
 /**
  * Entry file for Dubspot server. Powered by Express.js and handles all routes to Dubspot's domain.
@@ -161,9 +161,8 @@ app.get('/api/calendar', (req, res) => {
       res.send(result.recordset)
     })
   } else {
-    res.status(500).send("Error encountered while retrieving courses. Please try again.")
+    res.status(403).send('Unauthorized.')
   }
-  res.sendFile(path.join(root, 'FrontEnd', 'DubSpotCalendar.html'))
 })
 
 // returns the Calendar page
@@ -194,9 +193,7 @@ app.get('/Profile', (req, res) => {
 app.get('/api/profile', (req, res) => {
   if (req.session.userId !== undefined) {
     const email = req.session.userId
-
   }
-  res.sendFile(path.join(root, 'FrontEnd', 'DubSpotProfile.html'))
 })
 
 

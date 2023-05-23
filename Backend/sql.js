@@ -19,7 +19,7 @@ const addReviewStatement = new sql.PreparedStatement(pool)
 const createAccountStatement = new sql.PreparedStatement(pool)
 const loginAccountStatement = new sql.PreparedStatement(pool)
 const findPlannedClassesStatement = new sql.PreparedStatement(pool)
-const updateProfilePage = new sql.PreparedStatement(pool)
+const updateProfilePageStatement = new sql.PreparedStatement(pool)
 
 pool.connect(err => {
   if (err) {
@@ -71,10 +71,10 @@ pool.connect(err => {
   )
 
 
-  updateProfilePage.input('updateMajor', sql.VarChar(100))
-  updateProfilePage.input('updateStanding', sql.VarChar(20))
-  updateProfilePage.input('updateEmail', sql.VarChar(100))
-  updateProfilePage.prepare(
+  updateProfilePageStatement.input('updateMajor', sql.VarChar(100))
+  updateProfilePageStatement.input('updateStanding', sql.VarChar(20))
+  updateProfilePageStatement.input('updateEmail', sql.VarChar(100))
+  updateProfilePageStatement.prepare(
       'UPDATE Users SET major = @updateMajor, standing = @updateStanding WHERE email = @email'
   )
 })
