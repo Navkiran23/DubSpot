@@ -4,7 +4,7 @@ const sql = require('mssql')
 const bcrypt = require('bcrypt');
 const session = require('express-session')
 const {calculateWeek} = require("./Calendar")
-const {pool, getCourseStatement, getReviewsStatement, addReviewStatement, createAccountStatement, loginAccountStatement, findPlannedClassesStatement, updateProfilePageStatement} = require("./sql")
+const {pool, getCourseStatement, getReviewsStatement, addReviewStatement, createAccountStatement, loginAccountStatement, findPlannedClassesStatement, updateProfilePageStatement, fetchProfileInfoStatement} = require("./sql")
 
 /**
  * Entry file for Dubspot server. Powered by Express.js and handles all routes to Dubspot's domain.

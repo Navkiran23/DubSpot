@@ -20,6 +20,7 @@ const createAccountStatement = new sql.PreparedStatement(pool)
 const loginAccountStatement = new sql.PreparedStatement(pool)
 const findPlannedClassesStatement = new sql.PreparedStatement(pool)
 const updateProfilePageStatement = new sql.PreparedStatement(pool)
+const fetchProfileInfoStatement = new sql.PreparedStatement(pool)
 
 pool.connect(err => {
   if (err) {
@@ -77,7 +78,14 @@ pool.connect(err => {
   updateProfilePageStatement.prepare(
       'UPDATE Users SET major = @updateMajor, standing = @updateStanding WHERE email = @email'
   )
+
+  fetchProfileInfoStatement.input('email', sql.VarChar(100))
+  fetchProfileInfoStatement.prepare(
+      'SELECT username, major, standing, email FROM Users WHERE email = @email'
+  )
+
 })
+
 
 module.exports = {
   pool,
@@ -87,5 +95,6 @@ module.exports = {
   createAccountStatement,
   loginAccountStatement,
   findPlannedClassesStatement,
-  updateProfilePage
+  updateProfilePage,
+  fetchProfileInfoStatement
 }
