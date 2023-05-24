@@ -4,7 +4,7 @@ const sql = require('mssql')
 const bcrypt = require('bcrypt');
 const session = require('express-session')
 const {calculateWeek} = require("./Calendar")
-const {pool, getCourseStatement, getReviewsStatement, addReviewStatement, createAccountStatement, loginAccountStatement} = require("./sql")
+const {pool, getCourseStatement, getReviewsStatement, addReviewStatement, createAccountStatement, loginAccountStatement, findPlannedClassesStatement, updateProfilePageStatement, fetchProfileInfoStatement} = require("./sql")
 
 /**
  * Entry file for Dubspot server. Powered by Express.js and handles all routes to Dubspot's domain.
@@ -145,9 +145,28 @@ app.post('/login', (req, res) => {
   })
 })
 
+/** @returns a json list of json objects containing information about the user's planned courses
+ *  includes "course_id", "quarter", and "activity_id"
+ */
+app.get('/api/calendar', (req, res) => {
+  console.log(req.session.userId)
+  if (req.session.userId !== undefined) {
+    const email = req.session.userId
+    findPlannedClassesStatement.execute({findPlannedEmail: email}, (err, result) => {
+      if (err) {
+        res.status(500).send("Error encountered while retrieving courses. Please try again.")
+        console.log(err)
+        return
+      }
+      res.send(result.recordset)
+    })
+  } else {
+    res.status(403).send('Unauthorized.')
+  }
+})
+
 // returns the Calendar page
 app.get('/Calendar', (req, res) => {
-  console.log(req.session.userId)
   res.sendFile(path.join(root, 'FrontEnd', 'DubSpotCalendar.html'))
 })
 
@@ -170,6 +189,13 @@ app.get('/About', (req, res) => {
 app.get('/Profile', (req, res) => {
   res.sendFile(path.join(root, 'FrontEnd', 'DubSpotProfile.html'))
 })
+
+app.get('/api/profile', (req, res) => {
+  if (req.session.userId !== undefined) {
+    const email = req.session.userId
+  }
+})
+
 
 // returns an array of date objects representing the 7-day week
 app.get('/api/calendar/:offset', (req, res) => {

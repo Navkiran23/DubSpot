@@ -18,6 +18,9 @@ const getReviewsStatement = new sql.PreparedStatement(pool)
 const addReviewStatement = new sql.PreparedStatement(pool)
 const createAccountStatement = new sql.PreparedStatement(pool)
 const loginAccountStatement = new sql.PreparedStatement(pool)
+const findPlannedClassesStatement = new sql.PreparedStatement(pool)
+const updateProfilePageStatement = new sql.PreparedStatement(pool)
+const fetchProfileInfoStatement = new sql.PreparedStatement(pool)
 
 pool.connect(err => {
   if (err) {
@@ -61,7 +64,28 @@ pool.connect(err => {
   loginAccountStatement.prepare(
       'Select password FROM Users WHERE email = @loginEmail'
   )
+
+  // prepared statement for finding the planned classes based off the session ID
+  findPlannedClassesStatement.input('findPlannedEmail', sql.VarChar(100))
+  findPlannedClassesStatement.prepare(
+      'SELECT course_id, quarter, activity_id FROM PlanningToTake WHERE email = @findPlannedEmail'
+  )
+
+
+  updateProfilePageStatement.input('updateMajor', sql.VarChar(100))
+  updateProfilePageStatement.input('updateStanding', sql.VarChar(20))
+  updateProfilePageStatement.input('updateEmail', sql.VarChar(100))
+  updateProfilePageStatement.prepare(
+      'UPDATE Users SET major = @updateMajor, standing = @updateStanding WHERE email = @email'
+  )
+
+  fetchProfileInfoStatement.input('email', sql.VarChar(100))
+  fetchProfileInfoStatement.prepare(
+      'SELECT username, major, standing, email FROM Users WHERE email = @email'
+  )
+
 })
+
 
 module.exports = {
   pool,
@@ -69,5 +93,8 @@ module.exports = {
   getReviewsStatement,
   addReviewStatement,
   createAccountStatement,
-  loginAccountStatement
+  loginAccountStatement,
+  findPlannedClassesStatement,
+  updateProfilePageStatement,
+  fetchProfileInfoStatement
 }
