@@ -95,6 +95,6 @@ module.exports = {
   createAccountStatement,
   loginAccountStatement,
   findPlannedClassesStatement,
-  updateProfilePage,
+  updateProfilePageStatement,
   fetchProfileInfoStatement
 }
