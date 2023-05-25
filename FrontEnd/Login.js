@@ -13,10 +13,12 @@ loginForm.addEventListener('submit', function (event) {
     body: new URLSearchParams(formData).toString()
   })
       .then(function (response) {
-        if (response.ok) {
+        if (response.ok) { // login successful
           console.log(response)
-        } else {
+        } else if (response.status === 403) { // incorrect email or password
           console.log("error submitting, please try again")
+        } else if (response.status === 500) { // error occurred in the backend
+          console.log("try again")
         }
       })
       .catch(function (error) {

@@ -161,7 +161,7 @@ app.get('/api/calendar', (req, res) => {
       res.send(result.recordset)
     })
   } else {
-    res.status(403).send('Unauthorized.')
+    res.status(401).send('Unauthorized.')
   }
 })
 
@@ -196,6 +196,26 @@ app.get('/api/profile', (req, res) => {
   }
 })
 
+/**
+ * Handles post request for profile information update.
+ * @requires user must be signed in
+ */
+app.post('/api/profile/update', (req, res) => {
+  const major = req.body.major.toString()
+  const standing = req.body.standing.toString()
+  const email = req.session.userId
+  if (email === undefined) {
+    res.status(401).send('Unauthorized')
+  }
+  updateProfilePageStatement.execute({updateMajor: major, updateStanding: standing, updateProfileEmail: email}, (err, result) => {
+    if (err) {
+      console.log(err)
+      res.status(500).send("Error encountered. Please try again.")
+      return
+    }
+    res.send("Profile updated.")
+  })
+})
 
 // returns an array of date objects representing the 7-day week
 app.get('/api/calendar/:offset', (req, res) => {
@@ -204,7 +224,15 @@ app.get('/api/calendar/:offset', (req, res) => {
   res.send(weekArray)
 })
 
-// returns json about all courses
+/**
+ * @returns json about all courses, formatted as a list of objects. Each object has schema:
+ *          {
+ *          "course_id":"2a94a8e8-66d8-4c03-9da1-ac1e32e5e171",
+ *          "quarter":"AU 23",
+ *          "course_number":"CSE 121",
+ *          "class_title":"Introduction to Computer Programming I"
+ *          }
+  */
 app.get('/api/courses/all', (req, res) => {
   pool.query('SELECT course_id, quarter, course_number, class_title FROM Courses ORDER BY course_number ASC', (err, result) => {
     if (err) {
@@ -216,7 +244,28 @@ app.get('/api/courses/all', (req, res) => {
   })
 })
 
-// returns json with information about a given courseID for the specified quarter
+/**
+ * @params courseID
+ * @params quarter
+ * @returns json with information about a given courseID for the specified quarter, formatted
+ *          as a list with one object. Each object has schema:
+ *          {
+ *          "course_id":"2a94a8e8-66d8-4c03-9da1-ac1e32e5e171",
+ *          "quarter":"AU 23",
+ *          "id":"20234:CSE:121:B,BD",
+ *          "instructor":"Miya Kaye Natsuhara",
+ *          "class_title":"Introduction to Computer Programming I",
+ *          "course_number":"CSE 121",
+ *          "prerequisite":null,
+ *          "credits":"4",
+ *          "level":100,
+ *          "meeting_days":"WF",
+ *          "meeting_times":"11:30 AM - 12:20 PM",
+ *          "gen_ed_req":"RSN,NSc",
+ *          "average_gpa":"3.1",
+ *          "course_description":"Introduction to computer programming..."
+ *          }
+  */
 app.get('/api/courses/:courseID/:quarter', (req, res) => {
   const courseID = req.params.courseID
   const quarter = req.params.quarter.toString().replace("-", " ")
@@ -230,7 +279,9 @@ app.get('/api/courses/:courseID/:quarter', (req, res) => {
   })
 })
 
-// returns json of all reviews for a specific courseID
+/**
+ * @returns json of all reviews for a specific courseID
+ */
 app.get('/api/reviews/:courseID', (req, res) => {
   const courseID = req.params.courseID
   getReviewsStatement.execute({getReviewsCourseID: courseID}, (err, result) => {
@@ -243,8 +294,10 @@ app.get('/api/reviews/:courseID', (req, res) => {
   })
 })
 
-// @requires form body contains courseID, username, rating, and review
-// receives post requests for rating submission and sends it to the database
+/**
+ * @requires form body contains courseID, username, rating, and review
+ * receives post requests for rating submission and sends it to the database
+  */
 app.post('/submit-rating', (req, res) => {
   const courseID = req.body.courseID.toString()
   const username = req.body.username.toString()
@@ -254,7 +307,7 @@ app.post('/submit-rating', (req, res) => {
   addReviewStatement.execute({addReviewCourseID: courseID, addReviewUsername: username, rating: rating, review: review}, (err, result) => {
     if (err) {
       console.log(err)
-      res.send("Error encountered. Please try again.")
+      res.status(500).send("Error encountered. Please try again.")
       return
     }
     res.send("Thanks! Rating received.")

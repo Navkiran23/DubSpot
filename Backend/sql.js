@@ -29,6 +29,29 @@ pool.connect(err => {
   }
   console.log('Connected to Azure SQL Database')
 
+  // -------------------------------------
+  // ---------Login/Signup--------------------
+  // -------------------------------------
+
+  // prepared statement for creating a new account
+  createAccountStatement.input('createAccountEmail', sql.VarChar(100))
+  createAccountStatement.input('createAccountUsername', sql.VarChar(100))
+  createAccountStatement.input('createAccountPassword', sql.VarBinary(144))
+  createAccountStatement.prepare(
+      'INSERT INTO Users (email, username, major, standing, password) ' +
+      'VALUES(@createAccountEmail, @createAccountUsername, null, null, @createAccountPassword)'
+  )
+
+  // prepared statement for logging into an existing account
+  loginAccountStatement.input('loginEmail', sql.VarChar(100))
+  loginAccountStatement.prepare(
+      'Select password FROM Users WHERE email = @loginEmail'
+  )
+
+  // -------------------------------------
+  // ---------CourseFinder--------------------
+  // -------------------------------------
+
   // prepared statement for getting course information
   getCourseStatement.input('getCourseCourseID', sql.VarChar(100))
   getCourseStatement.input('getCourseQuarter', sql.VarChar(6))
@@ -50,20 +73,9 @@ pool.connect(err => {
       'VALUES(@addReviewCourseID, @addReviewUsername, @rating, @review)'
   )
 
-  // prepared statement for creating a new account
-  createAccountStatement.input('createAccountEmail', sql.VarChar(100))
-  createAccountStatement.input('createAccountUsername', sql.VarChar(100))
-  createAccountStatement.input('createAccountPassword', sql.VarBinary(144))
-  createAccountStatement.prepare(
-      'INSERT INTO Users (email, username, major, standing, password) ' +
-      'VALUES(@createAccountEmail, @createAccountUsername, null, null, @createAccountPassword)'
-  )
-
-  // prepared statement for logging into an existing account
-  loginAccountStatement.input('loginEmail', sql.VarChar(100))
-  loginAccountStatement.prepare(
-      'Select password FROM Users WHERE email = @loginEmail'
-  )
+  // -------------------------------------
+  // ---------Calendar--------------------
+  // -------------------------------------
 
   // prepared statement for finding the planned classes based off the session ID
   findPlannedClassesStatement.input('findPlannedEmail', sql.VarChar(100))
@@ -71,17 +83,20 @@ pool.connect(err => {
       'SELECT course_id, quarter, activity_id FROM PlanningToTake WHERE email = @findPlannedEmail'
   )
 
+  // -------------------------------------
+  // ---------Profile--------------------
+  // -------------------------------------
 
   updateProfilePageStatement.input('updateMajor', sql.VarChar(100))
   updateProfilePageStatement.input('updateStanding', sql.VarChar(20))
-  updateProfilePageStatement.input('updateEmail', sql.VarChar(100))
+  updateProfilePageStatement.input('updateProfileEmail', sql.VarChar(100))
   updateProfilePageStatement.prepare(
-      'UPDATE Users SET major = @updateMajor, standing = @updateStanding WHERE email = @email'
+      'UPDATE Users SET major = @updateMajor, standing = @updateStanding WHERE email = @updateProfileEmail'
   )
 
-  fetchProfileInfoStatement.input('email', sql.VarChar(100))
+  fetchProfileInfoStatement.input('fetchProfileEmail', sql.VarChar(100))
   fetchProfileInfoStatement.prepare(
-      'SELECT username, major, standing, email FROM Users WHERE email = @email'
+      'SELECT username, major, standing, email FROM Users WHERE email = @fetchProfileEmail'
   )
 
 })
