@@ -58,5 +58,7 @@ values ('e38904c7-407c-44c0-aae8-4e402b77af1d', 'namath', 1, 'never take this cl
 insert into Reviews (course_id, username, rating, review)
 values ('da10d70f-17a9-4975-ab11-6fd654ffc0c4', 'carter', 3, 'okay class, kind of interesting');
 
+insert into PlanningToTake(email, course_id, quarter, activity_id)
+values ('darrenh2@uw.edu', '38b71a40-9ba4-40a9-b0a0-9715ce3f7446', 'AU 23', 'CSE 190')
 
 
