@@ -22,7 +22,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: true, // Enable secure cookies (requires HTTPS)
+    secure: false, // Enable secure cookies (requires HTTPS)
     httpOnly: true, // Disallow cookie access from client-side JavaScript
     maxAge: 2 * (24 * 60 * 60 * 1000) // days cookie is valid
   }
@@ -161,7 +161,7 @@ app.get('/api/calendar', (req, res) => {
       res.send(result.recordset)
     })
   } else {
-    res.status(403).send('Unauthorized.')
+    res.status(401).send('Unauthorized.')
   }
 })
 
@@ -196,6 +196,26 @@ app.get('/api/profile', (req, res) => {
   }
 })
 
+/**
+ * Handles post request for profile information update.
+ * @requires user must be signed in
+ */
+app.post('/api/profile/update', (req, res) => {
+  const major = req.body.major.toString()
+  const standing = req.body.standing.toString()
+  const email = req.session.userId
+  if (email === undefined) {
+    res.status(401).send('Unauthorized')
+  }
+  updateProfilePageStatement.execute({updateMajor: major, updateStanding: standing, updateProfileEmail: email}, (err, result) => {
+    if (err) {
+      console.log(err)
+      res.status(500).send("Error encountered. Please try again.")
+      return
+    }
+    res.send("Profile updated.")
+  })
+})
 
 // returns an array of date objects representing the 7-day week
 app.get('/api/calendar/:offset', (req, res) => {
@@ -278,7 +298,6 @@ app.get('/api/reviews/:courseID', (req, res) => {
  * @requires form body contains courseID, username, rating, and review
  * receives post requests for rating submission and sends it to the database
   */
-
 app.post('/submit-rating', (req, res) => {
   const courseID = req.body.courseID.toString()
   const username = req.body.username.toString()
