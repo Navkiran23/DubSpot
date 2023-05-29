@@ -55,7 +55,15 @@
         <header></header>
         <div class="textarea">
           <div class="textarea">
-            <textarea cols="30" id="rating" name ="rating" placeholder="Have you taken this class? What is your opinion on it?"></textarea>
+            <input type="hidden" id="reviewCourseID" name="courseID" value="">
+            <select id="rating" name="rating">
+              <option value=1>1</option>
+              <option value=2>2</option>
+              <option value=3>3</option>
+              <option value=4>4</option>
+              <option value=5>5</option>
+            </select>
+            <textarea cols="30" id="review" name ="review" placeholder="Have you taken this class? What is your opinion on it?"></textarea>
           </div>
         </div>
         <div class="btn">

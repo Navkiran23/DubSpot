@@ -2,8 +2,8 @@ const btn = document.querySelector("button");
 const post = document.querySelector(".post");
 const widget = document.querySelector(".star-widget");
 const editBtn = document.querySelector(".edit");
-
 const button = document.querySelector("ReviewLeaveButton");
+
 //Filter table Javascript
 function myFunction() {
   // Declare variables
@@ -52,12 +52,14 @@ async function PutDataIntoTable() {
 function attachOnClicksToRows() {
   let rows = document.getElementById("myTable").rows;
   for (let row of rows) {
-    console.log(row.id)
     row.onclick = () => {
       //pass in the id into the function below to make sure there
       // is a link between the two major components of the course finder
       displayDataOnSidebar(row.id)
-      displayReviews(row.id.split("/")[0])
+      let courseId = row.id.split("/")[0]
+      displayReviews(courseId).then(() => {
+        document.getElementById("reviewCourseID").value = courseId
+      })
     }
   }
 }
@@ -80,7 +82,6 @@ function displayDataOnSidebar(urlString) {
         }
         displayString += "<h5>" + "Average GPA: " + gpa + "</h5>";
         displayString += "<h5>" + "Course Description: " + data[i].course_description + "</h5>"
-        console.log(displayString);
       }
      document.getElementById("courseinfo").innerHTML = displayString;
     })
@@ -112,26 +113,3 @@ async function displayReviews(urlString) {
 PutDataIntoTable().then(r => {
   attachOnClicksToRows()
 });
-
-//Put the review into the template
-let Z = "";
-async function PutReview() {
-  //fetch all the courses
-  await fetch("/api/courses/all")
-      .then(response => response.json())
-      .then(data => {
-        for (let i = 0; i < data.length; i++) {
-          let key = `${data[i].course_id.toString()}/${data[i].quarter.toString()}`
-          key = key.replace(" ","-")
-          Z += `<div class="Commentbox" id="${key}">`
-          Z += "<h1>" + data[i].username + "</h1>"
-          Z += "<h7>" + data[i].rating + "</h7>"
-          Z += "<p>" + data[i].review + "</p>"
-          Z += "<div>"
-        }
-        document.getElementById("data").innerHTML = Z
-      })
-      .catch(error => {
-        console.log(error)
-      })
-}
