@@ -98,7 +98,7 @@ pool.connect(err => {
   updateProfilePageStatement.input('updateStanding', sql.VarChar(20))
   updateProfilePageStatement.input('updateProfileEmail', sql.VarChar(100))
   updateProfilePageStatement.prepare(
-      'UPDATE Users SET major = @updateMajor, standing = @updateStanding WHERE email = @updateProfileEmail'
+      'UPDATE Users SET major = @updateMajor, standing = @updateStanding, username = @updateUsername WHERE email = @updateProfileEmail'
   )
 
   fetchProfileInfoStatement.input('fetchProfileEmail', sql.VarChar(100))

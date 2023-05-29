@@ -169,7 +169,10 @@ app.get('/Calendar', (req, res) => {
   res.sendFile(path.join(root, 'FrontEnd', 'DubSpotCalendar.html'))
 })
 
-/** @returns a json list of json objects containing information about the user's planned courses
+/**
+ * returns the user's planned courses
+ * @requires user is logged in
+ * @returns a json list of json objects containing information about the user's planned courses
  *  includes "course_id", "quarter", and "activity_id"
  */
 app.get('/api/calendar', (req, res) => {
@@ -324,9 +327,24 @@ app.get('/Profile', (req, res) => {
 })
 
 app.get('/api/profile', (req, res) => {
-  if (req.session.userId !== undefined) {
-    const email = req.session.userId
+  const email = req.session.userId
+  if (email === undefined) {
+    res.status(401).send('Unauthorized')
+    return
   }
+  fetchProfileInfoStatement.execute({fetchProfileEmail: email}, (err, result) => {
+    if (err) {
+      console.log(err)
+      res.status(500).send("Error encountered. Please try again.")
+      return
+    }
+    if (result.recordset.length === 0) {
+      res.status(404).send("Account not found. Please reauthenticate.")
+      return
+    }
+    res.send(result.recordset)
+  })
+
 })
 
 /**
@@ -336,12 +354,13 @@ app.get('/api/profile', (req, res) => {
 app.post('/api/profile/update', (req, res) => {
   const major = req.body.major.toString()
   const standing = req.body.standing.toString()
+  const username = req.body.username.toString()
   const email = req.session.userId
   if (email === undefined) {
     res.status(401).send('Unauthorized')
     return
   }
-  updateProfilePageStatement.execute({updateMajor: major, updateStanding: standing, updateProfileEmail: email}, (err, result) => {
+  updateProfilePageStatement.execute({updateMajor: major, updateStanding: standing, updateUsername: username, updateProfileEmail: email}, (err, result) => {
     if (err) {
       console.log(err)
       res.status(500).send("Error encountered. Please try again.")
