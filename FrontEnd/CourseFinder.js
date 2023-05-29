@@ -90,6 +90,18 @@ function displayDataOnSidebar(urlString) {
     });
 }
 
+function attachOnClicksToStars() {
+  const starWidget = document.querySelector('.star-widget');
+  const starLabels = starWidget.getElementsByClassName('fa-star');
+  for (let starLabel of starLabels) {
+    const starRating = starLabel.getAttribute('for').split("-")[1]
+    starLabel.onclick = () => {
+      console.log("click")
+      document.getElementById("rating").value = starRating
+    }
+  }
+}
+
 // fetch the data and display on the sidebar
 async function displayReviews(urlString) {
   let Z = "";
@@ -112,4 +124,5 @@ async function displayReviews(urlString) {
 
 PutDataIntoTable().then(r => {
   attachOnClicksToRows()
+  attachOnClicksToStars()
 });
