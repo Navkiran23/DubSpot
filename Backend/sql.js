@@ -21,6 +21,7 @@ const loginAccountStatement = new sql.PreparedStatement(pool)
 const findPlannedClassesStatement = new sql.PreparedStatement(pool)
 const updateProfilePageStatement = new sql.PreparedStatement(pool)
 const fetchProfileInfoStatement = new sql.PreparedStatement(pool)
+const getUsernameStatement = new sql.PreparedStatement(pool)
 
 pool.connect(err => {
   if (err) {
@@ -57,6 +58,12 @@ pool.connect(err => {
   getCourseStatement.input('getCourseQuarter', sql.VarChar(6))
   getCourseStatement.prepare(
       'SELECT * FROM Courses WHERE course_id = @getCourseCourseID AND quarter = @getCourseQuarter'
+  )
+
+  // prepared statement for getting user's username
+  getUsernameStatement.input('getUsernameEmail', sql.VarChar(100))
+  getUsernameStatement.prepare(
+      'Select username FROM Users WHERE email = @getUsernameEmail'
   )
 
   // prepared statement for getting reviews for a specific course
@@ -111,5 +118,6 @@ module.exports = {
   loginAccountStatement,
   findPlannedClassesStatement,
   updateProfilePageStatement,
-  fetchProfileInfoStatement
+  fetchProfileInfoStatement,
+  getUsernameStatement
 }

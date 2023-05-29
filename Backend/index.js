@@ -4,7 +4,18 @@ const sql = require('mssql')
 const bcrypt = require('bcrypt');
 const session = require('express-session')
 const {calculateWeek} = require("./Calendar")
-const {pool, getCourseStatement, getReviewsStatement, addReviewStatement, createAccountStatement, loginAccountStatement, findPlannedClassesStatement, updateProfilePageStatement, fetchProfileInfoStatement} = require("./sql")
+const {
+  pool,
+  getCourseStatement,
+  getReviewsStatement,
+  addReviewStatement,
+  createAccountStatement,
+  loginAccountStatement,
+  findPlannedClassesStatement,
+  updateProfilePageStatement,
+  fetchProfileInfoStatement,
+  getUsernameStatement
+} = require("./sql")
 
 /**
  * Entry file for Dubspot server. Powered by Express.js and handles all routes to Dubspot's domain.
@@ -206,6 +217,7 @@ app.post('/api/profile/update', (req, res) => {
   const email = req.session.userId
   if (email === undefined) {
     res.status(401).send('Unauthorized')
+    return
   }
   updateProfilePageStatement.execute({updateMajor: major, updateStanding: standing, updateProfileEmail: email}, (err, result) => {
     if (err) {
@@ -295,22 +307,39 @@ app.get('/api/reviews/:courseID', (req, res) => {
 })
 
 /**
- * @requires form body contains courseID, username, rating, and review
  * receives post requests for rating submission and sends it to the database
+ * @requires form body contains courseID, rating, and review
+ * @requires user must be logged in
   */
 app.post('/submit-rating', (req, res) => {
   const courseID = req.body.courseID.toString()
-  const username = req.body.username.toString()
+  const email = req.session.userId
   const rating = parseInt(req.body.rating)
   const review = req.body.review.toString()
-  console.log(courseID, username, rating, review)
-  addReviewStatement.execute({addReviewCourseID: courseID, addReviewUsername: username, rating: rating, review: review}, (err, result) => {
+  let username
+  if (email === undefined) {
+    res.status(401).send('Unauthorized')
+    return
+  }
+  getUsernameStatement.execute({getUsernameEmail: email}, (err, result) => {
     if (err) {
       console.log(err)
       res.status(500).send("Error encountered. Please try again.")
       return
     }
-    res.send("Thanks! Rating received.")
+    if (result.recordset.length === 0) {
+      res.status(404).send("Account not found. Please reauthenticate.")
+      return
+    }
+    username = result.recordset[0].username
+    addReviewStatement.execute({addReviewCourseID: courseID, addReviewUsername: username, rating: rating, review: review}, (err, result) => {
+      if (err) {
+        console.log(err)
+        res.status(500).send("Error encountered. Please try again.")
+        return
+      }
+      res.send("Thanks! Rating received.")
+    })
   })
 })
 
