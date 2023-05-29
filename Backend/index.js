@@ -39,6 +39,10 @@ app.use(session({
   }
 }))
 
+// -------------------------------------
+// ---------Login/Signup--------------------
+// -------------------------------------
+
 // returns the Login page
 app.get('/', (req, res) => {
   res.sendFile(path.join(root, 'FrontEnd', 'DubspotWeb.html'))
@@ -156,6 +160,15 @@ app.post('/login', (req, res) => {
   })
 })
 
+// -------------------------------------
+// ---------Calendar--------------------
+// -------------------------------------
+
+// returns the Calendar page
+app.get('/Calendar', (req, res) => {
+  res.sendFile(path.join(root, 'FrontEnd', 'DubSpotCalendar.html'))
+})
+
 /** @returns a json list of json objects containing information about the user's planned courses
  *  includes "course_id", "quarter", and "activity_id"
  */
@@ -176,25 +189,134 @@ app.get('/api/calendar', (req, res) => {
   }
 })
 
-// returns the Calendar page
-app.get('/Calendar', (req, res) => {
-  res.sendFile(path.join(root, 'FrontEnd', 'DubSpotCalendar.html'))
+// returns an array of date objects representing the 7-day week
+app.get('/api/calendar/:offset', (req, res) => {
+  const offset = req.params.offset
+  const weekArray = calculateWeek(offset)
+  res.send(weekArray)
 })
+
+// -------------------------------------
+// ---------CourseFinder--------------------
+// -------------------------------------
 
 // returns the CourseFinder page
 app.get('/CourseFinder', (req, res) => {
   res.sendFile(path.join(root, 'FrontEnd', 'DubSpotCourseFinder.html'))
 })
 
-// returns the Help page
-app.get('/Help', (req, res) => {
-  res.sendFile(path.join(root, 'FrontEnd', 'DubSpotHelp.html'))
+/**
+ * returns json data about all courses offered
+ * @returns json about all courses, formatted as a list of objects. Each object has schema:
+ *          {
+ *          "course_id":"2a94a8e8-66d8-4c03-9da1-ac1e32e5e171",
+ *          "quarter":"AU 23",
+ *          "course_number":"CSE 121",
+ *          "class_title":"Introduction to Computer Programming I"
+ *          }
+ */
+app.get('/api/courses/all', (req, res) => {
+  pool.query('SELECT course_id, quarter, course_number, class_title FROM Courses ORDER BY course_number ASC', (err, result) => {
+    if (err) {
+      console.log(err)
+      return
+    }
+    // handle query results
+    res.send(result.recordset)
+  })
 })
 
-// returns the About page
-app.get('/About', (req, res) => {
-  res.sendFile(path.join(root, 'FrontEnd', 'DubSpotAbout.html'))
+/**
+ * returns json data about the specified course and quarter offered
+ * @params courseID
+ * @params quarter
+ * @returns json with information about a given courseID for the specified quarter, formatted
+ *          as a list with one object. Each object has schema:
+ *          {
+ *          "course_id":"2a94a8e8-66d8-4c03-9da1-ac1e32e5e171",
+ *          "quarter":"AU 23",
+ *          "id":"20234:CSE:121:B,BD",
+ *          "instructor":"Miya Kaye Natsuhara",
+ *          "class_title":"Introduction to Computer Programming I",
+ *          "course_number":"CSE 121",
+ *          "prerequisite":null,
+ *          "credits":"4",
+ *          "level":100,
+ *          "meeting_days":"WF",
+ *          "meeting_times":"11:30 AM - 12:20 PM",
+ *          "gen_ed_req":"RSN,NSc",
+ *          "average_gpa":"3.1",
+ *          "course_description":"Introduction to computer programming..."
+ *          }
+ */
+app.get('/api/courses/:courseID/:quarter', (req, res) => {
+  const courseID = req.params.courseID
+  const quarter = req.params.quarter.toString().replace("-", " ")
+  getCourseStatement.execute({getCourseCourseID: courseID, getCourseQuarter: quarter}, (err, result) => {
+    if (err) {
+      console.log(err)
+      return
+    }
+    // handle query results
+    res.send(result.recordset)
+  })
 })
+
+/**
+ * @returns json of all reviews for a specific courseID
+ */
+app.get('/api/reviews/:courseID', (req, res) => {
+  const courseID = req.params.courseID
+  getReviewsStatement.execute({getReviewsCourseID: courseID}, (err, result) => {
+    if (err) {
+      console.log(err)
+      return
+    }
+    // handle query results
+    res.send(result.recordset)
+  })
+})
+
+/**
+ * receives post requests for rating submission and sends it to the database
+ * @requires form body contains courseID, rating, and review
+ * @requires user must be logged in
+ */
+app.post('/submit-rating', (req, res) => {
+  const courseID = req.body.courseID.toString()
+  const email = req.session.userId
+  const rating = parseInt(req.body.rating)
+  const review = req.body.review.toString()
+  let username
+  if (email === undefined) {
+    res.status(401).send('Unauthorized')
+    return
+  }
+  getUsernameStatement.execute({getUsernameEmail: email}, (err, result) => {
+    if (err) {
+      console.log(err)
+      res.status(500).send("Error encountered. Please try again.")
+      return
+    }
+    if (result.recordset.length === 0) {
+      res.status(404).send("Account not found. Please reauthenticate.")
+      return
+    }
+    username = result.recordset[0].username
+    addReviewStatement.execute({addReviewCourseID: courseID, addReviewUsername: username, rating: rating, review: review}, (err, result) => {
+      if (err) {
+        console.log(err)
+        res.status(500).send("Error encountered. Please try again.")
+        return
+      }
+      res.send("Thanks! Rating received.")
+    })
+  })
+})
+
+// -------------------------------------
+// ---------Profile--------------------
+// -------------------------------------
 
 // returns the Profile page
 app.get('/Profile', (req, res) => {
@@ -229,118 +351,18 @@ app.post('/api/profile/update', (req, res) => {
   })
 })
 
-// returns an array of date objects representing the 7-day week
-app.get('/api/calendar/:offset', (req, res) => {
-  const offset = req.params.offset
-  const weekArray = calculateWeek(offset)
-  res.send(weekArray)
+// -------------------------------------
+// ---------Misc--------------------
+// -------------------------------------
+
+// returns the Help page
+app.get('/Help', (req, res) => {
+  res.sendFile(path.join(root, 'FrontEnd', 'DubSpotHelp.html'))
 })
 
-/**
- * @returns json about all courses, formatted as a list of objects. Each object has schema:
- *          {
- *          "course_id":"2a94a8e8-66d8-4c03-9da1-ac1e32e5e171",
- *          "quarter":"AU 23",
- *          "course_number":"CSE 121",
- *          "class_title":"Introduction to Computer Programming I"
- *          }
-  */
-app.get('/api/courses/all', (req, res) => {
-  pool.query('SELECT course_id, quarter, course_number, class_title FROM Courses ORDER BY course_number ASC', (err, result) => {
-    if (err) {
-      console.log(err)
-      return
-    }
-    // handle query results
-    res.send(result.recordset)
-  })
-})
-
-/**
- * @params courseID
- * @params quarter
- * @returns json with information about a given courseID for the specified quarter, formatted
- *          as a list with one object. Each object has schema:
- *          {
- *          "course_id":"2a94a8e8-66d8-4c03-9da1-ac1e32e5e171",
- *          "quarter":"AU 23",
- *          "id":"20234:CSE:121:B,BD",
- *          "instructor":"Miya Kaye Natsuhara",
- *          "class_title":"Introduction to Computer Programming I",
- *          "course_number":"CSE 121",
- *          "prerequisite":null,
- *          "credits":"4",
- *          "level":100,
- *          "meeting_days":"WF",
- *          "meeting_times":"11:30 AM - 12:20 PM",
- *          "gen_ed_req":"RSN,NSc",
- *          "average_gpa":"3.1",
- *          "course_description":"Introduction to computer programming..."
- *          }
-  */
-app.get('/api/courses/:courseID/:quarter', (req, res) => {
-  const courseID = req.params.courseID
-  const quarter = req.params.quarter.toString().replace("-", " ")
-  getCourseStatement.execute({getCourseCourseID: courseID, getCourseQuarter: quarter}, (err, result) => {
-    if (err) {
-      console.log(err)
-      return
-    }
-    // handle query results
-    res.send(result.recordset)
-  })
-})
-
-/**
- * @returns json of all reviews for a specific courseID
- */
-app.get('/api/reviews/:courseID', (req, res) => {
-  const courseID = req.params.courseID
-  getReviewsStatement.execute({getReviewsCourseID: courseID}, (err, result) => {
-    if (err) {
-      console.log(err)
-      return
-    }
-    // handle query results
-    res.send(result.recordset)
-  })
-})
-
-/**
- * receives post requests for rating submission and sends it to the database
- * @requires form body contains courseID, rating, and review
- * @requires user must be logged in
-  */
-app.post('/submit-rating', (req, res) => {
-  const courseID = req.body.courseID.toString()
-  const email = req.session.userId
-  const rating = parseInt(req.body.rating)
-  const review = req.body.review.toString()
-  let username
-  if (email === undefined) {
-    res.status(401).send('Unauthorized')
-    return
-  }
-  getUsernameStatement.execute({getUsernameEmail: email}, (err, result) => {
-    if (err) {
-      console.log(err)
-      res.status(500).send("Error encountered. Please try again.")
-      return
-    }
-    if (result.recordset.length === 0) {
-      res.status(404).send("Account not found. Please reauthenticate.")
-      return
-    }
-    username = result.recordset[0].username
-    addReviewStatement.execute({addReviewCourseID: courseID, addReviewUsername: username, rating: rating, review: review}, (err, result) => {
-      if (err) {
-        console.log(err)
-        res.status(500).send("Error encountered. Please try again.")
-        return
-      }
-      res.send("Thanks! Rating received.")
-    })
-  })
+// returns the About page
+app.get('/About', (req, res) => {
+  res.sendFile(path.join(root, 'FrontEnd', 'DubSpotAbout.html'))
 })
 
 /* feature delayed for now

@@ -50,6 +50,16 @@ pool.connect(err => {
   )
 
   // -------------------------------------
+  // ---------Calendar--------------------
+  // -------------------------------------
+
+  // prepared statement for finding the planned classes based off the session ID
+  findPlannedClassesStatement.input('findPlannedEmail', sql.VarChar(100))
+  findPlannedClassesStatement.prepare(
+      'SELECT course_id, quarter, activity_id FROM PlanningToTake WHERE email = @findPlannedEmail'
+  )
+
+  // -------------------------------------
   // ---------CourseFinder--------------------
   // -------------------------------------
 
@@ -78,16 +88,6 @@ pool.connect(err => {
   addReviewStatement.prepare(
       'INSERT INTO Reviews (course_id, username, rating, review) ' +
       'VALUES(@addReviewCourseID, @addReviewUsername, @rating, @review)'
-  )
-
-  // -------------------------------------
-  // ---------Calendar--------------------
-  // -------------------------------------
-
-  // prepared statement for finding the planned classes based off the session ID
-  findPlannedClassesStatement.input('findPlannedEmail', sql.VarChar(100))
-  findPlannedClassesStatement.prepare(
-      'SELECT course_id, quarter, activity_id FROM PlanningToTake WHERE email = @findPlannedEmail'
   )
 
   // -------------------------------------
