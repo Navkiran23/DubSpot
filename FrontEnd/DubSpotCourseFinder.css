@@ -364,23 +364,19 @@ input:not(:checked) ~ label:hover ~ label{
 input:checked ~ label{
     color: #fd4;
 }
-input#rate-5:checked ~ label{
-    color: ;
-    color: rgb(78, 86, 120);
-}
-#rate-5:checked ~ form header:before{
+#rate-1:checked ~ form header:before{
     content: "Very Bad Experience"
 }
-#rate-4:checked ~ form header:before{
+#rate-2:checked ~ form header:before{
     content: "Below Average Experience"
 }
 #rate-3:checked ~ form header:before{
     content: "Average Experience"
 }
-#rate-2:checked ~ form header:before{
+#rate-4:checked ~ form header:before{
     content: "Above Average Experience"
 }
-#rate-1:checked ~ form header:before{
+#rate-5:checked ~ form header:before{
     content: "Excellent Experience"
 }
 .container form {
