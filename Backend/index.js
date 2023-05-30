@@ -4,7 +4,18 @@ const sql = require('mssql')
 const bcrypt = require('bcrypt');
 const session = require('express-session')
 const {calculateWeek} = require("./Calendar")
-const {pool, getCourseStatement, getReviewsStatement, addReviewStatement, createAccountStatement, loginAccountStatement, findPlannedClassesStatement, updateProfilePageStatement, fetchProfileInfoStatement} = require("./sql")
+const {
+  pool,
+  getCourseStatement,
+  getReviewsStatement,
+  addReviewStatement,
+  createAccountStatement,
+  loginAccountStatement,
+  findPlannedClassesStatement,
+  updateProfilePageStatement,
+  fetchProfileInfoStatement,
+  getUsernameStatement
+} = require("./sql")
 
 /**
  * Entry file for Dubspot server. Powered by Express.js and handles all routes to Dubspot's domain.
@@ -27,6 +38,10 @@ app.use(session({
     maxAge: 2 * (24 * 60 * 60 * 1000) // days cookie is valid
   }
 }))
+
+// -------------------------------------
+// ---------Login/Signup--------------------
+// -------------------------------------
 
 // returns the Login page
 app.get('/', (req, res) => {
@@ -145,7 +160,19 @@ app.post('/login', (req, res) => {
   })
 })
 
-/** @returns a json list of json objects containing information about the user's planned courses
+// -------------------------------------
+// ---------Calendar--------------------
+// -------------------------------------
+
+// returns the Calendar page
+app.get('/Calendar', (req, res) => {
+  res.sendFile(path.join(root, 'FrontEnd', 'DubSpotCalendar.html'))
+})
+
+/**
+ * returns the user's planned courses
+ * @requires user is logged in
+ * @returns a json list of json objects containing information about the user's planned courses
  *  includes "course_id", "quarter", and "activity_id"
  */
 app.get('/api/calendar', (req, res) => {
@@ -161,41 +188,9 @@ app.get('/api/calendar', (req, res) => {
       res.send(result.recordset)
     })
   } else {
-    res.status(403).send('Unauthorized.')
+    res.status(401).send('Unauthorized.')
   }
 })
-
-// returns the Calendar page
-app.get('/Calendar', (req, res) => {
-  res.sendFile(path.join(root, 'FrontEnd', 'DubSpotCalendar.html'))
-})
-
-// returns the CourseFinder page
-app.get('/CourseFinder', (req, res) => {
-  res.sendFile(path.join(root, 'FrontEnd', 'DubSpotCourseFinder.html'))
-})
-
-// returns the Help page
-app.get('/Help', (req, res) => {
-  res.sendFile(path.join(root, 'FrontEnd', 'DubSpotHelp.html'))
-})
-
-// returns the About page
-app.get('/About', (req, res) => {
-  res.sendFile(path.join(root, 'FrontEnd', 'DubSpotAbout.html'))
-})
-
-// returns the Profile page
-app.get('/Profile', (req, res) => {
-  res.sendFile(path.join(root, 'FrontEnd', 'DubSpotProfile.html'))
-})
-
-app.get('/api/profile', (req, res) => {
-  if (req.session.userId !== undefined) {
-    const email = req.session.userId
-  }
-})
-
 
 // returns an array of date objects representing the 7-day week
 app.get('/api/calendar/:offset', (req, res) => {
@@ -204,7 +199,25 @@ app.get('/api/calendar/:offset', (req, res) => {
   res.send(weekArray)
 })
 
-// returns json about all courses
+// -------------------------------------
+// ---------CourseFinder--------------------
+// -------------------------------------
+
+// returns the CourseFinder page
+app.get('/CourseFinder', (req, res) => {
+  res.sendFile(path.join(root, 'FrontEnd', 'DubSpotCourseFinder.html'))
+})
+
+/**
+ * returns json data about all courses offered
+ * @returns json about all courses, formatted as a list of objects. Each object has schema:
+ *          {
+ *          "course_id":"2a94a8e8-66d8-4c03-9da1-ac1e32e5e171",
+ *          "quarter":"AU 23",
+ *          "course_number":"CSE 121",
+ *          "class_title":"Introduction to Computer Programming I"
+ *          }
+ */
 app.get('/api/courses/all', (req, res) => {
   pool.query('SELECT course_id, quarter, course_number, class_title FROM Courses ORDER BY course_number ASC', (err, result) => {
     if (err) {
@@ -216,7 +229,29 @@ app.get('/api/courses/all', (req, res) => {
   })
 })
 
-// returns json with information about a given courseID for the specified quarter
+/**
+ * returns json data about the specified course and quarter offered
+ * @params courseID
+ * @params quarter
+ * @returns json with information about a given courseID for the specified quarter, formatted
+ *          as a list with one object. Each object has schema:
+ *          {
+ *          "course_id":"2a94a8e8-66d8-4c03-9da1-ac1e32e5e171",
+ *          "quarter":"AU 23",
+ *          "id":"20234:CSE:121:B,BD",
+ *          "instructor":"Miya Kaye Natsuhara",
+ *          "class_title":"Introduction to Computer Programming I",
+ *          "course_number":"CSE 121",
+ *          "prerequisite":null,
+ *          "credits":"4",
+ *          "level":100,
+ *          "meeting_days":"WF",
+ *          "meeting_times":"11:30 AM - 12:20 PM",
+ *          "gen_ed_req":"RSN,NSc",
+ *          "average_gpa":"3.1",
+ *          "course_description":"Introduction to computer programming..."
+ *          }
+ */
 app.get('/api/courses/:courseID/:quarter', (req, res) => {
   const courseID = req.params.courseID
   const quarter = req.params.quarter.toString().replace("-", " ")
@@ -230,7 +265,9 @@ app.get('/api/courses/:courseID/:quarter', (req, res) => {
   })
 })
 
-// returns json of all reviews for a specific courseID
+/**
+ * @returns json of all reviews for a specific courseID
+ */
 app.get('/api/reviews/:courseID', (req, res) => {
   const courseID = req.params.courseID
   getReviewsStatement.execute({getReviewsCourseID: courseID}, (err, result) => {
@@ -243,22 +280,108 @@ app.get('/api/reviews/:courseID', (req, res) => {
   })
 })
 
-// @requires form body contains courseID, username, rating, and review
-// receives post requests for rating submission and sends it to the database
+/**
+ * receives post requests for rating submission and sends it to the database
+ * @requires form body contains courseID, rating, and review
+ * @requires user must be logged in
+ */
 app.post('/submit-rating', (req, res) => {
   const courseID = req.body.courseID.toString()
-  const username = req.body.username.toString()
+  const email = req.session.userId
   const rating = parseInt(req.body.rating)
   const review = req.body.review.toString()
-  console.log(courseID, username, rating, review)
-  addReviewStatement.execute({addReviewCourseID: courseID, addReviewUsername: username, rating: rating, review: review}, (err, result) => {
+  let username
+  if (email === undefined) {
+    res.status(401).send('Unauthorized')
+    return
+  }
+  getUsernameStatement.execute({getUsernameEmail: email}, (err, result) => {
     if (err) {
       console.log(err)
-      res.send("Error encountered. Please try again.")
+      res.status(500).send("Error encountered. Please try again.")
       return
     }
-    res.send("Thanks! Rating received.")
+    if (result.recordset.length === 0) {
+      res.status(404).send("Account not found. Please reauthenticate.")
+      return
+    }
+    username = result.recordset[0].username
+    addReviewStatement.execute({addReviewCourseID: courseID, addReviewUsername: username, rating: rating, review: review}, (err, result) => {
+      if (err) {
+        console.log(err)
+        res.status(500).send("Error encountered. Please try again.")
+        return
+      }
+      res.send("Thanks! Rating received.")
+    })
   })
+})
+
+// -------------------------------------
+// ---------Profile--------------------
+// -------------------------------------
+
+// returns the Profile page
+app.get('/Profile', (req, res) => {
+  res.sendFile(path.join(root, 'FrontEnd', 'DubSpotProfile.html'))
+})
+
+app.get('/api/profile', (req, res) => {
+  const email = req.session.userId
+  if (email === undefined) {
+    res.status(401).send('Unauthorized')
+    return
+  }
+  fetchProfileInfoStatement.execute({fetchProfileEmail: email}, (err, result) => {
+    if (err) {
+      console.log(err)
+      res.status(500).send("Error encountered. Please try again.")
+      return
+    }
+    if (result.recordset.length === 0) {
+      res.status(404).send("Account not found. Please reauthenticate.")
+      return
+    }
+    res.send(result.recordset)
+  })
+
+})
+
+/**
+ * Handles post request for profile information update.
+ * @requires user must be signed in
+ */
+app.post('/api/profile/update', (req, res) => {
+  const major = req.body.major.toString()
+  const standing = req.body.standing.toString()
+  const username = req.body.username.toString()
+  const email = req.session.userId
+  if (email === undefined) {
+    res.status(401).send('Unauthorized')
+    return
+  }
+  updateProfilePageStatement.execute({updateMajor: major, updateStanding: standing, updateUsername: username, updateProfileEmail: email}, (err, result) => {
+    if (err) {
+      console.log(err)
+      res.status(500).send("Error encountered. Please try again.")
+      return
+    }
+    res.send("Profile updated.")
+  })
+})
+
+// -------------------------------------
+// ---------Misc--------------------
+// -------------------------------------
+
+// returns the Help page
+app.get('/Help', (req, res) => {
+  res.sendFile(path.join(root, 'FrontEnd', 'DubSpotHelp.html'))
+})
+
+// returns the About page
+app.get('/About', (req, res) => {
+  res.sendFile(path.join(root, 'FrontEnd', 'DubSpotAbout.html'))
 })
 
 /* feature delayed for now

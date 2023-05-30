@@ -50,11 +50,12 @@ Comment_Containter{
     width:300px;
     padding: 20px;
     margin: 15px;
-    border: thick double rgb(78, 86, 120);
+    /*border: thick double rgb(78, 86, 120); */
     cursor: pointer;
     position: absolute;
-    top: 500px;
-    right: 0px;
+    /* top: 500px; */
+    bottom: 0px;
+    right: -30px;
 }
 
 .profile{
@@ -262,6 +263,34 @@ not go behind other components but failed
     margin-bottom:20px;
 }
 
+.InformationDisplay h10 {
+    text-align: left;
+    margin-left: 5px;
+    font-size: 30px;
+    font-weight: bold;
+    /*color: #ffffff;*/
+    position: relative;
+    color: white;
+    margin-bottom:20px;
+}
+.InformationDisplay h7 {
+    display: block;
+    text-align: left;
+    font-size: 20px;
+    font-weight: normal;
+    color: #EACAFF;
+    margin-left: 5px;
+}
+
+.InformationDisplay h8 {
+    display: block;
+    text-align: left;
+    margin-left: 5px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #F4E3FF;
+}
+
 h2:hover {
     font-variation-settings: "wght" 582;
     letter-spacing: 1px;
@@ -298,4 +327,180 @@ h2:hover {
     font-size: 20px;
     font-weight: bold;
     color: #ffffff;
+}
+
+
+/*Review code*/
+.ThirdBody {
+    background: transparent;
+    display: grid;
+    height: 100%;
+    place-items: center;
+    text-align: center;
+        overflow-x: hidden;
+        overflow-y: scroll;
+}
+.container {
+    width: 350px;
+    background: #ffff;
+    padding: 20px 30px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+.container .post {
+    display: none;
+}
+.container .text {
+    font-size: 25px;
+    color: #666;
+    font-weight: 500;
+}
+.container .edit {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 16px;
+    color: #666;
+    font-weight: 500;
+    cursor: pointer
+}
+.container .edit:hover {
+    text-decoration: underline;
+}
+.container .star-widget input{
+    display: none;
+}
+.star-widget label {
+    font-size: 40px;
+    color: #444;
+    color: rgb(78, 86, 120);
+    padding: 10px;
+    float: right;
+    float: center;
+    transition: all 0.2s ease;
+}
+
+input:not(:checked) ~ label:hover,
+input:not(:checked) ~ label:hover ~ label{
+    color: #fd4;
+    color: rgba(32, 34, 43, 1);
+}
+input:checked ~ label{
+    color: #fd4;
+}
+#rate-1:checked ~ form header:before{
+    content: "Very Bad Experience"
+}
+#rate-2:checked ~ form header:before{
+    content: "Below Average Experience"
+}
+#rate-3:checked ~ form header:before{
+    content: "Average Experience"
+}
+#rate-4:checked ~ form header:before{
+    content: "Above Average Experience"
+}
+#rate-5:checked ~ form header:before{
+    content: "Excellent Experience"
+}
+.container form {
+    display:none;
+}
+input:checked ~ form {
+    display: block;
+}
+form header {
+    width: 100%;
+    font-size: 25px;
+    color: rgb(78, 86, 120);
+    font-weight: 500;
+    margin: 5px 0 20px 0;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+form header:before {
+}
+form .textarea {
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+}
+form .textarea textarea{
+    height: 40px;
+    width: 100%;
+    outline: none;
+    color: #eee;
+    border: 1px solid #333;
+    background: #222;
+    padding: 10px;
+    font-size: 17px;
+    resize: none;
+}
+form .textarea2 {
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+}
+form .textarea2 textarea{
+    height: 100px;
+    width: 100%;
+    outline: none;
+    color: #eee;
+    border: 1px solid #333;
+    background: #222;
+    padding: 10px;
+    font-size: 17px;
+    resize: none;
+}
+
+form .btn {
+    height: 45px;
+    width: 100%;
+    margin: 15px 0;
+}
+form .btn button{
+    height: 100%;
+    width: 100%;
+    border: 1px solid #444;
+    outline: none;
+    background: #222;
+    color: #999;
+    font-size: 17;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+form .btn button:hover{
+    button: #1b1b1b;
+}
+
+/*Leave review button stylization*/
+  .ReviewLeaveButton {
+    background-color: #01796F;
+    border: none;
+    color: white;
+    width: 100px;
+    height: 35px;
+    text-align: center;
+    font-size: 10px;
+    margin: 4px 2px;
+     position:absolute;
+     top:49px;
+     left:-1px;
+    opacity: 1;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+  }
+.ReviewLeaveButton:hover {
+    opacity: 0.5
 }

@@ -15,8 +15,12 @@ form.addEventListener('submit', function (event) {
       .then(function (response) {
         if (response.ok) {
           console.log(response)
+          alert("Your response was submitted");
+        } else if(response.status === 401 || response.status === 403) {
+            alert("Please log in and try again");
         } else {
           console.log("error submitting, please try again")
+          alert("Your response was not submitted please try again");
         }
       })
       .catch(function (error) {

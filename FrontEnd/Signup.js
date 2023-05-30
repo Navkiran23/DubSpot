@@ -12,10 +12,19 @@ form.addEventListener('submit', function (event) {
     body: new URLSearchParams(formData).toString()
   })
       .then(function (response) {
-        if (response.ok) {
+        if (response.ok) { // signup was successful
           console.log(response)
-        } else {
+          alert("signup was successful");
+          location.href = "/calendar";
+        } else if (response.status === 400) { // The server could not understand the request due to malformed syntax or invalid parameters.
+          console.log("error submitting, please fix errors")
+          alert("The server could not understand the request due to malformed syntax or invalid parameters.");
+        } else if (response.status === 403) { // incorrect email or password
           console.log("error submitting, please try again")
+          alert("incorrect email or password");
+        } else if (response.status === 500) { // error occurred in the backend
+          console.log("try again")
+          alert("error occurred in the backend");
         }
       })
       .catch(function (error) {
