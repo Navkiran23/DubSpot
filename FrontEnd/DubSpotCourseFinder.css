@@ -482,8 +482,8 @@ form .btn button:hover{
     button: #1b1b1b;
 }
 
-/*Leave review button stylization*/
-  .ReviewLeaveButton {
+/*Leave add course button stylization*/
+  .AddCourseButton {
     background-color: #01796F;
     border: none;
     color: white;
@@ -501,6 +501,6 @@ form .btn button:hover{
     text-decoration: none;
     cursor: pointer;
   }
-.ReviewLeaveButton:hover {
+.AddCourseButton:hover {
     opacity: 0.5
 }
