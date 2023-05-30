@@ -55,9 +55,8 @@ function attachOnClicksToRows() {
     row.onclick = () => {
       //pass in the id into the function below to make sure there
       // is a link between the two major components of the course finder
-      displayDataOnSidebar(row.id)
       let courseId = row.id.split("/")[0]
-      displayReviews(courseId).then(() => {
+      displayDataOnSidebar(row.id).then(() => {
         document.getElementById("reviewCourseID").value = courseId
       })
     }
@@ -67,8 +66,8 @@ function attachOnClicksToRows() {
 //Data for sidebar
 
 // fetch the data and display on the sidebar
-function displayDataOnSidebar(urlString) {
-  fetch(`/api/courses/${urlString}`)
+async function displayDataOnSidebar(urlString) {
+  await fetch(`/api/courses/${urlString}`)
     .then(response => response.json())
     .then(data => {
       let displayString = "";
@@ -82,34 +81,40 @@ function displayDataOnSidebar(urlString) {
         }
         displayString += "<h5>" + "Average GPA: " + gpa + "</h5>";
         displayString += "<h5>" + "Course Description: " + data[i].course_description + "</h5>"
+        let courseId = urlString.split("/")[0]
+        fetch(`/api/reviews/${courseId}`)
+            .then(response => response.json())
+            .then(data => {
+              for (let i = 0; i < data.length; i++) {
+                displayString += "<h1>" + data[i].username + "</h1>"
+                displayString += "<h7>" + data[i].rating + "</h7>"
+                displayString += "<p>" + data[i].review + "</p>"
+              }
+              document.getElementById("courseinfo").innerHTML = displayString;
+            })
+            .catch(error => {
+              console.log(error)
+            })
       }
-     document.getElementById("courseinfo").innerHTML = displayString;
     })
     .catch(error => {
       console.error('Error:', error);
     });
 }
 
-// fetch the data and display on the sidebar
-async function displayReviews(urlString) {
-  let Z = "";
-  await fetch(`/api/reviews/${urlString}`)
-      .then(response => response.json())
-      .then(data => {
-        for (let i = 0; i < data.length; i++) {
-          Z += `<div class="Commentbox">`
-          Z += "<h1>" + data[i].username + "</h1>"
-          Z += "<h7>" + data[i].rating + "</h7>"
-          Z += "<p>" + data[i].review + "</p>"
-          Z += "<div>"
-        }
-        document.getElementById("reviews-container").innerHTML = Z
-      })
-      .catch(error => {
-        console.log(error)
-      })
+function attachOnClicksToStars() {
+  const starWidget = document.querySelector('.star-widget');
+  const starLabels = starWidget.getElementsByClassName('fa-star');
+  for (let starLabel of starLabels) {
+    const starRating = starLabel.getAttribute('for').split("-")[1]
+    starLabel.onclick = () => {
+      console.log("click")
+      document.getElementById("rating").value = starRating
+    }
+  }
 }
 
 PutDataIntoTable().then(r => {
   attachOnClicksToRows()
+  attachOnClicksToStars()
 });
