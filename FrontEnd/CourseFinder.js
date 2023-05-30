@@ -81,14 +81,17 @@ async function displayDataOnSidebar(urlString) {
         }
         displayString += "<h5>" + "Average GPA: " + gpa + "</h5>";
         displayString += "<h5>" + "Course Description: " + data[i].course_description + "</h5>"
+        displayString += "<br>" + " " + "</br>"
+        displayString += "<h10>" + "Reviews" + "</h10>"
         let courseId = urlString.split("/")[0]
         fetch(`/api/reviews/${courseId}`)
             .then(response => response.json())
             .then(data => {
               for (let i = 0; i < data.length; i++) {
-                displayString += "<h1>" + data[i].username + "</h1>"
-                displayString += "<h7>" + data[i].rating + "</h7>"
-                displayString += "<p>" + data[i].review + "</p>"
+                displayString += "<h7>" + data[i].username + "</h7>"
+                displayString += "<h8>" + " " + data[i].rating + "</h8>"
+                displayString += "<h8>" + data[i].review + "</h8>"
+                displayString += "<br>" + " " + "</br>"
               }
               document.getElementById("courseinfo").innerHTML = displayString;
             })

@@ -263,6 +263,34 @@ not go behind other components but failed
     margin-bottom:20px;
 }
 
+.InformationDisplay h10 {
+    text-align: left;
+    margin-left: 5px;
+    font-size: 30px;
+    font-weight: bold;
+    /*color: #ffffff;*/
+    position: relative;
+    color: white;
+    margin-bottom:20px;
+}
+.InformationDisplay h7 {
+    display: block;
+    text-align: left;
+    font-size: 20px;
+    font-weight: normal;
+    color: #EACAFF;
+    margin-left: 5px;
+}
+
+.InformationDisplay h8 {
+    display: block;
+    text-align: left;
+    margin-left: 5px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #F4E3FF;
+}
+
 h2:hover {
     font-variation-settings: "wght" 582;
     letter-spacing: 1px;
@@ -313,7 +341,7 @@ h2:hover {
         overflow-y: scroll;
 }
 .container {
-    width: 400px;
+    width: 350px;
     background: #ffff;
     padding: 20px 30px;
     border: 1px solid #444;
@@ -322,7 +350,9 @@ h2:hover {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    position: relative;
+    position: fixed;
+    bottom: 0;
+    right: 0;
 }
 .container .post {
     display: none;
@@ -454,18 +484,17 @@ form .btn button:hover{
 
 /*Leave review button stylization*/
   .ReviewLeaveButton {
-    background-color: rgb(78, 86, 120);
+    background-color: #01796F;
     border: none;
     color: white;
     width: 100px;
-    height: 45px;
-    padding: 16px 32px;
+    height: 35px;
     text-align: center;
-    font-size: 8px;
+    font-size: 10px;
     margin: 4px 2px;
-    position: absolute;
-    top: 60px;
-    right: 10px;
+     position:absolute;
+     top:49px;
+     left:-1px;
     opacity: 1;
     transition: 0.3s;
     display: inline-block;
