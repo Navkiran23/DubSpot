@@ -50,11 +50,12 @@ Comment_Containter{
     width:300px;
     padding: 20px;
     margin: 15px;
-    border: thick double rgb(78, 86, 120);
+    /*border: thick double rgb(78, 86, 120); */
     cursor: pointer;
     position: absolute;
-    top: 500px;
-    right: 0px;
+    /* top: 500px; */
+    bottom: 0px;
+    right: -30px;
 }
 
 .profile{
