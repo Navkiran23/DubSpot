@@ -111,7 +111,6 @@ function attachOnClicksToStars() {
   for (let starLabel of starLabels) {
     const starRating = starLabel.getAttribute('for').split("-")[1]
     starLabel.onclick = () => {
-      console.log("click")
       document.getElementById("rating").value = starRating
     }
   }
