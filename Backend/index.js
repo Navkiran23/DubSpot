@@ -94,7 +94,6 @@ app.post('/signup', (req, res) => {
             console.error('Error hashing password:', err)
             res.status(500).send("Error encountered while attempting to create account. Please try again.")
           } else {
-            console.log('Hashed password:', hash)
             const hashBuffer = Buffer.from(hash, 'utf8')
             // create account in the database
             createAccountStatement.execute({createAccountEmail: email, createAccountUsername: username, createAccountPassword: hashBuffer}, (err, result) => {
@@ -138,9 +137,8 @@ app.post('/login', (req, res) => {
       return
     }
     // handle query results. if account not found, respond with error
-    console.log(result.recordset)
     if (result.recordset.length !== 1) {
-      res.status(403).send('Login failed. Account not found.')
+      res.status(404).send('Login failed. Account not found.')
       return
     }
     const hashedPassword = Buffer.from(result.recordset[0].password).toString('utf8')
@@ -326,6 +324,11 @@ app.get('/Profile', (req, res) => {
   res.sendFile(path.join(root, 'FrontEnd', 'DubSpotProfile.html'))
 })
 
+/**
+ * returns profile information about the user
+ * @requires user is logged in
+ * @returns json object with user information
+ */
 app.get('/api/profile', (req, res) => {
   const email = req.session.userId
   if (email === undefined) {
@@ -352,15 +355,21 @@ app.get('/api/profile', (req, res) => {
  * @requires user must be signed in
  */
 app.post('/api/profile/update', (req, res) => {
-  const major = req.body.major.toString()
-  const standing = req.body.standing.toString()
-  const username = req.body.username.toString()
+  console.log(req.body)
+  const major = req.body.major
+  const standing = req.body.standing
+  const username = req.body.username
   const email = req.session.userId
+  console.log(username, major, standing, email)
   if (email === undefined) {
     res.status(401).send('Unauthorized')
     return
   }
-  updateProfilePageStatement.execute({updateMajor: major, updateStanding: standing, updateUsername: username, updateProfileEmail: email}, (err, result) => {
+  if (major === undefined || standing === undefined || username === undefined) {
+    res.status(400).send('One or more fields were incomplete')
+    return
+  }
+  updateProfilePageStatement.execute({updateMajor: major.toString(), updateStanding: standing.toString(), updateUsername: username.toString(), updateProfileEmail: email}, (err, result) => {
     if (err) {
       console.log(err)
       res.status(500).send("Error encountered. Please try again.")
