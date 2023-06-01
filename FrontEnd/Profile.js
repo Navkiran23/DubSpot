@@ -26,7 +26,6 @@ form.addEventListener('submit', function (event) {
   // Prevent the default form submission behavior
   event.preventDefault()
   const formData = new FormData(event.target)
-  console.log(formData)
   fetch('/api/profile/update', {
     method: 'POST',
     headers: {
@@ -34,22 +33,23 @@ form.addEventListener('submit', function (event) {
     },
     body: new URLSearchParams(formData).toString()
   })
-      .then(function (response) {
-        if (response.ok) {
-          console.log(response)
-          alert("Your profile was updated")
-        } else if (response.status === 401 || response.status === 403) {
-          alert("Please log in and try again")
-        } else if (response.status === 400) {
-          alert("One or more fields are incomplete")
-        } else {
-          console.log("error submitting, please try again")
-          alert("Your profile was not updated, please try again")
-        }
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
+      // sending out alerts in case something goes wrong
+  .then(function (response) {
+    if (response.ok) {
+      console.log(response)
+      alert("Your profile was updated")
+    } else if (response.status === 401 || response.status === 403) {
+      alert("Please log in and try again")
+    } else if (response.status === 400) {
+      alert("One or more fields are incomplete")
+    } else {
+      console.log("error submitting, please try again")
+      alert("Your profile was not updated, please try again")
+    }
+  })
+  .catch(function (error) {
+    console.log(error)
+  })
 })
 
 fetchProfile()

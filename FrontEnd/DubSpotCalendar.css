@@ -239,13 +239,14 @@ tbody tr td {
 }
 
 .event {
+  height: 100%;
   background: #123f47;
   color: white;
   border-radius: 2px;
   text-align: left;
   font-size: 0.875rem;
   z-index: 5;
-  padding: 0.5rem;
+  padding: 0.5rem 0 0 0.5rem;
   overflow-x: hidden;
   transition: all 0.2s;
   cursor: pointer;

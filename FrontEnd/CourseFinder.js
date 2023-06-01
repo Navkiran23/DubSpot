@@ -34,7 +34,7 @@ async function PutDataIntoTable() {
       .then(response => response.json())
       .then(data => {
         for (let i = 0; i < data.length; i++) {
-          let key = `${data[i].course_id.toString()}/${data[i].quarter.toString()}`
+          let key = `${data[i].course_id.toString()}/${data[i].quarter.toString()}/${data[i].course_number.toString()}`
           key = key.replace(" ","-")
           temp += `<tr id="${key}">`
           temp += "<td>" + data[i].course_number + "</td>"
@@ -56,14 +56,18 @@ function attachOnClicksToRows() {
       //pass in the id into the function below to make sure there
       // is a link between the two major components of the course finder
       let courseId = row.id.split("/")[0]
-      displayDataOnSidebar(row.id).then(() => {
+      let quarter = row.id.split("/")[1]
+      let courseName = row.id.split("/")[2]
+      // Displays all information into the sidebar
+      displayDataOnSidebar(`${courseId}/${quarter}`).then(() => {
         document.getElementById("reviewCourseID").value = courseId
+        document.getElementById("addCourseID").value = courseId
+        document.getElementById("addCourseQuarter").value = quarter
+        document.getElementById("addCourseName").value = courseName
       })
     }
   }
 }
-
-//Data for sidebar
 
 // fetch the data and display on the sidebar
 async function displayDataOnSidebar(urlString) {

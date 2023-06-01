@@ -73,5 +73,62 @@ todayButton.addEventListener("click", function() {
   calculateWeek(offset);
 });
 
+async function displayCoursesOnCalendar() {
+  await fetch("/api/calendar")
+      .then(response => response.json())
+      .then(async data => {
+        for (let i = 0; i < data.length; i++) {
+          let key = `${data[i].course_id.toString()}/${data[i].quarter.toString()}`
+          await fetch(`/api/courses/${key}`)
+              .then (response => response.json())
+              .then (data2 => {
+                let courseNumber
+                let meetingTime
+                let meetingDays
+                let classLength
+                courseNumber = data2[0].course_number
+                meetingDays = data2[0].meeting_days
+                // Parses meeting_days string into an array
+                const daysArray = ['M', 'Tu', 'W', 'Th', 'F']
+                let meetingDaysArray = []
+                for (let i = 0; i < daysArray.length; i++) {
+                  const day = daysArray[i]
+                  const exists = meetingDays.includes(day)
+                  meetingDaysArray.push(exists)
+                }
+                meetingTime = data2[0].meeting_times
+                // Calculates how long each class is in minutes
+                let times = meetingTime.split("-")
+                let startTime = times[0].trim()
+                startTime = startTime.replaceAll(/[^a-zA-Z0-9_]/g, "").toLowerCase()
+                let endTime = times[1].trim()
+                endTime = endTime.replaceAll(/[^a-zA-Z0-9_]/g, "").toLowerCase()
+                // Creates new date objects to easily calculate the difference in time
+                let startDate = new Date(`01/01/2000 ${startTime}`)
+                let endDate = new Date(`01/01/2000 ${endTime}`)
+                // This calculation returns the value in milliseconds, so we have to convert it to minutes
+                let timeDiff = endDate - startDate
+                classLength = Math.floor(timeDiff / (1000 * 60))
+
+                // add events to the calendar
+                console.log(startTime)
+                let row = document.getElementById(startTime)
+                let tdElements = row.getElementsByTagName("td")
+                for (let i = 0; i < meetingDaysArray.length; i++) {
+                  if (meetingDaysArray[i]) {
+                    let tdElt = tdElements[i+2]
+                    let newElement = document.createElement("div")
+                    newElement.textContent = courseNumber
+                    newElement.classList.add('event')
+                    newElement.classList.add('double')
+                    tdElt.appendChild(newElement);
+                  }
+                }
+              })
+        }
+      })
+}
+
 // Runs this immediately, sets date automatically
-calculateWeek(offset);
+calculateWeek(offset)
+displayCoursesOnCalendar()
