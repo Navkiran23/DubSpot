@@ -65,8 +65,7 @@ pool.connect(err => {
   insertPlannedClassesStatement.input('insertPlannedCourseID', sql.VarChar(100))
   insertPlannedClassesStatement.input('insertPlannedQuarter', sql.VarChar(6))
   insertPlannedClassesStatement.input('insertPlannedActivityID', sql.VarChar(10))
-  insertPlannedClassesStatement.prepare('INSERT INTO PlanningToTake (email, course_id, quarter, activity_id) ' +
-      'VALUES (@insertPlannedEmail, @insertPlannedCourseID, @insertPlannedQuarter, @insertPlannedActivityID)'
+  insertPlannedClassesStatement.prepare('INSERT INTO PlanningToTake (email, course_id, quarter, activity_id) ' + 'VALUES (@insertPlannedEmail, @insertPlannedCourseID, @insertPlannedQuarter, @insertPlannedActivityID)'
   )
 
   // -------------------------------------
