@@ -1,35 +1,32 @@
-const addCourseButton = document.getElementById('add-course');
-
-addCourseButton.addEventListener('click', function() {
-  let rows = document.getElementById("myTable").rows
-  for (let row of rows) {
-    row.onclick = () => {
-      let courseId = row.id.split("/")[0]
-      let quarter = row.id.split("/")[1]
-      document.getElementById("addCourseID").value = courseId
-      document.getElementById("addCourseQuarter").value = quarter
+const formTwo = document.getElementById('add-course')
+//Code to add the course to the calendar
+formTwo.addEventListener('submit', function (event) {
+  // Prevent the default form submission behavior
+  event.preventDefault()
+  const formData = new FormData(event.target)
+  fetch('/api/calendar/add', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    // sends the data to a string
+    body: new URLSearchParams(formData).toString()
+  })
+      //Sends out alerts to tell user if any issues occur
+  .then(function (response) {
+    if (response.ok) {
+      console.log(response)
+      alert("Class added!")
+    } else if (response.status === 401 || response.status === 403) {
+      alert("Please log in and try again")
+    } else if (response.status === 400) {
+      alert("Please select a course")
+    } else {
+      console.log("error submitting, please try again")
+      alert("Your class was not added, please try again")
     }
-  }
-  console.log('Button clicked!');
-});
-
-async function displayCoursesOnCalendar() {
-  await fetch ("/api/calendar")
-      .then(response => response.json())
-      .then(data => {
-        for (let i = 0; i < data.length; i++) {
-          let class_name
-          let meeting_time
-          let meeting_days
-
-          let key = `${data[i].course_id.toString()}/${data[i].quarter.toString()}`
-          fetch(`/api/courses/${key}`)
-              .then (response => response.json())
-              .then (data2 => {
-                class_name = data2.course_number
-                meeting_days = data2.meeting_days
-                meeting_time = data2.meeting_times
-              })
-        }
-      })
-}
+  })
+  .catch(function (error) {
+    console.log(error)
+  })
+})
