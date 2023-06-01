@@ -15,7 +15,7 @@ loginForm.addEventListener('submit', function (event) {
       .then(function (response) {
         if (response.ok) { // login successful
           console.log(response)
-          location.href = "/calendar";
+          location.href = "/coursefinder";
         } else if (response.status === 403) { // incorrect email or password
           console.log("error submitting, please try again")
           alert("incorrect email or password");

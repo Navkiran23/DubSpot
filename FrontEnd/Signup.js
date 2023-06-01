@@ -15,7 +15,7 @@ form.addEventListener('submit', function (event) {
         if (response.ok) { // signup was successful
           console.log(response)
           alert("signup was successful");
-          location.href = "/calendar";
+          location.href = "/coursefinder";
         } else if (response.status === 400) { // The server could not understand the request due to malformed syntax or invalid parameters.
           console.log("error submitting, please fix errors")
           alert("The server could not understand the request due to malformed syntax or invalid parameters.");
