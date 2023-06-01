@@ -1,3 +1,6 @@
+// Code to populate the course finder
+
+// Constants to use later on to help with getting data
 const btn = document.querySelector("button");
 const post = document.querySelector(".post");
 const widget = document.querySelector(".star-widget");
@@ -36,6 +39,7 @@ async function PutDataIntoTable() {
         for (let i = 0; i < data.length; i++) {
           let key = `${data[i].course_id.toString()}/${data[i].quarter.toString()}/${data[i].course_number.toString()}`
           key = key.replace(" ","-")
+          // Creates the string that will be used to put in each row into the table
           temp += `<tr id="${key}">`
           temp += "<td>" + data[i].course_number + "</td>"
           temp += "<td>" + data[i].class_title + "</td>"
@@ -76,6 +80,7 @@ async function displayDataOnSidebar(urlString) {
     .then(data => {
       let displayString = "";
       for (let i = 0; i < data.length; i++) {
+        // Creates the tags to display information
         displayString += "<h2>" + data[i].class_title + "</h2>"
         displayString += "<h4>"+ "Prerequisite: " + data[i].prerequisite + "</h4>"
         displayString += "<h5>" + "Credits: " + data[i].credits + "</h5>"
@@ -88,6 +93,7 @@ async function displayDataOnSidebar(urlString) {
         displayString += "<br>" + " " + "</br>"
         displayString += "<h10>" + "Reviews" + "</h10>"
         let courseId = urlString.split("/")[0]
+        // fetches the reviews from the database to display
         fetch(`/api/reviews/${courseId}`)
             .then(response => response.json())
             .then(data => {
@@ -110,6 +116,7 @@ async function displayDataOnSidebar(urlString) {
 }
 
 function attachOnClicksToStars() {
+  // Uses the star forms to send in the ratings
   const starWidget = document.querySelector('.star-widget');
   const starLabels = starWidget.getElementsByClassName('fa-star');
   for (let starLabel of starLabels) {
@@ -120,6 +127,7 @@ function attachOnClicksToStars() {
   }
 }
 
+// Calls the functions to actually populate the database
 PutDataIntoTable().then(r => {
   attachOnClicksToRows()
   attachOnClicksToStars()

@@ -3,7 +3,7 @@
   margin: 0;
   font-family: sans-serif;
 }
-
+/* Stylizing the body of the page */
 body {
   display: flex;
   justify-content: center;
@@ -13,6 +13,7 @@ body {
   background-size: cover;
 }
 
+/* Basic container for the card */
 .container {
   position: relative;
   width: 1100px;
@@ -131,7 +132,7 @@ body {
   transition-delay: 0.3s;
 }
 
-/*Header Stuff*/
+/*Header styling*/
 a:link {
   text-decoration: none;
 }

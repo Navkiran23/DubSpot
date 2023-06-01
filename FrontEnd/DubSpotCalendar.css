@@ -7,6 +7,7 @@
 html {
     text-align: center;
 }
+/*Formatting the body of the page*/
 body {
   margin: 0px;
   height: 100%;
@@ -19,7 +20,7 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
-
+/* Code for the header*/
 a:link {
   text-decoration: none;
 }
@@ -134,7 +135,7 @@ header h1 {
   text-align: center;
   font-weight: normal;
 }
-
+/* Styling the body of the table */
 tbody {
   position: relative;
   top: 0px;
@@ -173,7 +174,7 @@ thead {
   background: #ffffff;
   border-bottom: 2px solid #ddd;
 }
-
+/* Each row code */
 tr, tr td {
   height: 20px;
 }
@@ -223,16 +224,17 @@ tbody tr td {
 /*  display: none;*/
 /*}*/
 
-.checkbox:checked + label {
-  border: 0;
-  outline: 0;
-  width: 100%;
-  heigth: 100%;
-  background: red;
-  color: transparent;
-  display: inline-block;
-}
+/*.checkbox:checked + label {*/
+/*  border: 0;*/
+/*  outline: 0;*/
+/*  width: 100%;*/
+/*  heigth: 100%;*/
+/*  background: red;*/
+/*  color: transparent;*/
+/*  display: inline-block;*/
+/*}*/
 
+/* How events will be stylized */
 .event {
   height: 100%;
   background: #123f47;
@@ -286,7 +288,7 @@ button.secondary:active {
 button.secondary:focus {
   outline: 0;
 }
-
+/* Today date needs to be highlighted */
 .today {
   color: #418b96;
 }

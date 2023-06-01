@@ -1,6 +1,7 @@
 const form = document.getElementById('update-profile')
-
+// Code to populate the profile page with user data
 function fetchProfile() {
+  //Gets the profile information from the user
   fetch("/api/profile")
       .then(response => {
         if (response.ok) {
@@ -11,6 +12,7 @@ function fetchProfile() {
               }
             }
           })
+          // sends out alerts in case something goes wrong
         } else if (response.status === 500) {
           alert("An error occurred, please try again")
         } else if (response.status === 401 || response.status === 404) {
@@ -51,5 +53,5 @@ form.addEventListener('submit', function (event) {
     console.log(error)
   })
 })
-
+// calls the method above to populate the page
 fetchProfile()

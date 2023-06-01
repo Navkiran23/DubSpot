@@ -3,6 +3,7 @@ const form = document.getElementById('signup')
 form.addEventListener('submit', function (event) {
   // Prevent the default form submission behavior
   event.preventDefault();
+  // sign up post form connection to backend
   const formData = new FormData(event.target);
   fetch('/signup', {
     method: 'POST',
@@ -11,6 +12,7 @@ form.addEventListener('submit', function (event) {
     },
     body: new URLSearchParams(formData).toString()
   })
+      // Alerts to help user in case something goes wrong
       .then(function (response) {
         if (response.ok) { // signup was successful
           console.log(response)
