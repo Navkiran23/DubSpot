@@ -281,15 +281,15 @@ app.get('/api/reviews/:courseID', (req, res) => {
  * receives requests for adding courses and sends it to the database
  * @requires user must be logged in
  */
-app.get('/api/calendar/:courseID/:quarter/:activityID', (req, res) => {
+app.post('/api/calendar/add', (req, res) => {
   const user_email = req.session.userId
   if (user_email === undefined) {
     res.status(401).send('Unauthorized')
     return
   }
-  const courseID = req.params.courseID
-  const quarter = req.params.quarter.toString().replace("-", " ")
-  const activityID = req.params.activityID.toString().replace("-", " ")
+  const courseID = req.body.courseID
+  const quarter = req.body.quarter.toString().replace("-", " ")
+  const activityID = req.body.activityID.toString().replace("-", " ")
   insertPlannedClassesStatement.execute({insertPlannedEmail: user_email, insertPlannedCourseID: courseID, insertPlannedQuarter: quarter, insertPlannedActivityID: activityID }, (err, result) => {
     if (err) {
       console.log(err)

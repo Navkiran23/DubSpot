@@ -7,6 +7,7 @@
 html {
     text-align: center;
 }
+/*Formatting the body of the page*/
 body {
   margin: 0px;
   height: 100%;
@@ -19,7 +20,7 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
-
+/* Code for the header*/
 a:link {
   text-decoration: none;
 }
@@ -87,11 +88,7 @@ nav {
 .outer {
   position:relative;
 }
-
-
-
-
-
+/*Code for the calendar stylization itself*/
 .calendar {
   margin-left: 80px;
   margin-top: 100px;
@@ -138,7 +135,7 @@ header h1 {
   text-align: center;
   font-weight: normal;
 }
-
+/* Styling the body of the table */
 tbody {
   position: relative;
   top: 0px;
@@ -177,7 +174,7 @@ thead {
   background: #ffffff;
   border-bottom: 2px solid #ddd;
 }
-
+/* Each row code */
 tr, tr td {
   height: 20px;
 }
@@ -212,40 +209,41 @@ tbody tr td {
   color: rgba(0, 0, 0, 0.4);
 }
 
+/*.checkbox {*/
+/*  display: none;*/
+/*}*/
 
-.checkbox {
-  display: none;
-}
+/*.checkbox + label {*/
+/*  border: 0;*/
+/*  outline: 0;*/
+/*  width: 100px;*/
+/*  heigth: 100px;*/
+/*  background: white;*/
+/*  color: transparent;*/
+/*  display:block;*/
+/*  display: none;*/
+/*}*/
 
-.checkbox + label {
-  border: 0;
-  outline: 0;
-  width: 100px;
-  heigth: 100px;
-  background: white;
-  color: transparent;
-  display:block;
-  display: none;
-}
+/*.checkbox:checked + label {*/
+/*  border: 0;*/
+/*  outline: 0;*/
+/*  width: 100%;*/
+/*  heigth: 100%;*/
+/*  background: red;*/
+/*  color: transparent;*/
+/*  display: inline-block;*/
+/*}*/
 
-.checkbox:checked + label {
-  border: 0;
-  outline: 0;
-  width: 100%;
-  heigth: 100%;
-  background: red;
-  color: transparent;
-  display: inline-block;
-}
-
+/* How events will be stylized */
 .event {
+  height: 100%;
   background: #123f47;
   color: white;
   border-radius: 2px;
   text-align: left;
   font-size: 0.875rem;
   z-index: 5;
-  padding: 0.5rem;
+  padding: 0.5rem 0 0 0.5rem;
   overflow-x: hidden;
   transition: all 0.2s;
   cursor: pointer;
@@ -290,7 +288,7 @@ button.secondary:active {
 button.secondary:focus {
   outline: 0;
 }
-
+/* Today date needs to be highlighted */
 .today {
   color: #418b96;
 }

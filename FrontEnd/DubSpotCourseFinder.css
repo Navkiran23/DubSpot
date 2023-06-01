@@ -58,11 +58,13 @@ Comment_Containter{
     right: -30px;
 }
 
+/*Profile css*/
 .profile{
     display: flex;
     align-items: center;
 }
 
+/*Username css*/
 Username{
     display: flex;
     flex-direction: column;
@@ -74,6 +76,7 @@ Username{
     letter-spacing: 0.5px;
 }
 
+/*Color for star ranking*/
 .StarRanking {
     color: #f9d71c;
 }
@@ -85,6 +88,7 @@ Username{
     margin-bottom: 20px;
 }
 
+/*Section for users to comment their review*/
 .client-comment p{
     font-size: 10px;
     color: #4b4b4b;
@@ -377,6 +381,8 @@ h2:hover {
 .container .star-widget input{
     display: none;
 }
+
+/*Star widgets*/
 .star-widget label {
     font-size: 40px;
     color: #444;
@@ -395,6 +401,8 @@ input:not(:checked) ~ label:hover ~ label{
 input:checked ~ label{
     color: #fd4;
 }
+
+/*Rating examples for each star */
 #rate-1:checked ~ form header:before{
     content: "Very Bad Experience"
 }
@@ -460,6 +468,7 @@ form .textarea2 textarea{
     resize: none;
 }
 
+/* Course Finder buttons */
 form .btn {
     height: 45px;
     width: 100%;
@@ -493,7 +502,7 @@ form .btn button:hover{
     font-size: 10px;
     margin: 4px 2px;
      position:absolute;
-     top:49px;
+     top:850px;
      left:-1px;
     opacity: 1;
     transition: 0.3s;

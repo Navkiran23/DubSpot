@@ -27,7 +27,7 @@
 <!-- Displaying reviews-->
 <div class="SecondBody">
   <!--Filtered table code-->
-  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Enter the class name/number here!">
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Enter the class number here!">
   <!-- Table for searching-->
   <div class="wrap">
   <table id="myTable">
@@ -38,11 +38,12 @@
     </thead>
     <tbody id="data"></tbody>
   </table>
+    <!--Functionality for adding courses into the calendar-->
     <form action ="#" id="add-course">
       <div class="AddCourse">
-        <input type="hidden" id="addCourseID" name = "courseID" value ="">
-        <input type="hidden" id="addCourseQuarter" name = "quarter" value ="">
-        <input type="hidden" id="addCourseName" name ="activityID" value ="">
+        <input type="hidden" id="addCourseID" name="courseID" value="">
+        <input type="hidden" id="addCourseQuarter" name="quarter" value="">
+        <input type="hidden" id="addCourseName" name="activityID" value="">
       </div>
       <button class="AddCourseButton">Add Course to Calendar</button>
     </form>
@@ -81,33 +82,13 @@
   </div>
 
 <div class="FourthBody">
+  <!--Sidebar code that will be populated upon clicking on a class-->
   <div id="courseinfo" class="InformationDisplay">
     <h2>Press on a class to find out more</h2>
-<!--    <h4>Prerequisites: CSE 331; CSE 332</h4>-->
-<!--    <h5>Credits: 4.0</h5>-->
-<!--    <h6>Reviews Below</h6>-->
   </div>
+  <!--Comment box layout to be populated with comments through backend-->
   <div class="Comment_Containter" id="reviews-container">
-<!--    <div class="Commentbox">-->
-      <div class="BoxHeadings">
-        <!--profile----->
-        <div class="profile">
-          <!--name-and-username-->
-          <div class="username">
-<!--            <h1>Review displayed here</h1>-->
-          </div>
-        </div>
-        <!--reviews, keep this here for formatting------>
-        <div class="StarRanking">
-          <h7></h7>
-        </div>
-      </div>
-      <!--Comments---------------------------------------->
-      <div class="client-comment">
-<!--        <p>Personally didn't go to UW, but I don't like the number 3 so cse 333 must be bad</p>-->
-      </div>
     </div>
-    <!-- </div> -->
   </div>
 </div>
   <script src="CourseFinder.js"></script>

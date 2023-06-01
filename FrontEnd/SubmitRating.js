@@ -1,5 +1,5 @@
 const form = document.getElementById('submit-rating')
-
+//Java script code to submit reviews
 form.addEventListener('submit', function (event) {
   // Prevent the default form submission behavior
   event.preventDefault();
@@ -11,6 +11,7 @@ form.addEventListener('submit', function (event) {
     },
     body: new URLSearchParams(formData).toString()
   })
+      //Sends out alerts based on error messages or successful submission
       .then(function (response) {
         if (response.ok) {
           console.log(response)
@@ -22,6 +23,7 @@ form.addEventListener('submit', function (event) {
           alert("Your response was not submitted please try again");
         }
       })
+      //catches console log error
       .catch(function (error) {
         console.log(error)
       })
