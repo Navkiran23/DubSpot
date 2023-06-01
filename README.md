@@ -1,5 +1,6 @@
 # DubSpot
 Schedule builder application that enables students to discover courses and develop their own schedules quickly and easily. 
+
 <img width="842" alt="Screen Shot 2023-06-01 at 4 03 56 PM" src="https://github.com/Navkiran23/DubSpot/assets/100175211/c99b39ae-e258-40b4-b4a6-afabb98224cd">
 
 # What is DubSpot?
