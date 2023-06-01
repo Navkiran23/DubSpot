@@ -37,6 +37,8 @@ The weekly reports folder contains the weekly reports by our group
 The testing features contains any testing files
 
 # How to build and test
+Building and testing will usually be done once the repository is cloned, below are the instructions you can follow once you clone the repository into your code editor.
+
 We have automated tests set up on github so in order to test the code, all you have to do is make a push to the repo and the tests will automatically run. Our system uses a SQL server hosted on Microsoft Azure and as of right now it will be online 24/7 so there is no need to set or start anything up for that. To launch the website you can follow the steps below:
 
 1. node needs to be installed.
@@ -49,9 +51,9 @@ We have automated tests set up on github so in order to test the code, all you h
 
 5. after the / you can enter the exact link for the webpage you wish to access for course finder it would be: Type in localhost:3000/coursefinder
 
-7. We reccomend starting at the login and typing in these credentials. You can press the login with your username: admin@gmail.com and password: admin.
+6. At the log in you can sign up/ login with whichever credentials you like!
 
-8. Then you should be able to use the navbar to navigate
+7. Then you should be able to use the navbar to navigate
 
 testing the system:
 1. Run npm test in the terminal but the server has to be running in another terminal
