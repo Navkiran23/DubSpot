@@ -16,7 +16,7 @@ Students who have taken the course can come and leave reviews for other students
 ### Calendar
 A visual layout for the student to see how their course fits with the rest of their schedule. This is the bulk of the schedule. It is how students will see what their daily life for the quarter will look like. They need to visually see it and lay it out in order to decide properly. This calendar is probably the most important aspect.
 ### Accounts
-Main way to access the website, (possibly linked to the UW accounts). You would need a login and privacy settings to use this project. So this is an important aspect to implement.
+Main way to access the website. You would need a login and privacy settings to use this project. So this is an important aspect to implement.
 ### Filters
 To allow students to select their preferences for classes. We will try to do this better than myPlan as a key disadvantage of myPlan is how hard it can be to filter out courses according to what you want. It will be the main attraction and is thus very important to implement.
 
