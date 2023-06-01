@@ -20,6 +20,7 @@ const createAccountStatement = new sql.PreparedStatement(pool)
 const findPlannedClassesStatement = new sql.PreparedStatement(pool)
 const updateProfilePageStatement = new sql.PreparedStatement(pool)
 const fetchProfileInfoStatement = new sql.PreparedStatement(pool)
+const insertPlannedClassesStatement = new sql.PreparedStatement(pool)
 
 pool.connect(err => {
   if (err) {
@@ -49,6 +50,14 @@ pool.connect(err => {
   findPlannedClassesStatement.input('findPlannedEmail', sql.VarChar(100))
   findPlannedClassesStatement.prepare(
       'SELECT course_id, quarter, activity_id FROM PlanningToTake WHERE email = @findPlannedEmail'
+  )
+
+  // prepared statement for inserting planned classes
+  insertPlannedClassesStatement.input('insertPlannedEmail', sql.VarChar(100))
+  insertPlannedClassesStatement.input('insertPlannedCourseID', sql.VarChar(100))
+  insertPlannedClassesStatement.input('insertPlannedQuarter', sql.VarChar(6))
+  insertPlannedClassesStatement.input('insertPlannedActivityID', sql.VarChar(10))
+  insertPlannedClassesStatement.prepare('INSERT INTO PlanningToTake (email, course_id, quarter, activity_id) ' + 'VALUES (@insertPlannedEmail, @insertPlannedCourseID, @insertPlannedQuarter, @insertPlannedActivityID)'
   )
 
   // -------------------------------------
@@ -104,5 +113,6 @@ module.exports = {
   createAccountStatement,
   findPlannedClassesStatement,
   updateProfilePageStatement,
-  fetchProfileInfoStatement
+  fetchProfileInfoStatement,
+  insertPlannedClassesStatement
 }
