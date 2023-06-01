@@ -1,7 +1,9 @@
 # DubSpot
 Schedule builder application that enables students to discover courses and develop their own schedules quickly and easily. 
+<img width="842" alt="Screen Shot 2023-06-01 at 4 03 56 PM" src="https://github.com/Navkiran23/DubSpot/assets/100175211/c99b39ae-e258-40b4-b4a6-afabb98224cd">
 
 # What is DubSpot?
+
 DubSpot is a revolutionary schedule builder application that enables students to discover courses and develop their schedules quickly and easily. Through DubSpot, students will be able to contribute to course rankings to give insightful information for students looking to design their schedules. Likewise, the primary purpose for DubSpot is to create seamless schedules. Students can sync their course requirements and gather a recommended course load. Furthermore, students can also choose specific courses they want to enroll in and then have filtered results for other courses that will not conflict with current time slots. All in all, DupSpot aims to solve the issue of stressful registration periods by providing a streamline course schedule and backup plans if their first choices are not fulfilled.
 
 Our idea is different due to the fact that it will allow students to build their schedule and plan their courses easily. Although Myplan has a built-in schedule planner, it does not allow students to clearly lay out their course plans. This application will allow students to see what options they have to fill in the gaps that their current schedule has. Accompanied with the added features of course rankings, reviews, and feedback. It will allow students to get recommendations for their schedule catered to them. Along with making the advisor's job easier.
