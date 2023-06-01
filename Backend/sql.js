@@ -17,11 +17,9 @@ const getCourseStatement = new sql.PreparedStatement(pool)
 const getReviewsStatement = new sql.PreparedStatement(pool)
 const addReviewStatement = new sql.PreparedStatement(pool)
 const createAccountStatement = new sql.PreparedStatement(pool)
-const loginAccountStatement = new sql.PreparedStatement(pool)
 const findPlannedClassesStatement = new sql.PreparedStatement(pool)
 const updateProfilePageStatement = new sql.PreparedStatement(pool)
 const fetchProfileInfoStatement = new sql.PreparedStatement(pool)
-const getUsernameStatement = new sql.PreparedStatement(pool)
 
 pool.connect(err => {
   if (err) {
@@ -43,12 +41,6 @@ pool.connect(err => {
       'VALUES(@createAccountEmail, @createAccountUsername, null, null, @createAccountPassword)'
   )
 
-  // prepared statement for logging into an existing account
-  loginAccountStatement.input('loginEmail', sql.VarChar(100))
-  loginAccountStatement.prepare(
-      'Select password FROM Users WHERE email = @loginEmail'
-  )
-
   // -------------------------------------
   // ---------Calendar--------------------
   // -------------------------------------
@@ -68,12 +60,6 @@ pool.connect(err => {
   getCourseStatement.input('getCourseQuarter', sql.VarChar(6))
   getCourseStatement.prepare(
       'SELECT * FROM Courses WHERE course_id = @getCourseCourseID AND quarter = @getCourseQuarter'
-  )
-
-  // prepared statement for getting user's username
-  getUsernameStatement.input('getUsernameEmail', sql.VarChar(100))
-  getUsernameStatement.prepare(
-      'Select username FROM Users WHERE email = @getUsernameEmail'
   )
 
   // prepared statement for getting reviews for a specific course
@@ -104,7 +90,7 @@ pool.connect(err => {
 
   fetchProfileInfoStatement.input('fetchProfileEmail', sql.VarChar(100))
   fetchProfileInfoStatement.prepare(
-      'SELECT username, major, standing, email FROM Users WHERE email = @fetchProfileEmail'
+      'SELECT username, major, standing, email, password FROM Users WHERE email = @fetchProfileEmail'
   )
 
 })
@@ -116,9 +102,7 @@ module.exports = {
   getReviewsStatement,
   addReviewStatement,
   createAccountStatement,
-  loginAccountStatement,
   findPlannedClassesStatement,
   updateProfilePageStatement,
-  fetchProfileInfoStatement,
-  getUsernameStatement
+  fetchProfileInfoStatement
 }

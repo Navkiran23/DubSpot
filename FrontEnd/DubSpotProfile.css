@@ -19,7 +19,7 @@ body {
   }
   /*New code*/
 .container {
-background: transparent;
+  background: transparent;
   border: 10px rgb(255, 255, 255);
   width: 450px;
   height: 460px;
@@ -70,9 +70,12 @@ h2 {
   outline: none;
 }
 input[type="checkbox"] + label{
-text-decoration: dashed;
-color: white;
-font-size: 10px;
+  text-decoration: dashed;
+  color: white;
+  font-size: 10px;
+}
+textarea {
+  resize: none;
 }
 /*
 .btn {
