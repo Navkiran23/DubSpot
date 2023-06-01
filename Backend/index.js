@@ -10,11 +10,9 @@ const {
   getReviewsStatement,
   addReviewStatement,
   createAccountStatement,
-  loginAccountStatement,
   findPlannedClassesStatement,
   updateProfilePageStatement,
-  fetchProfileInfoStatement,
-  getUsernameStatement
+  fetchProfileInfoStatement
 } = require("./sql")
 
 /**
@@ -69,7 +67,7 @@ app.post('/signup', (req, res) => {
   }
 
   // check if account with email already exists
-  loginAccountStatement.execute({loginAccountEmail: email}, (err, result) => {
+  fetchProfileInfoStatement.execute({fetchProfileEmail: email}, (err, result) => {
     if (err) {
       console.log(err)
       res.status(500).send("Error encountered while attempting to create account. Please try again.")
@@ -130,7 +128,7 @@ app.post('/login', (req, res) => {
   }
 
   // retrieve account
-  loginAccountStatement.execute({loginEmail: email}, (err, result) => {
+  fetchProfileInfoStatement.execute({fetchProfileEmail: email}, (err, result) => {
     if (err) {
       console.log(err)
       res.status(500).send("Error encountered while attempting to log in. Please try again.")
@@ -293,7 +291,7 @@ app.post('/submit-rating', (req, res) => {
     res.status(401).send('Unauthorized')
     return
   }
-  getUsernameStatement.execute({getUsernameEmail: email}, (err, result) => {
+  fetchProfileInfoStatement.execute({fetchProfileEmail: email}, (err, result) => {
     if (err) {
       console.log(err)
       res.status(500).send("Error encountered. Please try again.")

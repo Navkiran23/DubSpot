@@ -6,7 +6,9 @@ function fetchProfile() {
         if (response.ok) {
           response.json().then(data => {
             for (let field in data[0]) {
-              document.getElementById(field).value = data[0][field]
+              if (field !== 'password') {
+                document.getElementById(field).value = data[0][field]
+              }
             }
           })
         } else if (response.status === 500) {
