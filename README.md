@@ -32,8 +32,6 @@ It also contains the Sheets page which will have the data layout
 
 The folder for the frontend contains the HTML and CSS components we will be using to create the webpage
 
-The UIUX folder contains the visual designs that the frontend team will use as a guide when coding
-
 The weekly reports folder contains the weekly reports by our group
 
 The testing features contains any testing files
@@ -61,11 +59,11 @@ testing the system:
 3. then in your second terminal run npm test and test the webpage
 
 # Use cases
-Signup/login: The login and sign up is hardcoded and only works with specific username and password combinations. If we have time, we will implement a fully functioning login, but that is not a top priority at the moment. The plan is to use the data in our user sql database which will then hold all user log in information which we access through a JSON. Then the JSON is accessed through Javascript and put into our webpage. You can press the login with your username: admin@gmail.com and password: admin.
+Signup/login: The login and sign up is now fully functional! The user can sign up with our form which will then have their information securely inputted in our database. The password is not visible to us due to it being hashed.
 
-Searching for classes: Our search bar is fully functional to find a specific class and information about the class. We do plan on adding more information here to make it a more informational course description, however that has nothing to do with changing the flow of the use case. The use case remains the same its just more informative. You can type in the course name in the search bar and then from the results, click on a result to see its display of information.
+Searching for classes: Our search bar is fully functional to find a specific class and information about the class. You can type in the course number to search the class. Upon clicking on a class you will see information show up on the sidebar telling you all you need to know about the course.
 
-Adding event to a Calendar: You can view and change the dates on the calendar but you cannot add a specific event to the calendar yet. We plan on doing another table for that which will hold a bunch of scripts. The functionality will include adding and deleting events. Along with this you will be able to edit events. You can move through the arrows to change the dates. Along with this our today button takes you back to todays date.
+Adding event to a Calendar: Once you click the add course to calendar button the course should be displayed on DubSpot's calendar.
 
-Leaving a review: Somewhat functional, however we do have the funcitonality of reviews being different based on what course you select. We are currently populating the reviews with "fake" ones we created to be updated later.
+Leaving a review: Once logged in you will be able to leave a review under a course you have taken to help better guide students on their course selection journeys.
 
