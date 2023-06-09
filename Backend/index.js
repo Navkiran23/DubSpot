@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const path = require('path')
 const sql = require('mssql')
@@ -28,11 +29,11 @@ const root = path.join(__dirname, '..')
 const port = process.env.PORT || 3000
 
 app.use(session({
-  secret: 'can-i-put-anything-here?',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: false, // Enable secure cookies (requires HTTPS)
+    secure: true, // Enable secure cookies (requires HTTPS)
     httpOnly: true, // Disallow cookie access from client-side JavaScript
     maxAge: 2 * (24 * 60 * 60 * 1000) // days cookie is valid
   }
