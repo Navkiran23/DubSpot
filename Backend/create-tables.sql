@@ -64,4 +64,4 @@ CREATE TABLE Reviews (
 CREATE TABLE Instructors (
     instructor varchar(100),
     rate_my_professor_id int
-)
+);

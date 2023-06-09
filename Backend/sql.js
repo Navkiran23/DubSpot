@@ -1,14 +1,15 @@
 const sql = require('mssql')
+require('dotenv').config()
 
 /**
  * sets up MS Azure SQL server and all prepared statements for use by index.js
   */
 
 const config = {
-  user: 'dubspot',
-  password: '1zjknqajkzSx',
-  server: 'dubspot.database.windows.net',
-  database: 'dubspot',
+  user: process.env.DUBSPOT_USER,
+  password: process.env.DUBSPOT_PASSWORD,
+  server: process.env.DUBSPOT_SERVER,
+  database: process.env.DUBSPOT_DATABASE,
   encrypt: true
 }
 
